@@ -1,10 +1,8 @@
 import "./index.css"
-import SearchBar from './routes/SearchBar'
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
-import { FaRegBuilding } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
-import { PiMouseScrollFill } from "react-icons/pi";
+
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 
