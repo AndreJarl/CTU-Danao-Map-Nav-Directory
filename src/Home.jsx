@@ -2,7 +2,6 @@ import "./index.css"
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
-
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 
