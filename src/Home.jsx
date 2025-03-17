@@ -482,7 +482,7 @@ function Home() {
             </div>
           
          
-        {suggestion.length === 0 && query.length === 0 ?(
+        {suggestion.length === 0 && query.length !== 0 ?(
               <div className="bg-white rounded-b-lg shadow-xl shadow-gray-400 max-h-[460px] flex-col  overflow-auto gap-2 pt-5 py-4 items-center justify-center -mt-2 flex"
               >
                   <i className="text-sm text-slate-400">No building/facilities found.</i>
