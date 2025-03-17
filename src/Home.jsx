@@ -12,7 +12,7 @@ function Home() {
     const [isPanning, setIsPanning] = useState(false); // Whether user is panning
     const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
 
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
 
 
@@ -50,15 +50,17 @@ function Home() {
 
     const handleInputChange = (e) =>{
         const value = e.target.value;
-        setQuery(value);
+        console.log(query);
          
         if(value){
             const filteredSuggestion = data.filter((item)=>
               item.toLowerCase().includes(value.toLowerCase())
             );
             setSuggestion(filteredSuggestion);
+            filteredSuggestion.length === 0 ? setQuery(value) : setQuery(filteredSuggestion);
         }else{
             setSuggestion([]);
+            setQuery([]);
         }
    }
 
@@ -134,11 +136,11 @@ function Home() {
             
      {/* Education Building */}
             <path d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
-               fill={!query ? '#7EC8E2' : query === 'Education Building' ? '#7EC8E2'  : '#B0B0B0' }
+               fill={query.length === 0 ? '#7EC8E2' : query.includes('Education Building') ? '#7EC8E2'  : '#B0B0B0' }
             />
 
             <path d="M1073.5 559H1074M1074 559H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z"  stroke-width="2"
-               stroke={!query ? "#017FFD" : query === 'Education Building' ? "#017FFD" : '#B0B0B0'}
+               stroke={query.length === 0 ? "#017FFD" : query.includes('Education Building') ? "#017FFD" : '#B0B0B0'}
             />
 
 
@@ -149,119 +151,119 @@ function Home() {
             <path   className={`${
                query === 'College of Engineering Building' ? 'opacity-100' : 'opacity-100'
             }`} d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"   stroke-width="2"
-            fill={!query ? '#EC8A8A' : query === 'College of Engineering Building' ? '#EC8A8A'  : '#B0B0B0' }
-            stroke={!query ? "#EA191D" : query === 'College of Engineering Building' ? "#EA191D" : '#B0B0B0'}
+            fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
             />
    
     {/* NEW ADMIN BUIDLING */}
     
             <path d="M1138 492.5L1109 491.5V477H1112L1113.5 417L1081.5 416L1078.5 469.5H1068.5L1067.5 497.5H1068.5L1067.5 532.5H1066V535H1067L1067.5 538.5H1076L1075.5 593.5L1107.5 594.5L1110 534H1117.5L1118.5 518H1137.5L1138 492.5Z"  stroke-width="2"
-              fill={!query ? '#E7E7A7' : query === 'New Admin Building' ? '#E7E7A7'  : '#B0B0B0' }
-              stroke={!query ? "#EDE323" : query === 'New Admin Building' ? "#EDE323" : '#B0B0B0'}
+              fill={query.length === 0 ? '#E7E7A7' : query.includes('New Admin Building') ? '#E7E7A7'  : '#B0B0B0' }
+              stroke={query.length === 0 ? "#EDE323" : query.includes('New Admin Building') ? "#EDE323" : '#B0B0B0'}
             />
 
     {/* CME/COE BUILDING */}
             <path d="M992.5 437L993.5 404.5V403H975V404.5L840.5 399.5V397.5H818.5V396.5H817V398.5H807.5L807 421H812.5V429.5H827.5V433.5H839V430.5L857 431V438H878L878.5 432L915 433V440.5H936V434.5L953 435V439H975V437H992.5Z"  stroke-width="2"
-            fill={!query ? '#B0F8BC' : query === 'CME/COE Building' ? '#B0F8BC'  : '#B0B0B0' }
-            stroke={!query ? "#0BBB20" : query === 'CME/COE Building' ? "#0BBB20" : '#B0B0B0'}
+            fill={query.length === 0 ? '#B0F8BC' : query.includes('CME/COE Building') ? '#B0F8BC'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#0BBB20" : query.includes('CME/COE Building') ? "#0BBB20" : '#B0B0B0'}
             />
 
     {/* Graduate School Building */}
             <path d="M986 598.5L987 565L970.5 564L970 562L948 561V565L931 564V557L910 556.5V563L873.5 562V555L852 554.5V561L833.5 560.5V557H822.5V559.5H806.5V568H801V590.5H809.5V593H811.5V592H831.5V593H833.5V591.5L967.5 596V598.5H986Z"  stroke-width="2"
-             fill={!query ? '#D0E4EC' : query === 'Graduate School Building' ? '#D0E4EC'  : '#B0B0B0' }
-             stroke={!query ? "#00AEFF" : query === 'Graduate School Building' ? "#00AEFF" : '#B0B0B0'}
+             fill={query.length === 0 ? '#D0E4EC' : query.includes('Graduate School Building') ? '#D0E4EC'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#00AEFF" : query.includes('Graduate School Building') ? "#00AEFF" : '#B0B0B0'}
             />
 
     {/* BISTRO */}
             <path d="M851 551.5L854 483.5V482.5H833.5L831.5 519H823.5L822.5 540H831.5L831 551.5H851Z" stroke-width="2"
-              fill={!query ? '#EEE4B7' : query === 'Bistro' ? '#EEE4B7'  : '#B0B0B0' }
-              stroke={!query ? "#F6CD17" : query === 'Bistro' ? "#F6CD17" : '#B0B0B0'}
+              fill={query.length === 0 ? '#EEE4B7' : query.includes('Bistro') ? '#EEE4B7'  : '#B0B0B0' }
+              stroke={query.length === 0 ? "#F6CD17" : query.includes('Bistro') ? "#F6CD17" : '#B0B0B0'}
             />
 
    {/* STAGE */}
             <path d="M858 546.5L858.5 520.5L887.5 521L886.5 546.5H858Z"  stroke-width="2"
-             fill={!query ? '#D8F2BF' : query === 'Stage' ? '#D8F2BF'  : '#B0B0B0' }
-             stroke={!query ? "#8EE76B" : query === 'Stage' ? "#8EE76B" : '#B0B0B0'}
+             fill={query.length === 0 ? '#D8F2BF' : query.includes('Stage') ? '#D8F2BF'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#8EE76B" : query.includes('Stage') ? "#8EE76B" : '#B0B0B0'}
             />
 
     {/* EXISTING ACADEMIC SCIENCE BLDG */}
             <path d="M985 482L985.5 460L831 454.5V477L985 482Z" stroke-width="2"
-             fill={!query ? '#F1F1CE' : query === 'Existing Academic Science Building' ? '#F1F1CE'  : '#B0B0B0' }
-             stroke={!query ? "#C9EB35" : query === 'Existing Academic Science Building' ? "#C9EB35" : '#B0B0B0'}
+             fill={query.length === 0 ? '#F1F1CE' : query.includes('Existing Academic Science Building') ? '#F1F1CE'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#C9EB35" : query.includes('Existing Academic Science Building') ? "#C9EB35" : '#B0B0B0'}
             />
 
     {/* Study Area */}
             <path d="M813.5 462L814 439.5H824L823 462H813.5Z"  stroke-width="2"
-                fill={!query ? '#F2BBC1' : query === 'Study Area' ? '#F2BBC1'  : '#B0B0B0' }
-                stroke={!query ? "#DB6072" : query === 'Study Area' ? "#DB6072" : '#B0B0B0'}
+                fill={query.length === 0 ? '#F2BBC1' : query.includes('Study Area') ? '#F2BBC1'  : '#B0B0B0' }
+                stroke={query.length === 0 ? "#DB6072" : query.includes('Study Area') ? "#DB6072" : '#B0B0B0'}
             />
     {/* COT BUILDING */}
 
             <path d="M790 464.5V453L650 448.5L649 481.5L758.5 486L757.5 512.5L647 509L646 542.5L746 546L744.5 606.5L786 608.5V596H783.5V586H786L788 535H786V525.5H788.5V513.5H786.5L787 487H790V475H787.5V464.5H790Z" stroke-width="2"
-            fill={!query ? '#EBE57C' : query === 'College of Technology/ COT Building' ? '#EBE57C'  : '#B0B0B0' }
-            stroke={!query ? "#B8C507" : query === 'College of Technology/ COT Building' ? "#B8C507" : '#B0B0B0'}
+            fill={query.length === 0 ? '#EBE57C' : query.includes('College of Technology/ COT Building') ? '#EBE57C'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#B8C507" : query.includes('College of Technology/ COT Building') ? "#B8C507" : '#B0B0B0'}
             />
     {/* CANTEEN */}
             <path d="M733.5 580.5L735 556L668 554L667 577L650 576L647 577V579.5L649 580.5V586.5H647V589L649 591H665V604L743 607L744 580.5H733.5Z"  stroke-width="2"
-             fill={!query ? '#B4EDEE' : query === 'University Canteen' ? '#B4EDEE'  : '#B0B0B0' }
-             stroke={!query ? "#0CE7EB" : query === 'University Canteen' ? "#0CE7EB" : '#B0B0B0'}
+             fill={query.length === 0 ? '#B4EDEE' : query.includes('University Canteen') ? '#B4EDEE'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#0CE7EB" : query.includes('University Canteen') ? "#0CE7EB" : '#B0B0B0'}
             />
 
     {/* FITNESS GYM FABLAB SEWING  */}
             <path d="M651 441.5L653 384.5L784.5 390L783.5 423H779V447L683 444L680 441.5H651Z"  stroke-width="2"
-            fill={!query ? '#F5BF81' : (query === 'Fitness Gym' || query ===  'Fablab' || query ===  'Sewing Area') ? '#F5BF81'  : '#B0B0B0' }
-            stroke={!query ? "#EE8813" : (query === 'Fitness Gym' || query ===  'Fablab' || query ===  'Sewing Area') ? "#EE8813" : '#B0B0B0'}
+            fill={query.length === 0 ? '#F5BF81' : (query.includes('Fitness Gym') || query.includes('Fablab') || query.includes('Sewing Area')) ? '#F5BF81'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#EE8813" : (query.includes('Fitness Gym') || query.includes('Fablab') || query.includes('Sewing Area')) ? "#EE8813" : '#B0B0B0'}
             />
     {/* Student Activity Center */}
             <path d="M675 361L676 327.5L687 328V321.5L794 324.5V332.5H796.5V338H793L792.5 359H795.5V365H792.5V372L685.5 368.5V361H675Z" stroke-width="2"
-            fill={!query ? '#B1EEDE' : query === 'Student Activity Center' ? '#B1EEDE'  : '#B0B0B0' }
-            stroke={!query ? "#06FAB9" : query === 'Student Activity Center' ? "#06FAB9" : '#B0B0B0'}
+            fill={query.length === 0 ? '#B1EEDE' : query.includes('Student Activity Center') ? '#B1EEDE'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#06FAB9" : query.includes('Student Activity Center') ? "#06FAB9" : '#B0B0B0'}
             />
 
     {/* TENNIS COURT */}
             <path d="M646.5 217.5L654 205.5L690.5 209.5L699 217.5L695 318.5L642 316L646.5 217.5Z"  stroke-width="2"
-             fill={!query ? '#83EC99' : query === 'Tennis Court' ? '#83EC99'  : '#B0B0B0' }
-             stroke={!query ? "#04B42A" : query === 'Tennis Court' ? "#04B42A" : '#B0B0B0'}
+             fill={query.length === 0 ? '#83EC99' : query.includes('Tennis Court') ? '#83EC99'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#04B42A" : query.includes('Tennis Court') ? "#04B42A" : '#B0B0B0'}
             />
 
     {/* GRANDSTAND */}
             <path d="M268.5 564L217 510L193.5 531.5L189 536L191 538L195 533.5L204.5 544L200.5 548.5L202 549.5L206 545.5L216 555.5L211.5 560L213.5 561.5L218.5 557.5L227.5 568L223.5 572L225 573.5L229 570L239 580L234.5 584L236.5 585.5L241 582L250 591.5L246 596L248 597.5L252 593.5L262 604.5L257.5 609L259 610L263.5 606L273 616.5L268.5 621L270 622L274.5 618L284 628L280 632.5L282 634L286 630L295.5 640.5L291.5 644.5L293 646L297.5 642.5L307 652.5L302.5 656.5L304.5 658L309 654.5L318 664.5L314 668.5L316 670.5L343.5 644.5L291.5 589.5L293.5 587L270.5 562.5L268.5 564Z"  stroke-width="2"
-            fill={!query ? '#A6A6A6' : query === 'Grandstand' ? '#A6A6A6'  : '#B0B0B0' }
-            stroke={!query ? "#4E4343" : query === 'Grandstand' ? "#4E4343" : '#B0B0B0'}
+            fill={query.length === 0 ? '#A6A6A6' : query.includes('Grandstand') ? '#A6A6A6'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#4E4343" : query.includes('Grandstand') ? "#4E4343" : '#B0B0B0'}
             />
 
     {/* OLD ADMIN BLDG */}
             <path d="M892.5 635L892 671L848 670V666.5H830.5V670.5H824V666L812 665.5V671H804V665L763.5 664V670.5H751.5V663.5H743.5V667L711 652L703 651L702.5 647.5H704.5V636L713 638.5L716 629.5L892.5 635Z" 
-            fill={!query ? '#F0E7B2' : query === 'Old Admin Building' ? '#F0E7B2'  : '#B0B0B0' }
+            fill={query.length === 0 ? '#F0E7B2' : query.includes('Old Admin Building') ? '#F0E7B2'  : '#B0B0B0' }
             />
             <path d="M711 652L743.5 667V663.5H751.5V670.5H763.5V664L804 665V671H820H812V665.5L824 666V670.5H830.5V666.5H848V670L892 671L892.5 635L716 629.5L713 638.5M711 652L703 651L702.5 647.5H704.5V636L713 638.5M711 652L713 638.5" stroke-width="2"
-             stroke={!query ? "#FDD90B" : query === 'Old Admin Building' ? "#FDD90B" : '#B0B0B0'}
+             stroke={query.length === 0 ? "#FDD90B" : query.includes('Old Admin Building') ? "#FDD90B" : '#B0B0B0'}
             />
 
     {/* women dorm */}
             <path d="M806 676L864.5 696.5L848.5 708L788 686.5L791.5 680L802.5 685L806 676Z"  stroke-width="2"
-             fill={!query ? '#E996BC' : query === 'Women Dorm' ? '#E996BC'  : '#B0B0B0' }
-             stroke={!query ? "#F31B7C" : query === 'Women Dorm' ? "#F31B7C" : '#B0B0B0'}
+             fill={query.length === 0 ? '#E996BC' : query.includes('Women Dorm') ? '#E996BC'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#F31B7C" : query.includes('Women Dorm') ? "#F31B7C" : '#B0B0B0'}
             />
 
     {/* HM LABORATORY */}
             <path d="M707 301L707.5 276.5H722.5V271H727.5V279L789 282L788 304L707 301Z"  stroke-width="2"
-            fill={!query ? '#8CEC9F' : query === 'HM Laboratory' ? '#8CEC9F'  : '#B0B0B0' }
-            stroke={!query ? "#03C129" : query === 'HM Laboratory' ? "#03C129" : '#B0B0B0'}
+            fill={query.length === 0 ? '#8CEC9F' : query.includes('HM Laboratory') ? '#8CEC9F'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#03C129" : query.includes('HM Laboratory') ? "#03C129" : '#B0B0B0'}
             />
 
    {/* MENS DORM */}
             <path d="M733.5 276L734 259.5L763.5 261.321L774.5 262L773 277.5L762.89 277.116L733.5 276Z"
-            fill={!query ? '#B54F4F' : query === 'Mens Dorm' ? '#B54F4F'  : '#B0B0B0' }
+            fill={query.length === 0 ? '#B54F4F' : query.includes('Mens Dorm') ? '#B54F4F'  : '#B0B0B0' }
             />
             <path d="M763.5 261.321L774.5 262L773 277.5L762.89 277.116M763.5 261.321L734 259.5L733.5 276L762.89 277.116M763.5 261.321L762.89 277.116"  stroke-width="2"
-             stroke={!query ? "#B50E11" : query === 'Mens Dorm' ? "#B50E11" : '#B0B0B0'}
+             stroke={query.length === 0 ? "#B50E11" : query.includes('Mens Dorm') ? "#B50E11" : '#B0B0B0'}
             />
 
     {/* ERRC BUILDING */}
             <path d="M1082.5 717H1093.5L1095 678.5L1016 676L1012 725.5L1037.5 726.5L1036.5 731L1044.5 732.5V727.5H1048V731L1055 732.5V727.5H1059.5V732.5H1066V727.5H1069.5L1070.5 732.5H1076.5V728H1082.5V717Z"  stroke-width="2"
-            fill={!query ? '#9D9CE7' : query === 'ERRC Building' ? '#9D9CE7'  : '#B0B0B0' }
-            stroke={!query ? "#173ECE" : query === 'ERRC Building' ? "#173ECE" : '#B0B0B0'}
+            fill={query.length === 0 ? '#9D9CE7' : query.includes('ERRC Building') ? '#9D9CE7'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#173ECE" : query.includes('ERRC Building') ? "#173ECE" : '#B0B0B0'}
             />
 
     {/* boRDER */}
@@ -269,99 +271,99 @@ function Home() {
 
     {/* KADASIG GYM */}
             <path d="M539.5 282L612 189L565.5 153L493 247.5L539.5 282Z" stroke-width="2"
-             fill={!query ? '#7989EE' : query === 'Kadasig Gym' ? '#7989EE'  : '#B0B0B0' }
-             stroke={!query ? "#0A2EB2" : query === 'Kadasig Gym' ? "#0A2EB2" : '#B0B0B0'}
+             fill={query.length === 0 ? '#7989EE' : query.includes('Kadasig Gym') ? '#7989EE'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#0A2EB2" : query.includes('Kadasig Gym') ? "#0A2EB2" : '#B0B0B0'}
             />
 
 
             <path d="M623 184.5L617 179.5L622 173.5L628.5 178L623 184.5Z"  stroke-width="2"
-               fill={!query ? '#6D7FF1' :'#B0B0B0' }
-               stroke={!query ? "#0D3DEE" : '#B0B0B0'}
+               fill={query.length === 0 ? '#6D7FF1' :'#B0B0B0' }
+               stroke={query.length === 0 ? "#0D3DEE" : '#B0B0B0'}
             />
 
     {/*  CULRUTAL CENTER*/}
             <path d="M599.5 346L572.5 345L571.5 377.5L598.5 378.5L599.5 346Z" stroke-width="2"
-             fill={!query ? '#E2E23A' : query === 'Cultural Center' ? '#E2E23A'  : '#B0B0B0' }
-             stroke={!query ? "#AF8511" : query === 'Cultural Center' ? "#AF8511" : '#B0B0B0'}
+             fill={query.length === 0 ? '#E2E23A' : query.includes('Cultural Center') ? '#E2E23A'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#AF8511" : query.includes('Cultural Center') ? "#AF8511" : '#B0B0B0'}
             />
 
     {/* FLOATING CLASSROOM */}
             <path d="M619 518L620.5 436.5H601V518H619Z"  stroke-width="2"
-             fill={!query ? '#D9D9D9' : query === 'Floating Classroom' ? '#D9D9D9'  : '#B0B0B0' }
-             stroke={!query ? "#534646" : query === 'Floating Classroom' ? "#534646" : '#B0B0B0'}
+             fill={query.length === 0 ? '#D9D9D9' : query.includes('Floating Classroom') ? '#D9D9D9'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#534646" : query.includes('Floating Classroom') ? "#534646" : '#B0B0B0'}
             />
 
     {/* OVAL */}
             <path d="M398.5 653L139 378L160 360L167 368.5L166 343.5L167 336.5L169 330.5L172.5 315.5L179 301L186.5 287L195 274.5L205.5 263.5L221.5 250L238.5 240.5L257.5 233L279.5 228.5L300 227.5L321 230L341.5 236.5L355 243L369 251.5L376 257.5L391.5 271.5L549.5 439.5L559 450.5L567.5 465L573.5 476.5L579 495.5L581.5 505.5L582.5 529L581.5 545.5L577.5 560.5L574 573L568.5 585L555.5 604L550 611.5L532 627L523.5 633.5L507 643L495.5 647.5L485 650.5L470 653L457.5 654H447.5L437.5 653L421.5 650L407 645L398.5 653Z" stroke-width="2"
-             fill={!query ? '#E27878' : query === 'Oval' ? '#E27878'  : '#B0B0B0' }
-             stroke={!query ? "#E90C10" : query === 'Oval' ? "#534646" : '#B0B0B0'}
+             fill={query.length === 0 ? '#E27878' : query.includes('Oval') ? '#E27878'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#E90C10" : query.includes('Oval') ? "#534646" : '#B0B0B0'}
             />
 
             <path d="M211.5 415.5L203 397.5L202 396L339.5 266.5L350.5 273L365 282.5L508.5 436L518 446.5L529.5 458L535.5 465L542 474.5L548.5 487.5L409.5 616L397 609L377 590.5L353 565L316.5 525.5L266 474L250 455.5L226.5 432L211.5 415.5Z"  stroke-width="2"
-             fill={!query ? '#65D89C' : query === 'Oval' ? '#65D89C'  : '#B0B0B0' }
-             stroke={!query ? "#02BC53" : query === 'Oval' ? "#02BC53" : '#B0B0B0'}
+             fill={query.length === 0 ? '#65D89C' : query.includes('Oval') ? '#65D89C'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#02BC53" : query.includes('Oval') ? "#02BC53" : '#B0B0B0'}
             />
 
             <path d="M411 616.5L549 486.5L556 519.5V536.5L552.5 555L545.5 569.5L535.5 586L524 598.5L513.5 608L499.5 616.5L472 625.5L454.5 627.5L431 625.5L411 616.5Z" stroke-width="2"
-             fill={!query ? '#ACA4A4' : query === 'Oval' ? '#ACA4A4'  : '#B0B0B0' }
-             stroke={!query ? "#5C5353" : query === 'Oval' ? "#5C5353" : '#B0B0B0'}
+             fill={query.length === 0 ? '#ACA4A4' : query.includes('Oval') ? '#ACA4A4'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#5C5353" : query.includes('Oval') ? "#5C5353" : '#B0B0B0'}
             />
 
             <path d="M339 266.5L203.5 395L201.5 396.5L197 383.5L194 369.5V358.5V343.5L195 338L197 328.5L203 313L210 300.5L214.5 293.5L223 284L231 276.5L244 268L255 262L275 256.5L285 255.5L299.5 255L311.5 256L317 258.5L330 262.5L339 266.5Z"  stroke-width="2"
-             fill={!query ? '#ACA4A4' : query === 'Oval' ? '#ACA4A4'  : '#B0B0B0' }
-             stroke={!query ? "#5C5353" : query === 'Oval' ? "#5C5353" : '#B0B0B0'}
+             fill={query.length === 0 ? '#ACA4A4' : query.includes('Oval') ? '#ACA4A4'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#5C5353" : query.includes('Oval') ? "#5C5353" : '#B0B0B0'}
             />
             
             <path d="M703 263.5V220L724 232L723 263.5H703Z"  stroke-width="2"
-              fill={!query ? '#788BEB' : '#B0B0B0' }
-              stroke={!query ? "#3B0AFF" :'#B0B0B0'}
+              fill={query.length === 0 ? '#788BEB' : '#B0B0B0' }
+              stroke={query.length === 0 ? "#3B0AFF" :'#B0B0B0'}
             />
 
     {/* CTU CENTRUM */}
             <path d="M1037 222V217V216V213L1039 210.5L1042 205V199.5L1040 196L1038 188.5V181.5L1040 177.5L1043 172L1047.5 170L1053 169L1059 170.5L1065 176L1067.5 179.5L1069.5 185.5L1070 189V194.5L1069.5 207.5V211L1066.5 217L1062.5 221.5L1055 227C1053.17 227.5 1049.4 228.5 1049 228.5C1048.6 228.5 1045.5 228.167 1044 228L1039 225L1037 222Z"  stroke-width="2"
-             fill={!query ? '#DD892E' : query === 'CTU Facility Centrum' ? '#DD892E'  : '#B0B0B0' }
-             stroke={!query ? "#362F26" : query === 'CTU Facility Centrum' ? "#362F26" : '#B0B0B0'}
+             fill={query.length === 0 ? '#DD892E' : query.includes('CTU Facility Centrum') ? '#DD892E'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#362F26" : query.includes('CTU Facility Centrum') ? "#362F26" : '#B0B0B0'}
             />
 
     
             <path d="M1047.5 220L1044.5 216L1043.5 213.5C1043.83 212.5 1044.5 210.3 1044.5 209.5C1044.5 208.7 1045.17 208.5 1045.5 208.5L1047.5 207L1049 206H1051L1053 205V202.5V199.5L1052 197.5L1049 196L1044.5 191L1042.5 187V183L1044.5 178L1047.5 175H1052L1057 176L1062.5 182L1066 191L1064.5 205L1066 209.5L1064.5 213.5H1059.5L1058.5 215L1055.5 218L1052 220H1047.5Z" stroke-width="2"
-            fill={!query ? '#30D8DB' : query === 'CTU Facility Centrum' ? '#30D8DB'  : '#B0B0B0' }
-            stroke={!query ? "#3B0AFF" : query === 'CTU Facility Centrum' ? "#3B0AFF" : '#B0B0B0'}
+            fill={query.length === 0 ? '#30D8DB' : query.includes('CTU Facility Centrum') ? '#30D8DB'  : '#B0B0B0' }
+            stroke={query.length === 0 ? "#3B0AFF" : query.includes('CTU Facility Centrum') ? "#3B0AFF" : '#B0B0B0'}
             />
 
             
             <path d="M943.5 208L964 210.5L964.5 206L979 207.5V212.5H983L984 204L988.5 209.5L994 205.5L1023.5 209L1026 202.5L1028 194.5L1028.5 185.5V167L1019 166L1018.5 163.5L1013.5 163L1013 166L1004.5 164.5L1004 161.5H999L998 163L994 158L989 163L988.5 160L984.5 159L983.5 161.5H974V158H969.5L968 164L951 162.5V157.5L942 157L940.5 154.5L938.5 154L936.5 157L931.5 156.5L926.5 149.5L921 154.5L891 151L886 166.5L886.5 192.5L915 196L921 200.5L925.5 197V205.5L928.5 206L930.5 202L943.5 203.5V208Z"  stroke-width="2"
-             fill={!query ? '#DFBC74' : query === 'CTU Facility Centrum' ? '#DFBC74'  : '#B0B0B0' }
-             stroke={!query ? "#362F26" : query === 'CTU Facility Centrum' ? "#362F26" : '#B0B0B0'}
+             fill={query.length === 0 ? '#DFBC74' : query.includes('CTU Facility Centrum') ? '#DFBC74'  : '#B0B0B0' }
+             stroke={query.length === 0 ? "#362F26" : query.includes('CTU Facility Centrum') ? "#362F26" : '#B0B0B0'}
             />
         
     {/* FURNITURE WORKSHOP */}
             <path d="M735 198.5L727.5 191L750.5 168L758 176.5L761.5 173L765.5 176.5L761.5 180.5L766 184.5L770.5 182L785 197L761.5 220.5L737.5 197L735 198.5Z" stroke-width="2"
-              fill={!query ? '#DCCCA9' : query === 'Furniture Workshop' ? '#DCCCA9'  : '#B0B0B0' }
-              stroke={!query ? "#A6742E" : query === 'Furniture Workshop' ? "#A6742E" : '#B0B0B0'}
+              fill={query.length === 0 ? '#DCCCA9' : query.includes('Furniture Workshop') ? '#DCCCA9'  : '#B0B0B0' }
+              stroke={query.length === 0 ? "#A6742E" : query.includes('Furniture Workshop') ? "#A6742E" : '#B0B0B0'}
             />
 
 {/* ========================== */}
             <path d="M673 634.5L669 644.5L658.5 640.5L648 637L638 633.5L640.5 628L650 630.5L661 632.5L666.5 631.5L673 634.5Z" 
-              fill={!query ? '#ACA97D' :  '#B0B0B0' }
+              fill={query.length === 0 ? '#ACA97D' :  '#B0B0B0' }
             
             />
 
 
             <path d="M661 632.5L666.5 631.5L673 634.5L669 644.5L658.5 640.5M661 632.5L658.5 640.5M661 632.5L650 630.5M658.5 640.5L648 637M648 637L638 633.5L640.5 628L650 630.5M648 637L650 630.5" 
-              stroke={!query ? "#A6742E" : '#B0B0B0'}
+              stroke={query.length === 0 ? "#A6742E" : '#B0B0B0'}
             />
 
 
             <path d="M625 613.5L619.5 616L617.5 610.5L608 612.5L604 599L606.5 596.5L605 564L618.5 563L619.5 572V579.5L617.5 581.5L621.5 593L626.5 607.5L624 608.5L625 613.5Z" stroke-width="2"
-            fill={!query ? '#896565' :  '#B0B0B0' }
-            stroke={!query ? "#A6742E" : '#B0B0B0'}
+            fill={query.length === 0 ? '#896565' :  '#B0B0B0' }
+            stroke={query.length === 0 ? "#A6742E" : '#B0B0B0'}
             />
  
             
             <path d="M604.5 559V549.5L616 550L614.5 560L604.5 559Z" stroke-width="2"
-             fill={!query ? '#D9D9D9' :  '#B0B0B0' }
-             stroke={!query ? "#A6742E" : '#B0B0B0'}
+             fill={query.length === 0 ? '#D9D9D9' :  '#B0B0B0' }
+             stroke={query.length === 0 ? "#A6742E" : '#B0B0B0'}
             />
 
   {/* ============================ */}
@@ -369,8 +371,8 @@ function Home() {
 
     {/* SECURITY OFFICE */}
             <path d="M1172.5 588.5H1189.5L1188 624H1171.5L1172.5 588.5Z" stroke-width="2"
-              fill={!query ? '#CFD93E' : query === 'Security Office' ? '#CFD93E'  : '#B0B0B0' }
-              stroke={!query ? "#E9B91E" : query === 'Security Office' ? "#E9B91E" : '#B0B0B0'}
+              fill={query.length === 0 ? '#CFD93E' : query.includes('Security Office') ? '#CFD93E'  : '#B0B0B0' }
+              stroke={query.length === 0 ? "#E9B91E" : query.includes('Security Office') ? "#E9B91E" : '#B0B0B0'}
             />
 
             
@@ -383,27 +385,27 @@ function Home() {
             />
 
             <path d="M1125.5 670V678.5L1187.5 691.5L1188.5 648.5H1177L1176 652H1166V676.5H1156.5V671.5L1125.5 670Z" 
-             fill={!query ? '#9A5757' :  '#B0B0B0' }
-             stroke={!query ? "#670A0A" : '#B0B0B0'}
+             fill={query.length === 0 ? '#9A5757' :  '#B0B0B0' }
+             stroke={query.length === 0 ? "#670A0A" : '#B0B0B0'}
             />
 
 
             <path d="M1071.5 651C1071.5 656.224 1067.05 660.5 1061.5 660.5C1055.95 660.5 1051.5 656.224 1051.5 651C1051.5 645.776 1055.95 641.5 1061.5 641.5C1067.05 641.5 1071.5 645.776 1071.5 651Z"
-                     fill={!query ? '#D9D9D9' :  '#B0B0B0' }
-                     stroke={!query ? "black" : '#B0B0B0'}
+                     fill={query.length === 0 ? '#D9D9D9' :  '#B0B0B0' }
+                     stroke={query.length === 0 ? "black" : '#B0B0B0'}
             />
             <ellipse cx="1061.5" cy="651" rx="6.5" ry="6"
-                fill={!query ? '#1941C6' :  '#B0B0B0' }
+                fill={query.length === 0 ? '#1941C6' :  '#B0B0B0' }
                
             />
 
             <path d="M1189.5 390V382H1177V390H1189.5Z" 
-                fill={!query ? '#C6EDA5' :  '#B0B0B0' }
-                stroke={!query ? "8ABD12" : '#B0B0B0'}
+                fill={query.length === 0 ? '#C6EDA5' :  '#B0B0B0' }
+                stroke={query.length === 0 ? "8ABD12" : '#B0B0B0'}
             />
             <path d="M1114 413.5L1089.5 412.5V396H1092.5L1093.5 399.5H1114V413.5Z" 
-               fill={!query ? '#84A5DD' :  '#B0B0B0' }
-               stroke={!query ? "1218BD" : '#B0B0B0'}
+               fill={query.length === 0 ? '#84A5DD' :  '#B0B0B0' }
+               stroke={query.length === 0 ? "1218BD" : '#B0B0B0'}
             />
 
 
@@ -473,14 +475,14 @@ function Home() {
         <div className="absolute top-4  group right-6 2xl:right-96" >
             <div className=" rounded-lg shadow-xl shadow-gray-500 w-[310px] lg:w-[340px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 w-[250px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
-            value={query}
+            
             onChange={handleInputChange}
             />
             <h1 className="text-xl"><IoIosSearch /></h1>
             </div>
           
          
-        {suggestion.length === 0 && query != '' ?(
+        {suggestion.length === 0 && query.length === 0 ?(
               <div className="bg-white rounded-b-lg shadow-xl shadow-gray-400 max-h-[460px] flex-col  overflow-auto gap-2 pt-5 py-4 items-center justify-center -mt-2 flex"
               >
                   <i className="text-sm text-slate-400">No building/facilities found.</i>
