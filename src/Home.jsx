@@ -118,10 +118,10 @@ function Home() {
   
     return (
         <>
-        <div className="flex justify-center gap-10 items-center">
+        <div className="flex justify-center mt-10 gap-10 items-center">
 
       {/* this the svg div */}
-      <div className="relative bg-white overflow-hidden h-[500px] w-[1000px] my-5 flex justify-center items-center border border-slate-500 cursor-grab active:cursor-grabbing rounded mx-4 lg:ml-5"
+      <div className="relative bg-white overflow-hidden h-[500px] w-[1000px] my-5 flex justify-center items-center border border-slate-500 cursor-grab active:cursor-grabbing rounded mx-4 lg:ml-5 lg:h-[600px]"
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -490,7 +490,7 @@ function Home() {
 
 
         {/* this is the search bar */}
-        <div className="absolute top-5  group right-6 2xl:right-96" >
+        <div className="absolute top-12  group right-6 2xl:right-96" >
             <div className=" rounded-lg shadow-xl shadow-gray-500 w-[310px] lg:w-[340px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 w-[250px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
             
@@ -529,7 +529,7 @@ function Home() {
 
         {/* only exit so that the map is in left position */}
         <div className="w-[200px] mt-12 max-h-[550] hidden lg:block text-[13px] ">
-            <div className="flex justify-center flex-col mr-5 -ml-6 gap-3">
+            <div className="flex justify-center flex-col mr-5 -ml-6 gap-6">
 
             <p className="text-gray-400">Use the <b className="text-gray-500">mouse scroll 🖱️</b> to zoom in and out on the map for a customized view.</p>
 
