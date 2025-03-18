@@ -66,6 +66,10 @@ function Home() {
 
    const handleSuggestionClicked = (suggestion) =>{
         setQuery(suggestion);
+        const input = document.querySelector('input[type="search"]');
+        if (input) {
+            input.value = suggestion;
+        }
         console.log(suggestion)
         setSuggestion([]);
    }
@@ -128,7 +132,7 @@ function Home() {
      <svg width="1000" height="570"
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
-                    transformOrigin: "0 0",
+                    transformOrigin: "center center",
                   }}
             viewBox="0 0 1280 832" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="1280" height="832" fill=""/>
