@@ -70,7 +70,7 @@ function Home() {
         setSuggestion([]);
    }
   
-   const MAX_ZOOM_OUT_LEVEL = 1; // Set your desired maximum zoom out level
+   const MAX_ZOOM_OUT_LEVEL = 1;
 
 
     const handleWheel = (e) => {
