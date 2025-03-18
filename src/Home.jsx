@@ -70,22 +70,36 @@ function Home() {
         setSuggestion([]);
    }
   
+   const MAX_ZOOM_OUT_LEVEL = 1; // Set your desired maximum zoom out level
+
+
     const handleWheel = (e) => {
-      e.preventDefault();
-      const zoomSpeed = 0.2;
-      const newZoom = e.deltaY > 0 ? zoomLevel - zoomSpeed : zoomLevel + zoomSpeed;
-      setZoomLevel(Math.min(Math.max(newZoom, 0.5), 4)); // Clamp zoom level
-    };
-  
+           e.preventDefault();
+           const zoomSpeed = 0.2;
+           const newZoom = e.deltaY > 0 ? zoomLevel - zoomSpeed : zoomLevel + zoomSpeed;
+           setZoomLevel(Math.min(Math.max(newZoom, 0.5), 4)); // Clamp zoom level
+         };
+
+       
+
     const handleMouseDown = (e) => {
-      setIsPanning(true);
-      setStartPoint({ x: e.clientX - panX, y: e.clientY - panY });
+        setIsPanning(true);
+        setStartPoint({ x: e.clientX - panX, y: e.clientY - panY });
     };
-  
+
+
     const handleMouseMove = (e) => {
-      if (!isPanning) return;
-      setPanX(e.clientX - startPoint.x);
-      setPanY(e.clientY - startPoint.y);
+        if (!isPanning) return;
+        const newPanX = e.clientX - startPoint.x;
+        const newPanY = e.clientY - startPoint.y;
+        const minX = (-(1280 * zoomLevel) + 1000) / 2; 
+        const maxX = (1280 * zoomLevel - 1000) / 2;
+        const minY = (-(832 * zoomLevel) + 570) / 2;
+        const maxY = (832 * zoomLevel - 570) / 2;
+        const boundedPanX = Math.min(Math.max(newPanX, minX), maxX);
+        const boundedPanY = Math.min(Math.max(newPanY, minY), maxY);
+        setPanX(boundedPanX);
+        setPanY(boundedPanY);
     };
   
     const handleMouseUp = () => {
@@ -452,7 +466,7 @@ function Home() {
                 <FaPlus/>
                 </button>
                 <button
-                onClick={() => setZoomLevel(Math.max(zoomLevel - 0.1, 0.5))}
+                onClick={() => setZoomLevel(Math.max(zoomLevel - 0.1, 1))}
                 className="w-10 py-2 flex justify-center items-center opacity-50 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
                 >
                <FaMinus/>
@@ -472,7 +486,7 @@ function Home() {
 
 
         {/* this is the search bar */}
-        <div className="absolute top-4  group right-6 2xl:right-96" >
+        <div className="absolute top-5  group right-6 2xl:right-96" >
             <div className=" rounded-lg shadow-xl shadow-gray-500 w-[310px] lg:w-[340px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 w-[250px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
             
@@ -488,13 +502,12 @@ function Home() {
                   <i className="text-sm text-slate-400">No building/facilities found.</i>
                </div> 
         ): (
-            <div className={`bg-white rounded-b-lg shadow-xl shadow-gray-400 max-h-[460px] flex-col  overflow-auto
-                gap-2 pt-5 py-4 items-center justify-center -mt-2 ${suggestion.length>0 ? 'flex' : 'hidden'}`
+            <div className={`bg-white rounded-b-lg shadow-xl shadow-gray-400 max-h-[460px] overflow-auto flex-col gap-1 pt-2 py-2 items-start justify-start -mt-2 ${suggestion.length>0 ? 'flex' : 'hidden'}`
                 }>
                  
                  
                     {suggestion.map((suggestions, index)=>(
-                         <div key={index} onClick={()=>handleSuggestionClicked(suggestions)} className="flex flex-row justify-center  cursor-pointer items-center gap-2 hover:bg-gray-400 w-full py-2 px-4">
+                         <div key={index} onClick={()=>handleSuggestionClicked(suggestions)} className="flex flex-row justify-left  cursor-pointer items-center gap-2 hover:bg-gray-400 w-full py-2 px-4">
                         <h1><IoLocationOutline/></h1>
                         <p className="text-sm">{suggestions}</p>
                     </div>
