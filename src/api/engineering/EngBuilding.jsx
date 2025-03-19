@@ -10,7 +10,7 @@ function EngBuilding() {
     return(
         <>
            <div className='flex flex-col justify-center items-center gap-9 mt-10'>
-               <p className='text-center font-bold text-4xl text-red-700'>ENGINEERING BUILDING</p>
+               <p className='text-center font-bold text-4xl text-red-700'>COLLEGE OF ENGINEERING BUILDING</p>
                 <div>   
              {floorNum === 1 ? (
                 <Floor1 />
