@@ -4,6 +4,7 @@ import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
+import { Link } from "react-router-dom";
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -166,12 +167,12 @@ function Home() {
             
      {/* COE BUILDING */}
 
-            <path   className={`${
+           <Link to="/eng"> <path   className={`${
                query === 'College of Engineering Building' ? 'opacity-100' : 'opacity-100'
             }`} d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"   stroke-width="2"
             fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
-            />
+            /></Link>
    
     {/* NEW ADMIN BUIDLING */}
     
