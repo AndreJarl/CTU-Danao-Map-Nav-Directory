@@ -5,6 +5,10 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import floor1 from './api/engineering/img/floor1.png';
+import floor2 from './api/engineering/img/floor2.png'
+import floor3 from './api/engineering/img/floor3.png'
+
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -19,6 +23,11 @@ function Home() {
     const [currentFloor, setCurrentFloor] = useState(1);
     const [showInfoPanel, setShowInfoPanel] = useState(false);
 
+    const floorImages = {
+      1: floor1,
+      2: floor2,
+      3: floor3
+    };
 
     const data = [
         'College of Engineering Building',
@@ -139,6 +148,7 @@ function Home() {
 
       {/* this the svg div */}
       <div className="relative bg-white overflow-hidden h-[500px] w-[1000px] my-5 flex justify-center items-center border border-slate-500 cursor-grab active:cursor-grabbing rounded mx-4 lg:ml-5 lg:h-[600px]"
+
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -516,7 +526,7 @@ function Home() {
                     >
                         <h2 className="text-xl font-bold mb-4">College of Engineering Building</h2>
                         <img 
-                            src={`src/api/engineering/img/floor${currentFloor}.png`} 
+                             src={floorImages[currentFloor]} 
                             alt={`Floor ${currentFloor}`} 
                             className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
                             onClick={() => setShowInfoPanel(true)}
