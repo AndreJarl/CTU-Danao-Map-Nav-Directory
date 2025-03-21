@@ -15,6 +15,9 @@ function Home() {
 
     const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
+    const [currentFloor, setCurrentFloor] = useState(1);
+    const [showInfoPanel, setShowInfoPanel] = useState(false);
 
 
     const data = [
@@ -116,6 +119,19 @@ function Home() {
       setPanX(0);
       setPanY(0);
     };
+
+    const handleNextFloor = () => setCurrentFloor((prev) => (prev < 3 ? prev + 1 : prev));
+    const handlePreviousFloor = () => setCurrentFloor((prev) => (prev > 1 ? prev - 1 : prev));
+
+    const handleClosePopup = () => {
+        setShowPopup(false);
+        setShowInfoPanel(false); // Ensure info panel closes too
+    };
+
+    const handleOpenPopup = () => {
+        setShowPopup(true);
+        setShowInfoPanel(false); // Reset the side panel state
+    };
   
     return (
         <>
@@ -167,12 +183,16 @@ function Home() {
             
      {/* COE BUILDING */}
 
-           <Link to="/eng"> <path   className={`${
-               query === 'College of Engineering Building' ? 'opacity-100' : 'opacity-100'
-            }`} d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"   stroke-width="2"
-            fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
-            stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
-            /></Link>
+     <path onClick={handleOpenPopup}
+        d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"
+        strokeWidth="2"
+        fill="#EC8A8A"
+        stroke="#EA191D"
+        style={{ cursor: 'pointer' }}
+    />
+    
+
+
    
     {/* NEW ADMIN BUIDLING */}
     
@@ -488,6 +508,44 @@ function Home() {
       
      
       </div>
+
+      {showPopup && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white p-6 rounded shadow-lg max-w-[80%] w-[700px] relative scale-0 transition-transform duration-500 animate-scale-up"  
+                        onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
+                    >
+                        <h2 className="text-xl font-bold mb-4">College of Engineering Building</h2>
+                        <img 
+                            src={`src/api/engineering/img/floor${currentFloor}.png`} 
+                            alt={`Floor ${currentFloor}`} 
+                            className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
+                            onClick={() => setShowInfoPanel(true)}
+                        />
+                        <div className="flex justify-between">
+                            <button onClick={handlePreviousFloor} className="bg-blue-500 text-white p-2 rounded">Previous Floor</button>
+                            <button onClick={handleNextFloor} className="bg-blue-500 text-white p-2 rounded">Next Floor</button>
+                        </div>
+                        <button onClick={handleClosePopup} className="mt-4 bg-red-500 text-white p-2 rounded">Close</button>
+                    </div>
+                </div>
+            )}
+
+
+{showInfoPanel && (
+                <div className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transition-transform duration-700 z-[1000] ${showInfoPanel ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className="p-4 flex justify-between items-center">
+                        <h2 className="text-xl font-bold">Floor Information</h2>
+                        <button onClick={() => setShowInfoPanel(false)} className="text-red-500 font-bold">X</button>
+                    </div>
+                    <div className="p-4">
+                        <h3 className="font-bold mb-2">Details of Floor {currentFloor}</h3>
+                        <p>This section displays relevant information about this floor.</p>
+                    </div>
+                </div>
+            )}
+
+   
+
 
 
         {/* this is the search bar */}
