@@ -5,29 +5,53 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import floor1 from './api/engineering/img/floor1.png';
-import floor2 from './api/engineering/img/floor2.png'
-import floor3 from './api/engineering/img/floor3.png'
-
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
     const [panX, setPanX] = useState(0); // Horizontal pan
     const [panY, setPanY] = useState(0); // Vertical pan
     const [isPanning, setIsPanning] = useState(false); // Whether user is panning
+    const [isDragging, setIsDragging] = useState(false);
     const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
 
-    const [query, setQuery] = useState([]);
-    const [suggestion, setSuggestion] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
     const [currentFloor, setCurrentFloor] = useState(1);
     const [showInfoPanel, setShowInfoPanel] = useState(false);
+    const [query, setQuery] = useState([]);
+    const [suggestion, setSuggestion] = useState([]);
 
-    const floorImages = {
-      1: floor1,
-      2: floor2,
-      3: floor3
-    };
+    const buildingFloor = [
+      3, // College of Engineering Building
+      4, // CME/COE Building
+      3, // Education Building
+      4, // Graduate School Building
+      1, // Bistro
+      1, // University Canteen
+      1, // Stage
+      2, // College of Technology/ COT Building
+      2, // Old Admin Building
+      3, // New Admin Building
+      1, // Student Activity Center
+      1, // Fitness Gym / Fablab / Sewing Area
+      1, // Fitness Gym / Fablab / Sewing Area
+      1, // Fitness Gym / Fablab / Sewing Area
+      1, // Tennis Court
+      1, // Kadasig Gym
+      1, // Oval
+      1, // Grandstand
+      1, // Study Area
+      1, // Existing Academic Science Building
+      1, // Cultural Center
+      1, // Floating Classroom
+      2, // CTU Facility Centrum
+      1, // HM Laboratory
+      1, // Men's Dorm
+      2, // Women Dorm
+      1, // Furniture Workshop
+      1, // Security Office
+      2, // ERRC Building
+
+    ];
 
     const data = [
         'College of Engineering Building',
@@ -100,12 +124,14 @@ function Home() {
        
 
     const handleMouseDown = (e) => {
+        setIsDragging(false);
         setIsPanning(true);
         setStartPoint({ x: e.clientX - panX, y: e.clientY - panY });
     };
 
 
     const handleMouseMove = (e) => {
+        setIsDragging(true);
         if (!isPanning) return;
         const newPanX = e.clientX - startPoint.x;
         const newPanY = e.clientY - startPoint.y;
@@ -129,17 +155,25 @@ function Home() {
       setPanY(0);
     };
 
-    const handleNextFloor = () => setCurrentFloor((prev) => (prev < 3 ? prev + 1 : prev));
+    const handleNextFloor = () => setCurrentFloor((prev) => (prev < buildingFloor[data.indexOf(query)] ? prev + 1 : prev));
     const handlePreviousFloor = () => setCurrentFloor((prev) => (prev > 1 ? prev - 1 : prev));
 
     const handleClosePopup = () => {
+        setQuery([]);
+        setCurrentFloor(1);
         setShowPopup(false);
         setShowInfoPanel(false); // Ensure info panel closes too
     };
 
-    const handleOpenPopup = () => {
-        setShowPopup(true);
-        setShowInfoPanel(false); // Reset the side panel state
+    const handleOpenPopup = (e,buildingName) => {
+      console.log(data.indexOf(buildingName))
+      console.log(buildingFloor[data.indexOf(buildingName)])
+        if(isDragging == false){
+          setQuery(buildingName);
+          setShowPopup(true);
+          setShowInfoPanel(false); // Reset the side panel state
+        }
+        
     };
   
     return (
@@ -148,7 +182,6 @@ function Home() {
 
       {/* this the svg div */}
       <div className="relative bg-white overflow-hidden h-[500px] w-[1000px] my-5 flex justify-center items-center border border-slate-500 cursor-grab active:cursor-grabbing rounded mx-4 lg:ml-5 lg:h-[600px]"
-
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -180,8 +213,10 @@ function Home() {
 
             
      {/* Education Building */}
-            <path d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
+            <path onClick={(e)=> handleOpenPopup(e,'Education Building')}
+            d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
                fill={query.length === 0 ? '#7EC8E2' : query.includes('Education Building') ? '#7EC8E2'  : '#B0B0B0' }
+               style={{ cursor: 'pointer' }}
             />
 
             <path d="M1073.5 559H1074M1074 559H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z"  stroke-width="2"
@@ -193,135 +228,170 @@ function Home() {
             
      {/* COE BUILDING */}
 
-     <path onClick={handleOpenPopup}
-        d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"
-        strokeWidth="2"
-        fill="#EC8A8A"
-        stroke="#EA191D"
-        style={{ cursor: 'pointer' }}
-    />
-    
-
-
+        <path onClick={(e)=> handleOpenPopup(e,'College of Engineering Building')}
+                d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"
+                strokeWidth="2"
+                fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
+                stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
+                style={{ cursor: 'pointer' }}
+        />
    
     {/* NEW ADMIN BUIDLING */}
     
-            <path d="M1138 492.5L1109 491.5V477H1112L1113.5 417L1081.5 416L1078.5 469.5H1068.5L1067.5 497.5H1068.5L1067.5 532.5H1066V535H1067L1067.5 538.5H1076L1075.5 593.5L1107.5 594.5L1110 534H1117.5L1118.5 518H1137.5L1138 492.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'New Admin Building')}
+            d="M1138 492.5L1109 491.5V477H1112L1113.5 417L1081.5 416L1078.5 469.5H1068.5L1067.5 497.5H1068.5L1067.5 532.5H1066V535H1067L1067.5 538.5H1076L1075.5 593.5L1107.5 594.5L1110 534H1117.5L1118.5 518H1137.5L1138 492.5Z"  stroke-width="2"
               fill={query.length === 0 ? '#E7E7A7' : query.includes('New Admin Building') ? '#E7E7A7'  : '#B0B0B0' }
               stroke={query.length === 0 ? "#EDE323" : query.includes('New Admin Building') ? "#EDE323" : '#B0B0B0'}
+              style={{ cursor: 'pointer' }}
             />
 
     {/* CME/COE BUILDING */}
-            <path d="M992.5 437L993.5 404.5V403H975V404.5L840.5 399.5V397.5H818.5V396.5H817V398.5H807.5L807 421H812.5V429.5H827.5V433.5H839V430.5L857 431V438H878L878.5 432L915 433V440.5H936V434.5L953 435V439H975V437H992.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'CME/COE Building')}
+            d="M992.5 437L993.5 404.5V403H975V404.5L840.5 399.5V397.5H818.5V396.5H817V398.5H807.5L807 421H812.5V429.5H827.5V433.5H839V430.5L857 431V438H878L878.5 432L915 433V440.5H936V434.5L953 435V439H975V437H992.5Z"  stroke-width="2"
             fill={query.length === 0 ? '#B0F8BC' : query.includes('CME/COE Building') ? '#B0F8BC'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#0BBB20" : query.includes('CME/COE Building') ? "#0BBB20" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
 
     {/* Graduate School Building */}
-            <path d="M986 598.5L987 565L970.5 564L970 562L948 561V565L931 564V557L910 556.5V563L873.5 562V555L852 554.5V561L833.5 560.5V557H822.5V559.5H806.5V568H801V590.5H809.5V593H811.5V592H831.5V593H833.5V591.5L967.5 596V598.5H986Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Graduate School Building')}
+            d="M986 598.5L987 565L970.5 564L970 562L948 561V565L931 564V557L910 556.5V563L873.5 562V555L852 554.5V561L833.5 560.5V557H822.5V559.5H806.5V568H801V590.5H809.5V593H811.5V592H831.5V593H833.5V591.5L967.5 596V598.5H986Z"  stroke-width="2"
              fill={query.length === 0 ? '#D0E4EC' : query.includes('Graduate School Building') ? '#D0E4EC'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#00AEFF" : query.includes('Graduate School Building') ? "#00AEFF" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* BISTRO */}
-            <path d="M851 551.5L854 483.5V482.5H833.5L831.5 519H823.5L822.5 540H831.5L831 551.5H851Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Bistro')}
+            d="M851 551.5L854 483.5V482.5H833.5L831.5 519H823.5L822.5 540H831.5L831 551.5H851Z" stroke-width="2"
               fill={query.length === 0 ? '#EEE4B7' : query.includes('Bistro') ? '#EEE4B7'  : '#B0B0B0' }
               stroke={query.length === 0 ? "#F6CD17" : query.includes('Bistro') ? "#F6CD17" : '#B0B0B0'}
+              style={{ cursor: 'pointer' }}
             />
 
    {/* STAGE */}
-            <path d="M858 546.5L858.5 520.5L887.5 521L886.5 546.5H858Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Stage')}
+            d="M858 546.5L858.5 520.5L887.5 521L886.5 546.5H858Z"  stroke-width="2"
              fill={query.length === 0 ? '#D8F2BF' : query.includes('Stage') ? '#D8F2BF'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#8EE76B" : query.includes('Stage') ? "#8EE76B" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* EXISTING ACADEMIC SCIENCE BLDG */}
-            <path d="M985 482L985.5 460L831 454.5V477L985 482Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Existing Academic Science Buiiding')}
+            d="M985 482L985.5 460L831 454.5V477L985 482Z" stroke-width="2"
              fill={query.length === 0 ? '#F1F1CE' : query.includes('Existing Academic Science Building') ? '#F1F1CE'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#C9EB35" : query.includes('Existing Academic Science Building') ? "#C9EB35" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* Study Area */}
-            <path d="M813.5 462L814 439.5H824L823 462H813.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Study Area')}
+            d="M813.5 462L814 439.5H824L823 462H813.5Z"  stroke-width="2"
                 fill={query.length === 0 ? '#F2BBC1' : query.includes('Study Area') ? '#F2BBC1'  : '#B0B0B0' }
                 stroke={query.length === 0 ? "#DB6072" : query.includes('Study Area') ? "#DB6072" : '#B0B0B0'}
+                style={{ cursor: 'pointer' }}
             />
     {/* COT BUILDING */}
 
-            <path d="M790 464.5V453L650 448.5L649 481.5L758.5 486L757.5 512.5L647 509L646 542.5L746 546L744.5 606.5L786 608.5V596H783.5V586H786L788 535H786V525.5H788.5V513.5H786.5L787 487H790V475H787.5V464.5H790Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'College of Technology/ COT Building')}
+            d="M790 464.5V453L650 448.5L649 481.5L758.5 486L757.5 512.5L647 509L646 542.5L746 546L744.5 606.5L786 608.5V596H783.5V586H786L788 535H786V525.5H788.5V513.5H786.5L787 487H790V475H787.5V464.5H790Z" stroke-width="2"
             fill={query.length === 0 ? '#EBE57C' : query.includes('College of Technology/ COT Building') ? '#EBE57C'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#B8C507" : query.includes('College of Technology/ COT Building') ? "#B8C507" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
     {/* CANTEEN */}
-            <path d="M733.5 580.5L735 556L668 554L667 577L650 576L647 577V579.5L649 580.5V586.5H647V589L649 591H665V604L743 607L744 580.5H733.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'University Canteen')}
+            d="M733.5 580.5L735 556L668 554L667 577L650 576L647 577V579.5L649 580.5V586.5H647V589L649 591H665V604L743 607L744 580.5H733.5Z"  stroke-width="2"
              fill={query.length === 0 ? '#B4EDEE' : query.includes('University Canteen') ? '#B4EDEE'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#0CE7EB" : query.includes('University Canteen') ? "#0CE7EB" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* FITNESS GYM FABLAB SEWING  */}
-            <path d="M651 441.5L653 384.5L784.5 390L783.5 423H779V447L683 444L680 441.5H651Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Fitness Gym')}
+            d="M651 441.5L653 384.5L784.5 390L783.5 423H779V447L683 444L680 441.5H651Z"  stroke-width="2"
             fill={query.length === 0 ? '#F5BF81' : (query.includes('Fitness Gym') || query.includes('Fablab') || query.includes('Sewing Area')) ? '#F5BF81'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#EE8813" : (query.includes('Fitness Gym') || query.includes('Fablab') || query.includes('Sewing Area')) ? "#EE8813" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
     {/* Student Activity Center */}
-            <path d="M675 361L676 327.5L687 328V321.5L794 324.5V332.5H796.5V338H793L792.5 359H795.5V365H792.5V372L685.5 368.5V361H675Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Student Activity Center')}
+            d="M675 361L676 327.5L687 328V321.5L794 324.5V332.5H796.5V338H793L792.5 359H795.5V365H792.5V372L685.5 368.5V361H675Z" stroke-width="2"
             fill={query.length === 0 ? '#B1EEDE' : query.includes('Student Activity Center') ? '#B1EEDE'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#06FAB9" : query.includes('Student Activity Center') ? "#06FAB9" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
 
     {/* TENNIS COURT */}
-            <path d="M646.5 217.5L654 205.5L690.5 209.5L699 217.5L695 318.5L642 316L646.5 217.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Tennis Court')}
+            d="M646.5 217.5L654 205.5L690.5 209.5L699 217.5L695 318.5L642 316L646.5 217.5Z"  stroke-width="2"
              fill={query.length === 0 ? '#83EC99' : query.includes('Tennis Court') ? '#83EC99'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#04B42A" : query.includes('Tennis Court') ? "#04B42A" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* GRANDSTAND */}
-            <path d="M268.5 564L217 510L193.5 531.5L189 536L191 538L195 533.5L204.5 544L200.5 548.5L202 549.5L206 545.5L216 555.5L211.5 560L213.5 561.5L218.5 557.5L227.5 568L223.5 572L225 573.5L229 570L239 580L234.5 584L236.5 585.5L241 582L250 591.5L246 596L248 597.5L252 593.5L262 604.5L257.5 609L259 610L263.5 606L273 616.5L268.5 621L270 622L274.5 618L284 628L280 632.5L282 634L286 630L295.5 640.5L291.5 644.5L293 646L297.5 642.5L307 652.5L302.5 656.5L304.5 658L309 654.5L318 664.5L314 668.5L316 670.5L343.5 644.5L291.5 589.5L293.5 587L270.5 562.5L268.5 564Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Grandstand')}
+            d="M268.5 564L217 510L193.5 531.5L189 536L191 538L195 533.5L204.5 544L200.5 548.5L202 549.5L206 545.5L216 555.5L211.5 560L213.5 561.5L218.5 557.5L227.5 568L223.5 572L225 573.5L229 570L239 580L234.5 584L236.5 585.5L241 582L250 591.5L246 596L248 597.5L252 593.5L262 604.5L257.5 609L259 610L263.5 606L273 616.5L268.5 621L270 622L274.5 618L284 628L280 632.5L282 634L286 630L295.5 640.5L291.5 644.5L293 646L297.5 642.5L307 652.5L302.5 656.5L304.5 658L309 654.5L318 664.5L314 668.5L316 670.5L343.5 644.5L291.5 589.5L293.5 587L270.5 562.5L268.5 564Z"  stroke-width="2"
             fill={query.length === 0 ? '#A6A6A6' : query.includes('Grandstand') ? '#A6A6A6'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#4E4343" : query.includes('Grandstand') ? "#4E4343" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
 
     {/* OLD ADMIN BLDG */}
-            <path d="M892.5 635L892 671L848 670V666.5H830.5V670.5H824V666L812 665.5V671H804V665L763.5 664V670.5H751.5V663.5H743.5V667L711 652L703 651L702.5 647.5H704.5V636L713 638.5L716 629.5L892.5 635Z" 
+            <path onClick={(e)=> handleOpenPopup(e,'Old Admin Building')}
+            d="M892.5 635L892 671L848 670V666.5H830.5V670.5H824V666L812 665.5V671H804V665L763.5 664V670.5H751.5V663.5H743.5V667L711 652L703 651L702.5 647.5H704.5V636L713 638.5L716 629.5L892.5 635Z" 
             fill={query.length === 0 ? '#F0E7B2' : query.includes('Old Admin Building') ? '#F0E7B2'  : '#B0B0B0' }
+            style={{ cursor: 'pointer' }}
             />
             <path d="M711 652L743.5 667V663.5H751.5V670.5H763.5V664L804 665V671H820H812V665.5L824 666V670.5H830.5V666.5H848V670L892 671L892.5 635L716 629.5L713 638.5M711 652L703 651L702.5 647.5H704.5V636L713 638.5M711 652L713 638.5" stroke-width="2"
              stroke={query.length === 0 ? "#FDD90B" : query.includes('Old Admin Building') ? "#FDD90B" : '#B0B0B0'}
             />
 
     {/* women dorm */}
-            <path d="M806 676L864.5 696.5L848.5 708L788 686.5L791.5 680L802.5 685L806 676Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Women Dorm')}
+            d="M806 676L864.5 696.5L848.5 708L788 686.5L791.5 680L802.5 685L806 676Z"  stroke-width="2"
              fill={query.length === 0 ? '#E996BC' : query.includes('Women Dorm') ? '#E996BC'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#F31B7C" : query.includes('Women Dorm') ? "#F31B7C" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* HM LABORATORY */}
-            <path d="M707 301L707.5 276.5H722.5V271H727.5V279L789 282L788 304L707 301Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'HM Laboratory')}
+            d="M707 301L707.5 276.5H722.5V271H727.5V279L789 282L788 304L707 301Z"  stroke-width="2"
             fill={query.length === 0 ? '#8CEC9F' : query.includes('HM Laboratory') ? '#8CEC9F'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#03C129" : query.includes('HM Laboratory') ? "#03C129" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
 
    {/* MENS DORM */}
-            <path d="M733.5 276L734 259.5L763.5 261.321L774.5 262L773 277.5L762.89 277.116L733.5 276Z"
+            <path onClick={(e)=> handleOpenPopup(e,'Mens Dorm')}
+            d="M733.5 276L734 259.5L763.5 261.321L774.5 262L773 277.5L762.89 277.116L733.5 276Z"
             fill={query.length === 0 ? '#B54F4F' : query.includes('Mens Dorm') ? '#B54F4F'  : '#B0B0B0' }
+            style={{ cursor: 'pointer' }}
             />
             <path d="M763.5 261.321L774.5 262L773 277.5L762.89 277.116M763.5 261.321L734 259.5L733.5 276L762.89 277.116M763.5 261.321L762.89 277.116"  stroke-width="2"
              stroke={query.length === 0 ? "#B50E11" : query.includes('Mens Dorm') ? "#B50E11" : '#B0B0B0'}
             />
 
     {/* ERRC BUILDING */}
-            <path d="M1082.5 717H1093.5L1095 678.5L1016 676L1012 725.5L1037.5 726.5L1036.5 731L1044.5 732.5V727.5H1048V731L1055 732.5V727.5H1059.5V732.5H1066V727.5H1069.5L1070.5 732.5H1076.5V728H1082.5V717Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'ERRC Building')}
+            d="M1082.5 717H1093.5L1095 678.5L1016 676L1012 725.5L1037.5 726.5L1036.5 731L1044.5 732.5V727.5H1048V731L1055 732.5V727.5H1059.5V732.5H1066V727.5H1069.5L1070.5 732.5H1076.5V728H1082.5V717Z"  stroke-width="2"
             fill={query.length === 0 ? '#9D9CE7' : query.includes('ERRC Building') ? '#9D9CE7'  : '#B0B0B0' }
             stroke={query.length === 0 ? "#173ECE" : query.includes('ERRC Building') ? "#173ECE" : '#B0B0B0'}
+            style={{ cursor: 'pointer' }}
             />
 
     {/* boRDER */}
             <path d="M1186 771L1187.5 692L1116 677.5L1086 732.5L1011 735L1017 663.5L909 661.5L898.5 678.5L880 684.5L849 709L695 655L699 646L689.5 641.5L686.5 647L678 644L675.5 648L614 626L475.5 677.5L460.5 693.5L448 716L410 745L402.5 743V736.5L357.5 710.5L309.5 698.5L291.5 703L180 597L183 593L166.5 578L165.5 579L118.5 539L86.5 508.5M86.5 508.5L56 492.5M86.5 508.5L61.5 481.5L79 293.5L76 140.5M76 140.5L50.5 150M76 140.5L74.5 102H176.5L160.5 121L335.5 207.5L361.5 102L712 120.5L790 97.5M790 97.5L776.5 113M790 97.5L826 62.5L913 87L895 125L1017 139.5H1126M776.5 113L714.5 130.5L712 133L776.5 113ZM1197 297V266L1177 139.5H1126M1126 139.5L1117.5 305.5" stroke="black" stroke-width="3"/>
 
     {/* KADASIG GYM */}
-            <path d="M539.5 282L612 189L565.5 153L493 247.5L539.5 282Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Kadasig Gym')}
+            d="M539.5 282L612 189L565.5 153L493 247.5L539.5 282Z" stroke-width="2"
              fill={query.length === 0 ? '#7989EE' : query.includes('Kadasig Gym') ? '#7989EE'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#0A2EB2" : query.includes('Kadasig Gym') ? "#0A2EB2" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
 
@@ -331,26 +401,34 @@ function Home() {
             />
 
     {/*  CULRUTAL CENTER*/}
-            <path d="M599.5 346L572.5 345L571.5 377.5L598.5 378.5L599.5 346Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Cultural Center')}
+            d="M599.5 346L572.5 345L571.5 377.5L598.5 378.5L599.5 346Z" stroke-width="2"
              fill={query.length === 0 ? '#E2E23A' : query.includes('Cultural Center') ? '#E2E23A'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#AF8511" : query.includes('Cultural Center') ? "#AF8511" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* FLOATING CLASSROOM */}
-            <path d="M619 518L620.5 436.5H601V518H619Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Floating Classroom')}
+            d="M619 518L620.5 436.5H601V518H619Z"  stroke-width="2"
              fill={query.length === 0 ? '#D9D9D9' : query.includes('Floating Classroom') ? '#D9D9D9'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#534646" : query.includes('Floating Classroom') ? "#534646" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
     {/* OVAL */}
-            <path d="M398.5 653L139 378L160 360L167 368.5L166 343.5L167 336.5L169 330.5L172.5 315.5L179 301L186.5 287L195 274.5L205.5 263.5L221.5 250L238.5 240.5L257.5 233L279.5 228.5L300 227.5L321 230L341.5 236.5L355 243L369 251.5L376 257.5L391.5 271.5L549.5 439.5L559 450.5L567.5 465L573.5 476.5L579 495.5L581.5 505.5L582.5 529L581.5 545.5L577.5 560.5L574 573L568.5 585L555.5 604L550 611.5L532 627L523.5 633.5L507 643L495.5 647.5L485 650.5L470 653L457.5 654H447.5L437.5 653L421.5 650L407 645L398.5 653Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Oval')}
+            d="M398.5 653L139 378L160 360L167 368.5L166 343.5L167 336.5L169 330.5L172.5 315.5L179 301L186.5 287L195 274.5L205.5 263.5L221.5 250L238.5 240.5L257.5 233L279.5 228.5L300 227.5L321 230L341.5 236.5L355 243L369 251.5L376 257.5L391.5 271.5L549.5 439.5L559 450.5L567.5 465L573.5 476.5L579 495.5L581.5 505.5L582.5 529L581.5 545.5L577.5 560.5L574 573L568.5 585L555.5 604L550 611.5L532 627L523.5 633.5L507 643L495.5 647.5L485 650.5L470 653L457.5 654H447.5L437.5 653L421.5 650L407 645L398.5 653Z" stroke-width="2"
              fill={query.length === 0 ? '#E27878' : query.includes('Oval') ? '#E27878'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#E90C10" : query.includes('Oval') ? "#534646" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
-            <path d="M211.5 415.5L203 397.5L202 396L339.5 266.5L350.5 273L365 282.5L508.5 436L518 446.5L529.5 458L535.5 465L542 474.5L548.5 487.5L409.5 616L397 609L377 590.5L353 565L316.5 525.5L266 474L250 455.5L226.5 432L211.5 415.5Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Oval')}
+            d="M211.5 415.5L203 397.5L202 396L339.5 266.5L350.5 273L365 282.5L508.5 436L518 446.5L529.5 458L535.5 465L542 474.5L548.5 487.5L409.5 616L397 609L377 590.5L353 565L316.5 525.5L266 474L250 455.5L226.5 432L211.5 415.5Z"  stroke-width="2"
              fill={query.length === 0 ? '#65D89C' : query.includes('Oval') ? '#65D89C'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#02BC53" : query.includes('Oval') ? "#02BC53" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
 
             <path d="M411 616.5L549 486.5L556 519.5V536.5L552.5 555L545.5 569.5L535.5 586L524 598.5L513.5 608L499.5 616.5L472 625.5L454.5 627.5L431 625.5L411 616.5Z" stroke-width="2"
@@ -381,15 +459,19 @@ function Home() {
             />
 
             
-            <path d="M943.5 208L964 210.5L964.5 206L979 207.5V212.5H983L984 204L988.5 209.5L994 205.5L1023.5 209L1026 202.5L1028 194.5L1028.5 185.5V167L1019 166L1018.5 163.5L1013.5 163L1013 166L1004.5 164.5L1004 161.5H999L998 163L994 158L989 163L988.5 160L984.5 159L983.5 161.5H974V158H969.5L968 164L951 162.5V157.5L942 157L940.5 154.5L938.5 154L936.5 157L931.5 156.5L926.5 149.5L921 154.5L891 151L886 166.5L886.5 192.5L915 196L921 200.5L925.5 197V205.5L928.5 206L930.5 202L943.5 203.5V208Z"  stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'CTU Facility Centrum')}
+            d="M943.5 208L964 210.5L964.5 206L979 207.5V212.5H983L984 204L988.5 209.5L994 205.5L1023.5 209L1026 202.5L1028 194.5L1028.5 185.5V167L1019 166L1018.5 163.5L1013.5 163L1013 166L1004.5 164.5L1004 161.5H999L998 163L994 158L989 163L988.5 160L984.5 159L983.5 161.5H974V158H969.5L968 164L951 162.5V157.5L942 157L940.5 154.5L938.5 154L936.5 157L931.5 156.5L926.5 149.5L921 154.5L891 151L886 166.5L886.5 192.5L915 196L921 200.5L925.5 197V205.5L928.5 206L930.5 202L943.5 203.5V208Z"  stroke-width="2"
              fill={query.length === 0 ? '#DFBC74' : query.includes('CTU Facility Centrum') ? '#DFBC74'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#362F26" : query.includes('CTU Facility Centrum') ? "#362F26" : '#B0B0B0'}
+             style={{ cursor: 'pointer' }}
             />
         
     {/* FURNITURE WORKSHOP */}
-            <path d="M735 198.5L727.5 191L750.5 168L758 176.5L761.5 173L765.5 176.5L761.5 180.5L766 184.5L770.5 182L785 197L761.5 220.5L737.5 197L735 198.5Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Furniture Workshop')}
+            d="M735 198.5L727.5 191L750.5 168L758 176.5L761.5 173L765.5 176.5L761.5 180.5L766 184.5L770.5 182L785 197L761.5 220.5L737.5 197L735 198.5Z" stroke-width="2"
               fill={query.length === 0 ? '#DCCCA9' : query.includes('Furniture Workshop') ? '#DCCCA9'  : '#B0B0B0' }
               stroke={query.length === 0 ? "#A6742E" : query.includes('Furniture Workshop') ? "#A6742E" : '#B0B0B0'}
+              style={{ cursor: 'pointer' }}
             />
 
 {/* ========================== */}
@@ -419,9 +501,11 @@ function Home() {
 
 
     {/* SECURITY OFFICE */}
-            <path d="M1172.5 588.5H1189.5L1188 624H1171.5L1172.5 588.5Z" stroke-width="2"
+            <path onClick={(e)=> handleOpenPopup(e,'Security Office')}
+            d="M1172.5 588.5H1189.5L1188 624H1171.5L1172.5 588.5Z" stroke-width="2"
               fill={query.length === 0 ? '#CFD93E' : query.includes('Security Office') ? '#CFD93E'  : '#B0B0B0' }
               stroke={query.length === 0 ? "#E9B91E" : query.includes('Security Office') ? "#E9B91E" : '#B0B0B0'}
+              style={{ cursor: 'pointer' }}
             />
 
             
@@ -524,9 +608,9 @@ function Home() {
                     <div className="bg-white p-6 rounded shadow-lg max-w-[80%] w-[700px] relative scale-0 transition-transform duration-500 animate-scale-up"  
                         onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
                     >
-                        <h2 className="text-xl font-bold mb-4">College of Engineering Building</h2>
+                        <h2 className="text-xl font-bold mb-4">{query}</h2>
                         <img 
-                             src={floorImages[currentFloor]} 
+                            src={`src/api/engineering/img/floor${currentFloor}.png`} 
                             alt={`Floor ${currentFloor}`} 
                             className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
                             onClick={() => setShowInfoPanel(true)}
@@ -541,7 +625,7 @@ function Home() {
             )}
 
 
-{showInfoPanel && (
+        {showInfoPanel && (
                 <div className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transition-transform duration-700 z-[1000] ${showInfoPanel ? 'translate-x-0' : 'translate-x-full'}`}>
                     <div className="p-4 flex justify-between items-center">
                         <h2 className="text-xl font-bold">Floor Information</h2>
@@ -553,9 +637,6 @@ function Home() {
                     </div>
                 </div>
             )}
-
-   
-
 
 
         {/* this is the search bar */}
