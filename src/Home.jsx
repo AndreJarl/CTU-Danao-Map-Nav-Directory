@@ -5,6 +5,9 @@ import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus  } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import floor1 from './api/engineering/img/floor1.png';
+ import floor2 from './api/engineering/img/floor2.png'
+ import floor3 from './api/engineering/img/floor3.png'
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -19,6 +22,12 @@ function Home() {
     const [showInfoPanel, setShowInfoPanel] = useState(false);
     const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
+
+    const floorImages = {
+        1: floor1,
+        2: floor2,
+        3: floor3
+      };
 
     const buildingFloor = [
       3, // College of Engineering Building
@@ -610,7 +619,7 @@ function Home() {
                     >
                         <h2 className="text-xl font-bold mb-4">{query}</h2>
                         <img 
-                            src={`src/api/engineering/img/floor${currentFloor}.png`} 
+                            src={floorImages[currentFloor]} 
                             alt={`Floor ${currentFloor}`} 
                             className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
                             onClick={() => setShowInfoPanel(true)}
