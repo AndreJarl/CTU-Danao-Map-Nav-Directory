@@ -29,77 +29,44 @@ function Home() {
         3: floor3
       };
 
-    const buildingFloor = [
-      3, // College of Engineering Building
-      4, // CME/COE Building
-      3, // Education Building
-      4, // Graduate School Building
-      1, // Bistro
-      1, // University Canteen
-      1, // Stage
-      2, // College of Technology/ COT Building
-      2, // Old Admin Building
-      3, // New Admin Building
-      1, // Student Activity Center
-      1, // Fitness Gym / Fablab / Sewing Area
-      1, // Fitness Gym / Fablab / Sewing Area
-      1, // Fitness Gym / Fablab / Sewing Area
-      1, // Tennis Court
-      1, // Kadasig Gym
-      1, // Oval
-      1, // Grandstand
-      1, // Study Area
-      1, // Existing Academic Science Building
-      1, // Cultural Center
-      1, // Floating Classroom
-      2, // CTU Facility Centrum
-      1, // HM Laboratory
-      1, // Men's Dorm
-      2, // Women Dorm
-      1, // Furniture Workshop
-      1, // Security Office
-      2, // ERRC Building
-
-    ];
-
-    const data = [
-        'College of Engineering Building',
-        'CME/COE Building',
-        'Education Building',
-        'Graduate School Building',
-        'Bistro',
-        'University Canteen',
-        'Stage',
-        'College of Technology/ COT Building',
-        'Old Admin Building',
-        'New Admin Building',
-        'Student Activity Center',
-        'Fitness Gym',
-        'Sewing Area',
-        'Fablab',
-        'Tennis Court',
-        'Kadasig Gym',
-        'Oval',
-        'Grandstand',
-        'Study Area',
-        'Existing Academic Science Building',
-        'Cultural Center',
-        'Floating Classroom',
-        'CTU Facility Centrum',
-        'HM Laboratory',
-        'Mens Dorm',
-        'Women Dorm',
-        'Furniture Workshop',
-        'Security Office',
-        'ERRC Building',
-    ]
+      const buildingFloors = {
+        'College of Engineering Building': 3,
+        'CME/COE Building': 4,
+        'Education Building': 3,
+        'Graduate School Building': 4,
+        'Bistro': 1,
+        'University Canteen': 1,
+        'Stage': 1,
+        'College of Technology/ COT Building': 2,
+        'Old Admin Building': 2,
+        'New Admin Building': 3,
+        'Student Activity Center': 1,
+        'Fitness Gym': 1,
+        'Sewing Area': 1,
+        'Fablab': 1,
+        'Tennis Court': 1,
+        'Kadasig Gym': 1,
+        'Oval': 1,
+        'Grandstand': 1,
+        'Study Area': 1,
+        'Existing Academic Science Building': 1,
+        'Cultural Center': 1,
+        'Floating Classroom': 1,
+        'CTU Facility Centrum': 2,
+        'HM Laboratory': 1,
+        'Mens Dorm': 1,
+        'Women Dorm': 2,
+        'Furniture Workshop': 1,
+        'Security Office': 1,
+        'ERRC Building': 2,
+    };
 
     const handleInputChange = (e) =>{
         const value = e.target.value;
         console.log(query);
          
         if(value){
-            const filteredSuggestion = data.filter((item)=>
+            const filteredSuggestion = Object.keys(buildingFloors).filter((item)=>
               item.toLowerCase().includes(value.toLowerCase())
             );
             setSuggestion(filteredSuggestion);
@@ -164,8 +131,9 @@ function Home() {
       setPanY(0);
     };
 
-    const handleNextFloor = () => setCurrentFloor((prev) => (prev < buildingFloor[data.indexOf(query)] ? prev + 1 : prev));
+    const handleNextFloor = () => setCurrentFloor((prev) => (prev < buildingFloors[query] ? prev + 1 : prev));
     const handlePreviousFloor = () => setCurrentFloor((prev) => (prev > 1 ? prev - 1 : prev));
+
 
     const handleClosePopup = () => {
         setQuery([]);
@@ -175,8 +143,8 @@ function Home() {
     };
 
     const handleOpenPopup = (e,buildingName) => {
-      console.log(data.indexOf(buildingName))
-      console.log(buildingFloor[data.indexOf(buildingName)])
+    //   console.log(data.indexOf(buildingName))
+    //   console.log(buildingFloor[data.indexOf(buildingName)])
         if(isDragging == false){
           setQuery(buildingName);
           setShowPopup(true);
@@ -624,11 +592,11 @@ function Home() {
                             className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
                             onClick={() => setShowInfoPanel(true)}
                         />
-                        <div className="flex justify-between">
-                            <button onClick={handlePreviousFloor} className="bg-blue-500 text-white p-2 rounded">Previous Floor</button>
-                            <button onClick={handleNextFloor} className="bg-blue-500 text-white p-2 rounded">Next Floor</button>
+                        <div className="flex justify-center gap-4 items-center mt-4">
+                            <button onClick={handlePreviousFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor > 1 ? '' : 'invisible'}`}> Previous Floor </button>
+                            <button onClick={handleClosePopup} className="bg-red-500 text-white p-2 rounded"> Close </button>
+                            <button onClick={handleNextFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor < buildingFloors[query] ? '' : 'invisible'}`}> Next Floor </button>
                         </div>
-                        <button onClick={handleClosePopup} className="mt-4 bg-red-500 text-white p-2 rounded">Close</button>
                     </div>
                 </div>
             )}
@@ -659,7 +627,7 @@ function Home() {
             </div>
           
          
-            {suggestion.length === 0 && query.length !== 0 && data.includes(query) === false ? (
+            {suggestion.length === 0 && query.length !== 0 && !(query in buildingFloors) ? (
               <div className="bg-white rounded-b-lg shadow-xl shadow-gray-400 max-h-[460px] flex-col  overflow-auto gap-2 pt-5 py-4 items-center justify-center -mt-2 flex"
               >
                   <i className="text-sm text-slate-400">No building/facilities found.</i>
