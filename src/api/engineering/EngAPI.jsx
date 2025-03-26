@@ -1,3 +1,5 @@
+import comLab from "./img/ENCLA3.jpg";
+
 const EngFloorsData = {
   floors: [
     {
@@ -7,49 +9,49 @@ const EngFloorsData = {
           roomNumber: "1",
           name: "Electrical Engineering Lab",
           description: "Serves as the front desk for visitors and inquiries. Includes a waiting area and an information counter.",
-          image: "/images/rooms/reception.jpg"
+          image: comLab
         },
         {
           roomNumber: "2",
           name: "Civil Engineering Lab 1",
           description: "A fully equipped meeting room with a projector, whiteboard, and seating for 15 people.",
-          image: "/images/rooms/conference.jpg"
+          image: comLab
         },
         {
           roomNumber: "3",
           name: "Civil Engineering Lab 2",
           description: "A fully equipped meeting room with a projector, whiteboard, and seating for 15 people.",
-          image: "/images/rooms/conference.jpg"
+          image: comLab
         },
         {
           roomNumber: "4",
           name: "Computer Engineering Lab 1",
           description: "Office space for the IT department, equipped with multiple workstations and a server cabinet.",
-          image: "/images/rooms/it_office.jpg"
+          image: comLab
         },
         {
           roomNumber: "5",
           name: "Computer Engineering Lab 2",
           description: "Office space for the IT department, equipped with multiple workstations and a server cabinet.",
-          image: "/images/rooms/it_office.jpg"
+          image: comLab
         },
         {
           roomNumber: "6",
           name: "Electronics Lab",
           description: "Secured space for storing office supplies, equipment, and documents.",
-          image: "/images/rooms/storage.jpg"
+          image: comLab
         },
         {
           roomNumber: "101",
           name: "Lecture Room 101",
           description: "Secured space for storing office supplies, equipment, and documents.",
-          image: "/images/rooms/storage.jpg"
+          image: comLab
         },
         {
           roomNumber: "102",
           name: "Lecture Room 102",
           description: "Secured space for storing office supplies, equipment, and documents.",
-          image: "/images/rooms/storage.jpg"
+          image: comLab
         }
       ],
       bathrooms: [
