@@ -9,6 +9,8 @@ import floor1 from '../api/engineering/img/floor1.png';
  import floor3 from '../api/engineering/img/floor3.png'
 import ground from '../api/engineering/img/ground.svg'
 import EngFloor1 from "../api/engineering/floors/EngFloor1";
+import { IoMdMenu } from "react-icons/io";
+import { MdMenuOpen } from "react-icons/md";
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -23,7 +25,8 @@ function Home() {
     const [showInfoPanel, setShowInfoPanel] = useState(false);
     const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
-
+    const [showMenu, setShowMenu] = useState(false);
+    
     const floorImages = {
         1: <EngFloor1/>,
         2: floor2,
@@ -156,10 +159,10 @@ function Home() {
   
     return (
         <>
-        <div className="flex justify-center mt-10 gap-10 items-center">
+        <div className="flex justify-center items-center overflow-hidden">
 
       {/* this the svg div */}
-      <div className="relative bg-white overflow-hidden h-[500px] w-[1000px] my-5 flex justify-center items-center border border-slate-500 cursor-grab active:cursor-grabbing rounded mx-4 lg:ml-5 lg:h-[600px]"
+      <div className="relative bg-white overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -167,14 +170,14 @@ function Home() {
         onMouseLeave={handleMouseUp}
       >
             
-     <svg width="1000" height="570"
+     <svg  width="100%" height="100%"  viewBox="0 0  1280 832"
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
                     transformOrigin: "center center",
                   }}
-            viewBox="0 0 1280 832" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="1280" height="832" fill=""/>
-            <rect width="1280" height="832" fill="white"/>
+         fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100%" height="100%" fill=""/>
+            <rect width="100%" height="100%" fill="white"/>
 
             <path d="M1158.5 630.5L1190 629V644L710 626.5H703H648L630 624.5L621 626.5L597.5 629V617.5H621H627L632.5 614.5L634.5 612L632.5 606L621 571.5V562.5L625 403L635 239L645 240.5L641 313L634.5 403V493L632.5 550V568.5L645.5 603L659.5 612L780 617L991 627L1092.5 629L1117.5 627L1158.5 630.5Z"  fill='#3F3A3A' stroke='#0F0F10'
             />
@@ -555,22 +558,22 @@ function Home() {
     
 
       {/* Zoom Controls */}
-      <div className="absolute bottom-4 left-4 flex flex-col gap-2 text-base">
+      <div className="fixed bottom-4 left-4 flex flex-col gap-2 text-base">
                 <button
                 onClick={() => setZoomLevel(Math.min(zoomLevel + 0.1, 5))}
-                className="w-10 py-2 flex justify-center items-center opacity-50 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
+                className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
                 >
                 <FaPlus/>
                 </button>
                 <button
                 onClick={() => setZoomLevel(Math.max(zoomLevel - 0.1, 1))}
-                className="w-10 py-2 flex justify-center items-center opacity-50 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
+                className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
                 >
                <FaMinus/>
                 </button>
                 <button
                 onClick={resetView}
-                className=" w-10 py-2 flex justify-center items-center opacity-50 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
+                className=" w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
             >
               < RxReset/>
             </button>     
@@ -615,13 +618,17 @@ function Home() {
 
 
         {/* this is the search bar */}
-        <div className="absolute top-12  group right-6 2xl:right-96" >
-            <div className=" rounded-lg shadow-xl shadow-gray-500 w-[310px] lg:w-[340px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
-            <input className="px-2 py-3 w-[250px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
+        <div className="fixed top-3  group right lg:right-6 2xl:right-96" >
+            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
+            <input className="px-2 py-3 w-[450px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
             
             onChange={handleInputChange}
             />
-            <h1 className="text-xl"><IoIosSearch /></h1>
+            <div className="flex gap-2"> 
+            <h1   className="text-xl cursor-pointer"><IoIosSearch /></h1>
+            <h1 onClick={() => setShowMenu(!showMenu)} className="text-xl cursor-pointer">{ showMenu ? <MdMenuOpen  />  :<IoMdMenu /> }</h1>
+            </div>
+           
             </div>
           
          
@@ -652,22 +659,23 @@ function Home() {
 
         </div>
 
-        {/* only exit so that the map is in left position */}
-        <div className="w-[200px] mt-12 max-h-[550] hidden lg:block text-[13px] ">
+        {/* directions*/}
+
+        <div className= {` pl-10 w-[400px] h-screen pt-28 ${showMenu ? "block" : "hidden"}`}>
             <div className="flex justify-center flex-col mr-5 -ml-6 gap-6">
 
-            <p className="text-gray-400">Use the <b className="text-gray-500">mouse scroll 🖱️</b> to zoom in and out on the map for a customized view.</p>
+            <p className="text-gray-400 text-sm">Use the <b className="text-gray-500">mouse scroll 🖱️</b> to zoom in and out on the map for a customized view.</p>
 
                         
-            <p className="text-gray-400">Use the <b className="text-gray-500">search bar ⌕</b> in the top right corner to easily find buildings/facilities. Select a result to navigate.</p>   
+            <p className="text-gray-400 text-sm">Use the <b className="text-gray-500">search bar ⌕</b> in the top right corner to easily find buildings/facilities. Select a result to navigate.</p>   
 
-            <p className="text-gray-400">Click the <b className="text-green-400">'Zoom In +'</b> button to enlarge the map for a detailed view.</p>
+            <p className="text-gray-400 text-sm">Click the <b className="text-green-400">'Zoom In +'</b> button to enlarge the map for a detailed view.</p>
 
-            <p className="text-gray-400">Click the <b className="text-red-400">'Zoom Out −'</b> button to reduce the map size for a wider view.</p>
+            <p className="text-gray-400 text-sm">Click the <b className="text-red-400">'Zoom Out −'</b> button to reduce the map size for a wider view.</p>
 
-             <p className="text-gray-400">Click the <b className="text-sky-400">'Reset ↺'</b> button to return the map to its default view.</p>
+             <p className="text-gray-400 text-sm">Click the <b className="text-sky-400">'Reset ↺'</b> button to return the map to its default view.</p>
 
-             <p className="text-gray-400">Click on <b className="text-gray-500">'Building 🏢'</b> to explore and navigate through the rooms.</p>
+             <p className="text-gray-400 text-sm">Click on <b className="text-gray-500">'Building 🏢'</b> to explore and navigate through the rooms.</p>
 
             </div>
        

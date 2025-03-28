@@ -4,8 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+html{
     font-family:"Poppins";
+    margin:0;
+    padding:0;
 }
 
 @keyframes scale-up {
