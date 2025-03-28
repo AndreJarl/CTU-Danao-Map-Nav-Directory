@@ -5,7 +5,7 @@ function EngFloor2() {
   return (
     <div>
          <p className='text-center font-bold text-2xl'>FLOOR 2</p>
-        <img width={500} src={floor2} alt="" srcset="" /></div>
+        <img width={700}  src={floor2} alt="" srcset="" /></div>
   )
 }
 
