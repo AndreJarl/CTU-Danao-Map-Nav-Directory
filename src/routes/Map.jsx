@@ -19,6 +19,7 @@ function Home() {
     const [isPanning, setIsPanning] = useState(false); // Whether user is panning
     const [isDragging, setIsDragging] = useState(false);
     const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
+    const [touchStartDist, setTouchStartDist] = useState(null);
 
     const [showPopup, setShowPopup] = useState(false);
     const [currentFloor, setCurrentFloor] = useState(1);
@@ -99,8 +100,36 @@ function Home() {
            const zoomSpeed = 0.2;
            const newZoom = e.deltaY > 0 ? zoomLevel - zoomSpeed : zoomLevel + zoomSpeed;
            setZoomLevel(Math.min(Math.max(newZoom, 0.5), 4)); // Clamp zoom level
+           e.preventDefault();
+           const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1; // Scroll up to zoom in, down to zoom out
+           setZoomLevel((prev) => Math.min(Math.max(prev * zoomFactor, 0.5), 3)); // Limit zoom range
          };
 
+
+         const handleTouchStart = (e) => {
+          if (e.touches.length === 2) {
+            const dist = getTouchDistance(e.touches);
+            setTouchStartDist(dist);
+          }
+        };
+        
+        const handleTouchMove = (e) => {
+          if (e.touches.length === 2 && touchStartDist) {
+            const dist = getTouchDistance(e.touches);
+            const zoomFactor = dist / touchStartDist;
+            setZoomLevel((prev) => Math.min(Math.max(prev * zoomFactor, 0.5), 3));
+          }
+        };
+        
+        const handleTouchEnd = () => {
+          setTouchStartDist(null);
+        };
+        
+        const getTouchDistance = (touches) => {
+          const dx = touches[0].clientX - touches[1].clientX;
+          const dy = touches[0].clientY - touches[1].clientY;
+          return Math.sqrt(dx * dx + dy * dy);
+        };
        
 
     const handleMouseDown = (e) => {
@@ -168,6 +197,9 @@ function Home() {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart} // Pinch zoom start
+        onTouchMove={handleTouchMove} // Pinch zoom move
+        onTouchEnd={handleTouchEnd} // Reset pinch
       >
             
      <svg  width="100%" height="100%"  viewBox="0 0  1280 832"
