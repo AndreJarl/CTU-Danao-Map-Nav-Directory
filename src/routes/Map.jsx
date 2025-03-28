@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import floor1 from '../api/engineering/img/floor1.png';
  import floor2 from '../api/engineering/img/floor2.png'
  import floor3 from '../api/engineering/img/floor3.png'
-
+import ground from '../api/engineering/img/ground.svg'
+import EngFloor1 from "../api/engineering/floors/EngFloor1";
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -24,7 +25,7 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
 
     const floorImages = {
-        1: floor1,
+        1: <EngFloor1/>,
         2: floor2,
         3: floor3
       };
@@ -582,16 +583,13 @@ function Home() {
 
       {showPopup && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[700px] relative scale-0 transition-transform duration-500 animate-scale-up"  
+                    <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[900px] relative scale-0 transition-transform duration-500 animate-scale-up"  
                         onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
                     >
                         <h2 className="text-xl font-bold mb-4">{query}</h2>
-                        <img 
-                            src={floorImages[currentFloor]} 
-                            alt={`Floor ${currentFloor}`} 
-                            className="w-full mb-4 transition-opacity duration-500 ease-in-out cursor-pointer"
-                            onClick={() => setShowInfoPanel(true)}
-                        />
+                       <div>
+                         {floorImages[currentFloor]}
+                       </div>
                         <div className="flex justify-center gap-4 items-center mt-4">
                             <button onClick={handlePreviousFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor > 1 ? '' : 'invisible'}`}> Previous Floor </button>
                             <button onClick={handleClosePopup} className="bg-red-500 text-white p-2 rounded"> Close </button>
