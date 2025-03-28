@@ -2,6 +2,16 @@ import React from 'react'
 
 
 function EngFloor1() {
+
+  const Floor1 = {
+    "1": {
+      "rooms": {
+          "101": { "name": "Engineering Laboratory", "description": "Equipped with tools and machinery for engineering students." },
+          "102": { "name": "Lecture Hall", "description": "Spacious room for large engineering classes." },
+          "103": { "name": "Workshop Room", "description": "Hands-on room for engineering projects." }
+      }
+    }
+  }
   return (
     <div className='flex justify-center items-center'>
 
@@ -559,7 +569,7 @@ function EngFloor1() {
         <path d="M112.16 164.27L111.84 180.55L51.89 317.03L52.21 300.75L112.16 164.27Z" fill="#291455"/>
         <path d="M468.56 366.7L468.25 382.98L51.89 317.03L52.21 300.75L468.56 366.7Z" fill="#7CA685"/>
         <path d="M528.51 230.22L528.2 246.5L468.25 382.98L468.56 366.7L528.51 230.22Z" fill="#7DA787"/>
-        <path d="M528.51 230.22L468.56 366.7L52.21 300.75L112.16 164.28L528.51 230.22Z" fill="#A5DCB1"/>
+        <path  d="M528.51 230.22L468.56 366.7L52.21 300.75L112.16 164.28L528.51 230.22Z" fill="#A5DCB1"/>
         <path d="M469.29 367.41L468.97 383.68L50.68 317.43L50.99 301.15L469.29 367.41Z" fill="#281454"/>
         <path d="M529.73 229.82L529.41 246.1L468.97 383.68L469.29 367.41L529.73 229.82Z" fill="#291455"/>
         <path d="M111.31 163.85L529.73 229.82L469.29 367.41L50.99 301.15L111.31 163.84V163.85ZM468.56 366.7L528.51 230.22L112.16 164.27L52.21 300.75L468.57 366.69" fill="#361B70"/>

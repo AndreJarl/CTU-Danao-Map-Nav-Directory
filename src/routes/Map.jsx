@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
-import { FaPlus, FaMinus  } from "react-icons/fa6";
+import { FaPlus, FaMinus, FaRightLong , FaLeftLong   } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import floor1 from '../api/engineering/img/floor1.png';
@@ -9,8 +9,13 @@ import floor1 from '../api/engineering/img/floor1.png';
  import floor3 from '../api/engineering/img/floor3.png'
 import ground from '../api/engineering/img/ground.svg'
 import EngFloor1 from "../api/engineering/floors/EngFloor1";
+import EngFloor2 from "../api/engineering/floors/EngFloor2";
+import EngFloor3 from "../api/engineering/floors/EngFloor3";
+
 import { IoMdMenu } from "react-icons/io";
 import { MdMenuOpen } from "react-icons/md";
+import { FaLongArrowAltLeft} from "react-icons/fa";
+
 
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -19,7 +24,7 @@ function Home() {
     const [isPanning, setIsPanning] = useState(false); // Whether user is panning
     const [isDragging, setIsDragging] = useState(false);
     const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
- 
+   const [showSideBar, setShowSideBar] = useState(false);
 
     const [showPopup, setShowPopup] = useState(false);
     const [currentFloor, setCurrentFloor] = useState(1);
@@ -28,14 +33,16 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     
-    const floorImages = {
-        1: <EngFloor1/>,
-        2: floor2,
-        3: floor3
-      };
 
       const buildingFloors = {
-        'College of Engineering Building': 3,
+        'College of Engineering Building': {
+          totalFloors: 3, // Updated total floors
+          floorImages: {
+            1: <EngFloor1 />,
+            2: <EngFloor2 />,
+            3: <EngFloor3 />,
+          }
+        },
         'CME/COE Building': 4,
         'Education Building': 3,
         'Graduate School Building': 4,
@@ -138,9 +145,16 @@ function Home() {
       setPanY(0);
     };
 
-    const handleNextFloor = () => setCurrentFloor((prev) => (prev < buildingFloors[query] ? prev + 1 : prev));
-    const handlePreviousFloor = () => setCurrentFloor((prev) => (prev > 1 ? prev - 1 : prev));
-
+    const handleNextFloor = () => {
+      setCurrentFloor((prev) => {
+        const totalFloors = buildingFloors[query]?.totalFloors || 1; // Default to 1 if undefined
+        return prev < totalFloors ? prev + 1 : prev;
+      });
+    };
+    
+    const handlePreviousFloor = () => {
+      setCurrentFloor((prev) => (prev > 1 ? prev - 1 : prev));
+    };
 
     const handleClosePopup = () => {
         setQuery([]);
@@ -159,6 +173,11 @@ function Home() {
         }
         
     };
+
+    const closeSideBar = () =>{
+        setShowPopup(!showPopup);
+        setQuery([]);
+    }
   
     return (
         <>
@@ -588,6 +607,50 @@ function Home() {
      
       </div>
 
+{/* side bar for buildings */}
+           
+    {showPopup && (
+       <div className={`lg:w-[900px] w-screen h-screen left-0  bg-white absolute z-50 m-0 overflow-hidden shadow-2xl shadow-black transition-transform ease-in-out delay-500 ${showPopup ? "translate-x-0" : "-translate-x-full"}`}
+     >
+      <div className="flex flex-col  mt-10 relative px-10">
+                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 -top-5 bg-red-600 text-white px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
+                <p className="text-5xl font-medium">College of Engineering</p>
+              
+              <div className="flex flex-col justify-center">
+                
+                  {buildingFloors[query]?.floorImages?.[currentFloor]}
+
+                
+                
+              </div>
+              <div className="flex  gap-4 items-center mt-4">
+                            <button 
+                  onClick={handlePreviousFloor} 
+                  className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
+                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
+                > 
+                  Previous Floor <FaLeftLong />
+                </button>
+                
+                <button 
+                  onClick={handleNextFloor} 
+                  className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
+                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
+                > 
+                  Next Floor <FaRightLong />
+                </button>
+                    </div>
+          </div>
+    </div>
+    )  
+  }
+
+
+
+
+
+
+{/* 
       {showPopup && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[900px] relative scale-0 transition-transform duration-500 animate-scale-up"  
@@ -618,8 +681,11 @@ function Home() {
                         <p>This section displays relevant information about this floor.</p>
                     </div>
                 </div>
-            )}
+            )} */}
 
+
+
+      
 
         {/* this is the search bar */}
         <div className="fixed top-3  group right lg:right-6 2xl:right-96 px-2" >
