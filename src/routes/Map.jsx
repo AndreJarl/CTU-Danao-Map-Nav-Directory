@@ -622,9 +622,9 @@ function Home() {
 
 
         {/* this is the search bar */}
-        <div className="fixed top-3  group right lg:right-6 2xl:right-96" >
+        <div className="fixed top-3  group right lg:right-6 2xl:right-96 px-2" >
             <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
-            <input className="px-2 py-3 lg:w-[450px] border-none outline-none text-sm " type="search" name="" id="" placeholder="Search building/facilities"
+            <input className="px-2 py-3 w-[200px] lg:w-[450px] border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
             
             onChange={handleInputChange}
             />
