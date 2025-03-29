@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function EngFloor1() {
+function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
 
   const Floor1 = {
     "1": {
@@ -569,7 +569,22 @@ function EngFloor1() {
         <path d="M112.16 164.27L111.84 180.55L51.89 317.03L52.21 300.75L112.16 164.27Z" fill="#291455"/>
         <path d="M468.56 366.7L468.25 382.98L51.89 317.03L52.21 300.75L468.56 366.7Z" fill="#7CA685"/>
         <path d="M528.51 230.22L528.2 246.5L468.25 382.98L468.56 366.7L528.51 230.22Z" fill="#7DA787"/>
-        <path  d="M528.51 230.22L468.56 366.7L52.21 300.75L112.16 164.28L528.51 230.22Z" fill="#A5DCB1"/>
+        {/* CE LAB */}
+        <path d="M528.51 230.22L468.56 366.7L52.21 300.75L112.16 164.28L528.51 230.22Z" 
+              fill="#A5DCB1"
+              style={{cursor: 'pointer',transition: '0.3s'}}
+              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#A5DCB1')}}
+              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("CE Lab")}}
+              />
+        <text x="300" 
+    y="275" 
+    fill="#000" 
+    fontSize="24" 
+    fontFamily="Arial" 
+    textAnchor="middle"
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>CE LAB</text>
+
         <path d="M469.29 367.41L468.97 383.68L50.68 317.43L50.99 301.15L469.29 367.41Z" fill="#281454"/>
         <path d="M529.73 229.82L529.41 246.1L468.97 383.68L469.29 367.41L529.73 229.82Z" fill="#291455"/>
         <path d="M111.31 163.85L529.73 229.82L469.29 367.41L50.99 301.15L111.31 163.84V163.85ZM468.56 366.7L528.51 230.22L112.16 164.27L52.21 300.75L468.57 366.69" fill="#361B70"/>
@@ -586,7 +601,23 @@ function EngFloor1() {
         <path d="M900.78 435.15L900.46 451.45L485.24 385.69L485.56 369.38L900.78 435.15Z" fill="#00A6A6"/>
         <path d="M960.73 298.67L960.42 314.97L900.46 451.45L900.78 435.15L960.73 298.67Z" fill="#00A7A7"/>
         <path d="M544.66 232.48L961.94 298.27L901.5 435.86L484.34 369.79L544.66 232.48ZM900.78 435.15L960.73 298.67L545.51 232.91L485.56 369.39L900.78 435.15Z" fill="#361B70"/>
-        <path d="M960.73 298.67L900.78 435.15L485.56 369.38L545.51 232.91L960.73 298.67Z" fill="#00DCDC"/>
+       
+        {/* EE LAB */}
+        <path d="M960.73 298.67L900.78 435.15L485.56 369.38L545.51 232.91L960.73 298.67Z" 
+              fill="#00DCDC"
+              style={{cursor: 'pointer',transition:'0.3s'}}
+              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
+              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("EE Lab")}}
+              />
+        <text x="700" 
+    y="335" 
+    fill="#000" 
+    fontSize="24" 
+    fontFamily="Arial" 
+    textAnchor="middle"
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EE LAB</text>
+
         <path d="M901.5 435.86L901.19 452.16L484.03 386.09L484.35 369.79L901.5 435.86Z" fill="#281454"/>
         <path d="M961.94 298.27L961.63 314.57L901.19 452.16L901.5 435.86L961.94 298.27Z" fill="#291455"/>
         <path d="M976.95 287.24L976.48 311.74L963.29 309.65L963.76 285.15L976.95 287.24Z" fill="#281454"/>
@@ -609,7 +640,22 @@ function EngFloor1() {
         <path d="M986.84 281.62L986.52 297.95L917.55 454.97L917.86 438.63L986.84 281.62Z" fill="#291455"/>
         <path d="M1045.1 458.79L1044.78 475.12L917.55 454.97L917.87 438.63L1045.1 458.79Z" fill="#9A134F"/>
         <path d="M1114.07 301.77L1113.76 318.1L1044.78 475.12L1045.1 458.79L1114.07 301.77Z" fill="#9C144F"/>
-        <path d="M1114.07 301.77L1045.1 458.79L917.87 438.63L986.84 281.62L1114.07 301.77Z" fill="#CD1A69"/>
+        {/* WOMEN'S CR */}
+        <path d="M1114.07 301.77L1045.1 458.79L917.87 438.63L986.84 281.62L1114.07 301.77Z" 
+              fill="#CD1A69"
+              style={{cursor:'pointer',transition:'0.3s'}}
+              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#CD1A69')}}
+              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("Women's CR")}}
+              />
+        <text x="1020" 
+    y="365" 
+    fill="#000" 
+    fontSize="16" 
+    fontFamily="Arial" 
+    textAnchor="middle"
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Women's CR</text>
+
         <path d="M1045.53 459.21L1045.21 475.54L916.83 455.21L917.14 438.87L1045.53 459.21Z" fill="#281454"/>
         <path d="M1114.79 301.53L1114.48 317.86L1045.21 475.54L1045.53 459.21L1114.79 301.53Z" fill="#291455"/>
         <path d="M986.34 281.36L1114.8 301.53L1045.53 459.21L917.15 438.88L986.34 281.37V281.36ZM1045.1 458.79L1114.08 301.77L986.85 281.62L917.87 438.64L1045.1 458.79Z" fill="#361B70"/>
