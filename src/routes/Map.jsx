@@ -614,7 +614,7 @@ function Home() {
      >
       <div className="flex flex-col  mt-10 relative px-10">
                 <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 -top-5 bg-red-600 text-white px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
-                <p className="text-5xl font-medium">College of Engineering</p>
+                <p className="text-4xl font-medium">{query}</p>
               
               <div className="flex flex-col justify-center">
                 
@@ -624,30 +624,26 @@ function Home() {
                 
               </div>
               <div className="flex  gap-4 items-center mt-4">
-                            <button 
-                  onClick={handlePreviousFloor} 
-                  className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
-                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
-                > 
-                  Previous Floor <FaLeftLong />
-                </button>
-                
-                <button 
-                  onClick={handleNextFloor} 
-                  className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
-                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
-                > 
-                  Next Floor <FaRightLong />
-                </button>
-                    </div>
+                  <button 
+                    onClick={handlePreviousFloor} 
+                    className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
+                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
+                  > 
+                    Previous Floor <FaLeftLong />
+                  </button>
+                  
+                  <button 
+                    onClick={handleNextFloor} 
+                    className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
+                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
+                  > 
+                    Next Floor <FaRightLong />
+                  </button>
+              </div>
           </div>
     </div>
     )  
   }
-
-
-
-
 
 
 {/* 
