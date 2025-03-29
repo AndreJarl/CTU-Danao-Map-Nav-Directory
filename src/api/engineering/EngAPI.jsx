@@ -1,4 +1,29 @@
-import comLab from "./img/ENCLA3.jpg";
+/*FLOOR 1*/
+
+/*En room*/
+import eeLab from "./img/EELAB03.jpg";
+import ceLab1 from "./imgCELAB01.jpg";
+import ceLab2 from "./img/CELAB03.jpg";
+import comLab1 from "./img/ENCLA3.jpg";
+import comLab2 from "./img/ENLAB2B3.jpg";
+import elecLab from "./img/EL02.jpg";
+import ENlecLab2 from "./img/ENCME1023.jpg";
+import ENlecLab1 from "./img/ENCME1012.jpg";
+
+/* confort room*/
+import feCR1 from "./img/LCR103.jpg";
+import feCR2 from "./img/LCR202.jpg";
+
+/* others room*/
+import RTBL from "./img/RTBL03.jpg";
+import strgRM1 from "./img/STRGRM203.jpg";
+import strgRM2 from "./img/STRGRM102.jpg";
+import EECroom from "./img/EECER01.jpg";
+
+
+
+
+
 
 const EngFloorsData = {
   floors: [
@@ -6,72 +31,94 @@ const EngFloorsData = {
       floor: 1,
       rooms: [
         {
-          roomNumber: "1",
+          roomNumber: "EN-102B",
           name: "Electrical Engineering Lab",
-          description: "Serves as the front desk for visitors and inquiries. Includes a waiting area and an information counter.",
-          image: comLab
+          description: "A fully equipped laboratory where basic electrical principles are studied using circuit components, power supplies, and measuring instruments",
+          image: eeLab
         },
         {
-          roomNumber: "2",
+          roomNumber: "EN-102A",
           name: "Civil Engineering Lab 1",
-          description: "A fully equipped meeting room with a projector, whiteboard, and seating for 15 people.",
-          image: comLab
+          description: "A fully equipped laboratory with soil testing equipment, fluid mechanics apparatus, and material testing instruments, designed for hands-on learning.",
+          image: ceLab1
         },
         {
-          roomNumber: "3",
+          roomNumber: "EN-101A",
           name: "Civil Engineering Lab 2",
-          description: "A fully equipped meeting room with a projector, whiteboard, and seating for 15 people.",
-          image: comLab
+          description: "An advanced laboratory featuring concrete testing machines, structural analysis equipment, and transportation engineering tools, supporting practical experimentation.",
+          image: ceLab2
         },
         {
-          roomNumber: "4",
+          roomNumber: "EN-COM-LAB-1A",
           name: "Computer Engineering Lab 1",
-          description: "Office space for the IT department, equipped with multiple workstations and a server cabinet.",
-          image: comLab
+          description: "A modern laboratory with high-performance computers, programming software, and network facilities, providing a space for coding, simulations, and technical computing.",
+          image: comLab1
         },
         {
-          roomNumber: "5",
+          roomNumber: "EN-COM-LAB-2A",
           name: "Computer Engineering Lab 2",
-          description: "Office space for the IT department, equipped with multiple workstations and a server cabinet.",
-          image: comLab
+          description: "An advanced laboratory with high-speed computers, specialized software, and networking equipment for programming, data analysis, and system simulations.",
+          image: comLab2
         },
         {
-          roomNumber: "6",
+          roomNumber: "EN-ELE-LAB-1",
           name: "Electronics Lab",
-          description: "Secured space for storing office supplies, equipment, and documents.",
-          image: comLab
+          description: "A fully equipped laboratory with oscilloscopes, signal generators, circuit boards, and soldering stations for studying electronic components and circuit design.",
+          image: elecLab
         },
         {
           roomNumber: "101",
-          name: "Lecture Room 101",
-          description: "Secured space for storing office supplies, equipment, and documents.",
-          image: comLab
+          name: "Engineering Lecture Room 101",
+          description: " A spacious and well-lit room with comfortable seating, a projector, a whiteboard, and an audio system for effective teaching and learning.",
+          image: ENlecLab1
         },
         {
           roomNumber: "102",
-          name: "Lecture Room 102",
-          description: "Secured space for storing office supplies, equipment, and documents.",
-          image: comLab
+          name: "Engineering Lecture Room 102",
+          description: "S A spacious and well-lit room with comfortable seating, a projector, a whiteboard, and an audio system for effective teaching and learning.",
+          image: ENlecLab2
         }
       ],
       bathrooms: [
         {
-          bathroomNumber: "B1",
-          description: "Men's bathroom with two stalls and a sink.",
-          image: "/images/rooms/bathroom_men.jpg"
+          bathroomNumber: "FE1",
+          description: "Women's & Person with disabilities' bathroom 1",
+          image: feCR1
         },
         {
-          bathroomNumber: "B2",
-          description: "Women's bathroom with two stalls and a sink.",
-          image: "/images/rooms/bathroom_women.jpg"
+          bathroomNumber: "FE2",
+          description: "Women's & Person with disabilities' bathroom 2",
+          image: feCR2
         }
       ],
       studyarea: [
         {
           studyareaNumber: "SA1",
           name: "Red Tables",
-          description: "lorem bahog tae",
-          image: "/image/rooms/studyarea.jpg"
+          description: "A dedicated study space featuring red tables, comfortable seating, and a quiet environment for focused learning and collaboration.",
+          image: RTBL
+        }
+      ],
+      storageRoom: [
+        {
+          storageRoomNumber: "STRG1",
+          name: "Storage room 1",
+          description: "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.",
+          image: strgRM1
+        },
+        {
+          storageRoomNumber: "STRG2",
+          name: "Storage room 2",
+          description: "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.",
+          image: strgRM2
+        }
+      ],
+      ElectronicsRoom: [
+        {
+          studyareaNumber: "EE/ECE 1 ",
+          name: "EE/ECE Room",
+          description: " A secure and organized space with shelves, bins, and cabinets for storing electronic components, circuit boards, tools, and testing equipment.",
+          image: EECroom
         }
       ]
     },
