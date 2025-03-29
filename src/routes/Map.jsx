@@ -647,17 +647,12 @@ function Home() {
   }
 
 
-<<<<<<< HEAD
-{/* 
-      {showPopup && (
-=======
 
 
 
 
 
       {/* {showPopup && (
->>>>>>> 23efcfbdc21d065b65e709da84a77b8b112a4186
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[900px] relative scale-0 transition-transform duration-500 animate-scale-up"  
                         onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
