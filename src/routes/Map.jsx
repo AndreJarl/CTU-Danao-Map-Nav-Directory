@@ -29,6 +29,7 @@ function Home() {
     const [showPopup, setShowPopup] = useState(false);
     const [currentFloor, setCurrentFloor] = useState(1);
     const [showInfoPanel, setShowInfoPanel] = useState(false);
+    const [currentRoomClicked, setCurrentRoomClicked] = useState('');
     const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
@@ -38,7 +39,7 @@ function Home() {
         'College of Engineering Building': {
           totalFloors: 3, // Updated total floors
           floorImages: {
-            1: <EngFloor1 />,
+            1: <EngFloor1 setShowInfoPanel={setShowInfoPanel} setCurrentRoomClicked={setCurrentRoomClicked}/>,
             2: <EngFloor2 />,
             3: <EngFloor3 />,
           }
@@ -646,15 +647,24 @@ function Home() {
   }
 
 
+<<<<<<< HEAD
 {/* 
       {showPopup && (
+=======
+
+
+
+
+
+      {/* {showPopup && (
+>>>>>>> 23efcfbdc21d065b65e709da84a77b8b112a4186
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[900px] relative scale-0 transition-transform duration-500 animate-scale-up"  
                         onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
                     >
                         <h2 className="text-xl font-bold mb-4">{query}</h2>
                        <div>
-                         {floorImages[currentFloor]}
+                         {buildingFloors[currentFloor]}
                        </div>
                         <div className="flex justify-center gap-4 items-center mt-4">
                             <button onClick={handlePreviousFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor > 1 ? '' : 'invisible'}`}> Previous Floor </button>
@@ -663,7 +673,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
 
 
         {showInfoPanel && (
@@ -673,11 +683,11 @@ function Home() {
                         <button onClick={() => setShowInfoPanel(false)} className="text-red-500 font-bold">X</button>
                     </div>
                     <div className="p-4">
-                        <h3 className="font-bold mb-2">Details of Floor {currentFloor}</h3>
-                        <p>This section displays relevant information about this floor.</p>
+                        <h3 className="font-bold mb-2">Details of {currentRoomClicked}</h3>
+                        <p>This section displays relevant information about this room.</p>
                     </div>
                 </div>
-            )} */}
+            )}
 
 
 
