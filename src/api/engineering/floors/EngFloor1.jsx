@@ -1,22 +1,40 @@
+import { useContext, useState } from "react";
 import React from 'react'
+import eeLab from "../img/EELAB03.jpg";
+import ceLab1 from "../img/CELAB01.jpg";
+import feCR1 from "../img/LCR103.jpg";
+import RoomInfo from '../../../components/RoomInfo'
 
 
-function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
+function EngFloor1() {
+
+    const [showInfoPanel, setShowInfoPanel] = useState(false);
+    const [roomInfo, setRoomInfo] = useState(null);
+   
 
   const Floor1 = {
     "1": {
       "rooms": {
-          "101": { "name": "Engineering Laboratory", "description": "Equipped with tools and machinery for engineering students." },
-          "102": { "name": "Lecture Hall", "description": "Spacious room for large engineering classes." },
-          "103": { "name": "Workshop Room", "description": "Hands-on room for engineering projects." }
+          "EN-102A": { "name": "Civil Engineering Lab 1", "description": "A fully equipped laboratory with soil testing equipment, fluid mechanics apparatus, and material testing instruments, designed for hands-on learning.", "image": ceLab1},
+          "EN-102B": { "name": "Electrical Engineering Lab", "description": "A fully equipped laboratory where basic electrical principles are studied using circuit components, power supplies, and measuring instruments", "image": eeLab},
+          "FEb1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
       }
     }
+
   }
+
+  const roomClicked = (key) =>{
+    setRoomInfo({ key, ...Floor1["1"].rooms[key] });
+     console.log(roomInfo);
+  } 
+
+
   return (
-    <div className='flex justify-center items-center'>
+   
+    <div className='flex w-screen justify-center items-center '>
 
 
-      <svg width="900" height="400" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="850" height="450" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_0_1)">
         <path opacity="0.31" d="M1104.51 161.93H235.81C212.04 161.93 192.77 181.2 192.77 204.97V572.94C192.77 596.71 212.04 615.98 235.81 615.98H1104.51C1128.28 615.98 1147.55 596.71 1147.55 572.94V204.97C1147.55 181.2 1128.28 161.93 1104.51 161.93Z" fill="#0071BC"/>
         <path opacity="0.13" d="M1168.21 111.71H876.58C852.81 111.71 833.54 130.98 833.54 154.75V447.26C833.54 471.03 852.81 490.3 876.58 490.3H1168.21C1191.98 490.3 1211.25 471.03 1211.25 447.26V154.75C1211.25 130.98 1191.98 111.71 1168.21 111.71Z" fill="#FF0000"/>
@@ -575,7 +593,7 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
               style={{cursor: 'pointer',transition: '0.3s'}}
               onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
               onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#A5DCB1')}}
-              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("CE Lab")}}
+              onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102A")}}
               />
         <text x="300" 
     y="275" 
@@ -583,7 +601,7 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
     fontSize="24" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>CE LAB</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EN-102A</text>
 
         <path d="M469.29 367.41L468.97 383.68L50.68 317.43L50.99 301.15L469.29 367.41Z" fill="#281454"/>
         <path d="M529.73 229.82L529.41 246.1L468.97 383.68L469.29 367.41L529.73 229.82Z" fill="#291455"/>
@@ -608,7 +626,7 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
               style={{cursor: 'pointer',transition:'0.3s'}}
               onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
               onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
-              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("EE Lab")}}
+              onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
               />
         <text x="700" 
     y="335" 
@@ -616,7 +634,7 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
     fontSize="24" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EE LAB</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EN-102B</text>
 
         <path d="M901.5 435.86L901.19 452.16L484.03 386.09L484.35 369.79L901.5 435.86Z" fill="#281454"/>
         <path d="M961.94 298.27L961.63 314.57L901.19 452.16L901.5 435.86L961.94 298.27Z" fill="#291455"/>
@@ -646,7 +664,7 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
               style={{cursor:'pointer',transition:'0.3s'}}
               onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
               onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#CD1A69')}}
-              onClick={()=>{setShowInfoPanel(true);setCurrentRoomClicked("Women's CR")}}
+              onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
               />
         <text x="1020" 
     y="365" 
@@ -741,7 +759,18 @@ function EngFloor1({ setShowInfoPanel, setCurrentRoomClicked }) {
       </defs>
       </svg>
 
+  
+      {showInfoPanel && (
+               <RoomInfo
+               showInfoPanel={showInfoPanel}
+               setShowInfoPanel={setShowInfoPanel}
+               roomInfo={roomInfo}
+               />
+            )}
+
     </div>
+
+  
   )
 }
 

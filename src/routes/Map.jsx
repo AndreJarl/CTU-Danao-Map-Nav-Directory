@@ -17,6 +17,7 @@ import { MdMenuOpen } from "react-icons/md";
 import { FaLongArrowAltLeft} from "react-icons/fa";
 
 
+
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
     const [panX, setPanX] = useState(0); // Horizontal pan
@@ -24,12 +25,11 @@ function Home() {
     const [isPanning, setIsPanning] = useState(false); // Whether user is panning
     const [isDragging, setIsDragging] = useState(false);
     const [startPoint, setStartPoint] = useState({ x: 0, y: 0 });
-   const [showSideBar, setShowSideBar] = useState(false);
 
     const [showPopup, setShowPopup] = useState(false);
     const [currentFloor, setCurrentFloor] = useState(1);
     const [showInfoPanel, setShowInfoPanel] = useState(false);
-    const [currentRoomClicked, setCurrentRoomClicked] = useState('');
+   
     const [query, setQuery] = useState([]);
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
@@ -39,7 +39,7 @@ function Home() {
         'College of Engineering Building': {
           totalFloors: 3, // Updated total floors
           floorImages: {
-            1: <EngFloor1 setShowInfoPanel={setShowInfoPanel} setCurrentRoomClicked={setCurrentRoomClicked}/>,
+            1: <EngFloor1 />,
             2: <EngFloor2 />,
             3: <EngFloor3 />,
           }
@@ -611,40 +611,41 @@ function Home() {
 {/* side bar for buildings */}
            
     {showPopup && (
-       <div className={`lg:w-[900px] w-screen h-screen left-0  bg-white absolute z-50 m-0 overflow-hidden shadow-2xl shadow-black transition-transform ease-in-out delay-500 ${showPopup ? "translate-x-0" : "-translate-x-full"}`}
+       <div className="absolute lg:w-[900px] h-screen left-0 top-0 z-50 bg-black"
      >
-      <div className="flex flex-col  mt-10 relative px-10">
-                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 -top-5 bg-red-600 text-white px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
-                <p className="text-5xl font-medium">College of Engineering</p>
+      <div className="flex flex-col  overflow-hidden h-screen bg-white pt-10 relative px-10 shadow-2xl">
+                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 text-white px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
+                <p className="text-4xl font-medium">{query}</p>
               
-              <div className="flex flex-col justify-center">
+              <div className="flex items-center flex-col  ">
                 
                   {buildingFloors[query]?.floorImages?.[currentFloor]}
 
                 
                 
               </div>
-              <div className="flex  gap-4 items-center mt-4">
-                            <button 
-                  onClick={handlePreviousFloor} 
-                  className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
-                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
-                > 
-                  Previous Floor <FaLeftLong />
-                </button>
-                
-                <button 
-                  onClick={handleNextFloor} 
-                  className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
-                    ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
-                > 
-                  Next Floor <FaRightLong />
-                </button>
-                    </div>
+              <div className="flex  gap-4 items-center ">
+                  <button 
+                    onClick={handlePreviousFloor} 
+                    className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
+                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
+                  > 
+                    Previous Floor <FaLeftLong />
+                  </button>
+                  
+                  <button 
+                    onClick={handleNextFloor} 
+                    className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
+                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
+                  > 
+                    Next Floor <FaRightLong />
+                  </button>
+              </div>
           </div>
     </div>
     )  
   }
+
 
 
 
@@ -671,20 +672,7 @@ function Home() {
             )} */}
 
 
-        {showInfoPanel && (
-                <div className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transition-transform duration-700 z-[1000] ${showInfoPanel ? 'translate-x-0' : 'translate-x-full'}`}>
-                    <div className="p-4 flex justify-between items-center">
-                        <h2 className="text-xl font-bold">Floor Information</h2>
-                        <button onClick={() => setShowInfoPanel(false)} className="text-red-500 font-bold">X</button>
-                    </div>
-                    <div className="p-4">
-                        <h3 className="font-bold mb-2">Details of {currentRoomClicked}</h3>
-                        <p>This section displays relevant information about this room.</p>
-                    </div>
-                </div>
-            )}
-
-
+   
 
       
 

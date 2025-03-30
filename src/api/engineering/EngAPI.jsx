@@ -1,13 +1,14 @@
 /* Floor 1 */
 /*En room*/
 import eeLab from "./img/EELAB03.jpg";
-import ceLab1 from "./imgCELAB01.jpg";
+import ceLab1 from "./img/CELAB01.jpg";
 import ceLab2 from "./img/CELAB03.jpg";
 import comLab1 from "./img/ENCLA3.jpg";
 import comLab2 from "./img/ENLAB2B3.jpg";
 import elecLab from "./img/EL02.jpg";
 import ENlecLab2 from "./img/ENCME1023.jpg";
 import ENlecLab1 from "./img/ENCME1012.jpg";
+
 
 /* confort room*/
 import feCR1 from "./img/LCR103.jpg";
@@ -32,7 +33,7 @@ import FCLTY2 from "./img/EN201B.jpg";
 
 
 
-const EngBuilding = {
+const EngAPI = {
   "College of Engineering Building": {
 "floors": {
     "1": {
@@ -99,3 +100,4 @@ const EngBuilding = {
 }
 },
 }
+
