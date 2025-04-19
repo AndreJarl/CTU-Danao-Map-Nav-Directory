@@ -3,6 +3,7 @@ import React from 'react'
 import eeLab from "../img/EELAB03.jpg";
 import ceLab1 from "../img/CELAB01.jpg";
 import feCR1 from "../img/LCR103.jpg";
+import strgRM2 from "../img/STRGRM102.jpg";
 import RoomInfo from '../../../components/RoomInfo'
 
 
@@ -18,6 +19,7 @@ function EngFloor1() {
           "EN-102A": { "name": "Civil Engineering Lab 1", "description": "A fully equipped laboratory with soil testing equipment, fluid mechanics apparatus, and material testing instruments, designed for hands-on learning.", "image": ceLab1},
           "EN-102B": { "name": "Electrical Engineering Lab", "description": "A fully equipped laboratory where basic electrical principles are studied using circuit components, power supplies, and measuring instruments", "image": eeLab},
           "FEb1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
+          "STRG2": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2}
       }
     }
 
@@ -723,7 +725,23 @@ function EngFloor1() {
         <path d="M1177.55 366.22L1177.23 382.89L1101.67 370.41L1102 353.74L1177.55 366.22Z" fill="#00A5A5"/>
         <path d="M1176.95 366.42L1176.63 383.09L1101.07 370.61L1101.4 353.94L1176.95 366.42Z" fill="#281454"/>
         <path d="M1177.55 366.22L1177.23 382.89L1156.03 433.16L1156.35 416.48L1177.55 366.22Z" fill="#291454"/>
-        <path d="M1270.75 334.92L1229.81 428.12L1156.35 416.48L1177.55 366.22L1102 353.74L1120.7 311.15L1270.75 334.92Z" fill="#00DCDC"/>
+
+        {/* First Floor Storage Room */}
+        <path d="M1270.75 334.92L1229.81 428.12L1156.35 416.48L1177.55 366.22L1102 353.74L1120.7 311.15L1270.75 334.92Z" 
+              fill="#00DCDC"
+              style={{cursor:'pointer',transition:'0.3s'}}
+              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
+              onClick={()=>{setShowInfoPanel(true);roomClicked("STRG2")}}
+              />
+        <text x="1190" 
+              y="345" 
+              fill="#000" 
+              fontSize="16" 
+              fontFamily="Arial" 
+              textAnchor="middle"
+              dominantBaseline="middle" style={{pointerEvents: 'none'}}>Storage Room</text>
+        
         <path d="M1229.81 428.12L1229.49 444.79L1156.03 433.16L1156.35 416.48L1229.81 428.12Z" fill="#00A6A6"/>
         <path d="M1270.75 334.92L1270.43 351.59L1229.49 444.79L1229.81 428.12L1270.75 334.92Z" fill="#00A7A7"/>
         <path d="M1120.29 310.94L1271.36 334.72L1230.18 428.47L1155.76 416.68L1176.96 366.41L1101.4 353.93L1120.29 310.93V310.94ZM1229.81 428.12L1270.75 334.92L1120.7 311.15L1101.99 353.74L1177.55 366.22L1156.35 416.48L1229.81 428.12Z" fill="#361B70"/>
