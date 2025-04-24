@@ -10,7 +10,7 @@ import ENlecLab2 from "./img/ENCME1023.jpg";
 import ENlecLab1 from "./img/ENCME1012.jpg";
 
 
-/* confort room*/
+/* comfort room*/
 import feCR1 from "./img/LCR103.jpg";
 import feCR2 from "./img/LCR202.jpg";
 
@@ -28,8 +28,15 @@ import frExit from "./img/FEGF03.jpg";
 /*Floor 2 */
 import COED from "./img/CollegeOfEngineering.jpg";
 import CONF from "./img/CONFERENCEROOM.jpg";
-import FCLTY1 from "./img/FACULTY.jpg";
+import CHAIROFFICE from "./img/CHAOROFFICE.jpg";
+import EN202A from "./img/EN202A.jpg";
 import FCLTY2 from "./img/EN201B.jpg";
+import EN201A from "./img/EN201A.jpg";
+
+/* comfort room*/
+import meCR1 from "./img/Men'sRestroom.jpg";
+
+/* others room*/
 
 
 
@@ -56,39 +63,42 @@ const EngAPI = {
             "102": { "name": "Engineering Lecture Room 2", "description": "A spacious and well-lit room with comfortable seating, a projector, a whiteboard, and an audio system for effective teaching and learning.", "image": ENlecLab2 },
 
              /*BathRooms */
-            "FEb1": { "name": "Female's Bathroom", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
-            "FEb2": { "name": "Female's Bathroom", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR2},
+            "FE-CR-1": { "name": "Female's Bathroom", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
+            "FE-CR-2": { "name": "Female's Bathroom", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR2},
 
              /*study area*/
-            "SA1": { "name": "Study Area: Red Tables", "description": "A dedicated study space featuring red tables, comfortable seating, and a quiet environment for focused learning and collaboration.", "image": RTBL},
+            "SA-1": { "name": "Study Area: Red Tables", "description": "A dedicated study space featuring red tables, comfortable seating, and a quiet environment for focused learning and collaboration.", "image": RTBL},
 
             /*Storage Room */
-            "STRG1": { "name": "Storage room 1", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM1},
+            "STORAGE-1": { "name": "Storage room 1", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM1},
 
-            "STRG2": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2},
+            "STORAGE-2": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2},
 
             "EE/ECE1": { "name": "EE/ECE Room", "description": "A secure and organized space with shelves, bins, and cabinets for storing electronic components, circuit boards, tools, and testing equipment.", "image": EECroom},
             
             /*first floor stairs*/
-            "Stair1": { "name": "Stair 1", "description": "First floor, right stair to Second floor", "image": stair1},
-            "Stair2": { "name": "Stair 2", "description": "First floor, left stair to Second floor", "image": stair2},
+            "Stair-1": { "name": "Stair 1", "description": "First floor, right stair to Second floor", "image": stair1},
+            "Stair-2": { "name": "Stair 2", "description": "First floor, left stair to Second floor", "image": stair2},
              /*first floor ramps*/
-             "Ramp1": { "name": "Ramp 1", "description": "First floor, Ramp for PWD near Civil and Engineering Lab", "image": ramp1},
-             "Ramp2": { "name": "Ramp 2", "description": "First floor, Ramp for PWD near near Fablab", "image": ramp2},
+             "Ramp-1": { "name": "Ramp 1", "description": "First floor, Ramp for PWD near Civil and Engineering Lab", "image": ramp1},
+             "Ramp-2": { "name": "Ramp 2", "description": "First floor, Ramp for PWD near near Fablab", "image": ramp2},
              /*first floor fire exit*/
-             "frExit": { "name": "Fire Exit", "description": "First floor, Fire Exit near Computer Laboratory", "image": frExit},
+             "Fire-Exit": { "name": "Fire Exit", "description": "First floor, Fire Exit near Computer Laboratory", "image": frExit},
         }
     },
     "2": {
         "rooms": {
-            "COE-D": { "name": "COE Dean's Office/Conference room", "description": "The COE Dean's Office is a central administrative space where students, faculty, and staff can seek academic guidance, administrative support, and college-related services.", "image": [COED, CONF]},
+            "COE-D": { "name": "COE Dean's Office", "description": "The COE Dean's Office is a central administrative space where students, faculty, and staff can seek academic guidance, administrative support, and college-related services.", "image": COED},
 
-            "EN-202A": { "name": "Faculty Office 1", "description": "Dedicated space where engineering faculty members conduct academic work, collaborate on research, and engage in administrative tasks to support the college’s educational mission.", "image": FCLTY1},
+            "COE-C": { "name": "Conference room", "description": "The COE Dean's Office is a central administrative space where students, faculty, and staff can seek academic guidance, administrative support, and college-related services.", "image": CONF},
 
-            "EN-201B": { "name": "Faculty Office 2", "description": "Dedicated space where engineering faculty members conduct academic work, collaborate on research, and engage in administrative tasks to support the college’s educational mission.", "image": FCLTY2},
+            "EN-202A": { "name": "Chairman's Office", "description": "The Chairman’s Office is the executive workspace where the department chair oversees academic strategy, faculty affairs, and day‑to‑day administration of the department.", "image": [CHAIROFFICE, EN202A]},
+
+            "EN-201B": { "name": "Faculty Office", "description": "Dedicated space where engineering faculty members conduct academic work, collaborate on research, and engage in administrative tasks to support the college’s educational mission.", "image": [FCLTY2, EN201A]},
 
             /*Comfort rooms */
-        
+            "ME-CR-1": { "name": "Men's Bathroom", "description": "Men's & Person with disabilities' bathroom 1", "image": meCR1},            
+            
         }
     },
     "3": {
