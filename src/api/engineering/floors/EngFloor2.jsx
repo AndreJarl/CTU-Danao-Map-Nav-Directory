@@ -1,6 +1,17 @@
-import { useContext, useState } from "react";
-import React from 'react'
-import RoomInfo from '../../../components/RoomInfo'
+import { useState } from "react";
+import RoomInfo from '../../../components/RoomInfo';
+/*Floor 2 */
+import COED from "../img/CollegeOfEngineering.jpg";
+import CONF from "../img/CONFERENCEROOM.jpg";
+import CHAIROFFICE from "../img/CHAOROFFICE.jpg";
+import EN202A from "../img/EN202A.jpg";
+import FCLTY2 from "../img/EN201B.jpg";
+import EN201A from "../img/EN201A.jpg";
+import strgRM2 from "../img/STRGRM102.jpg";
+/* comfort room*/
+import meCR1 from "../img/Men'sRestroom.jpg";
+
+
 
 function EngFloor2() {
 
@@ -8,13 +19,22 @@ function EngFloor2() {
   const [roomInfo, setRoomInfo] = useState(null);
 
   const Floor2 = {
-      "2": {
-        "rooms": {
-            "EN-102A": { "name": "Civil Engineering Lab 1", "description": "A fully equipped laboratory with soil testing equipment, fluid mechanics apparatus, and material testing instruments, designed for hands-on learning.", "image": ""},
-            "EN-102B": { "name": "Electrical Engineering Lab", "description": "A fully equipped laboratory where basic electrical principles are studied using circuit components, power supplies, and measuring instruments", "image": ""},
-            "FEb1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": ""},
-        }
-      }
+        "2": {
+             "rooms": {
+                 "COE-D": { "name": "COE Dean's Office", "description": "The COE Dean's Office is a central administrative space where students, faculty, and staff can seek academic guidance, administrative support, and college-related services.", "image": COED},
+     
+                 "COE-C": { "name": "Conference room", "description": "The COE Dean's Office is a central administrative space where students, faculty, and staff can seek academic guidance, administrative support, and college-related services.", "image": CONF},
+     
+                 "EN-202A": { "name": "Chairman's Office", "description": "The Chairman’s Office is the executive workspace where the department chair oversees academic strategy, faculty affairs, and day‑to‑day administration of the department.", "image": [CHAIROFFICE]},
+     
+                 "EN-201B": { "name": "Faculty Office", "description": "Dedicated space where engineering faculty members conduct academic work, collaborate on research, and engage in administrative tasks to support the college’s educational mission.", "image": [FCLTY2]},
+     
+                 /*Comfort rooms */
+                 "ME-CR-1": { "name": "Men's Bathroom", "description": "Men's & Person with disabilities' bathroom 1", "image": meCR1},            
+                 "STORAGE-2": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2},
+                 
+             }
+         },
   
     }
   
@@ -145,7 +165,7 @@ function EngFloor2() {
       style={{cursor:'pointer',transition:'0.3s'}}
       onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
       onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDC73')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+      onClick={()=>{setShowInfoPanel(true);roomClicked("EN-201B")}}
       />
 <text x="220" 
     y="150" 
@@ -168,7 +188,7 @@ function EngFloor2() {
       style={{cursor:'pointer',transition:'0.3s'}}
       onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
       onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#D04E44')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+      onClick={()=>{setShowInfoPanel(true);roomClicked("EN-202A")}}
       />
 <text x="520" 
     y="200" 
@@ -190,7 +210,7 @@ function EngFloor2() {
       style={{cursor:'pointer',transition:'0.3s'}}
       onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
       onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+      onClick={()=>{setShowInfoPanel(true);roomClicked("COE-C")}}
       />
 <text x="745" 
     y="225" 
@@ -214,7 +234,7 @@ function EngFloor2() {
         style={{cursor:'pointer',transition:'0.3s'}}
         onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
         onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#497BDC')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
         />
 <text x="1080" 
     y="235" 
@@ -243,7 +263,7 @@ function EngFloor2() {
       style={{cursor:'pointer',transition:'0.3s'}}
       onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
       onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DBDCB7')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+      onClick={()=>{setShowInfoPanel(true);roomClicked("COE-D")}}
       />
 <text x="900" 
     y="255" 
@@ -265,7 +285,7 @@ function EngFloor2() {
       style={{cursor:'pointer',transition:'0.3s'}}
       onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
       onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDCDC')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+      onClick={()=>{setShowInfoPanel(true);roomClicked("STORAGE-2")}}
       />
 <text x="1230" 
     y="240" 
