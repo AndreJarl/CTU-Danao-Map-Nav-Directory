@@ -18,8 +18,8 @@ function EngFloor1() {
       "rooms": {
           "EN-102A": { "name": "Civil Engineering Lab 1", "description": "A fully equipped laboratory with soil testing equipment, fluid mechanics apparatus, and material testing instruments, designed for hands-on learning.", "image": ceLab1},
           "EN-102B": { "name": "Electrical Engineering Lab", "description": "A fully equipped laboratory where basic electrical principles are studied using circuit components, power supplies, and measuring instruments", "image": eeLab},
-          "FEb1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
-          "STRG2": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2}
+          "FE-CR-1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": feCR1},
+          "STORAGE-1": { "name": "Storage room 2", "description": "A secure and organized space with shelves, cabinets, and storage racks for keeping equipment, supplies, and materials safely stored.", "image": strgRM2}
       }
     }
 

@@ -36,7 +36,13 @@ import EN201A from "./img/EN201A.jpg";
 /* comfort room*/
 import meCR1 from "./img/Men'sRestroom.jpg";
 
-/* others room*/
+/*Floor 3 */
+import BSIE_Flipped from "./img/EN303B.jpg";
+import BSIE_Com_Lab from "./img/EN302B.jpg";
+import BSIE_Lab from "./img/EN301B.jpg";
+
+/* comfort room*/
+import feCR3 from "./img/Fe'sRestroom.jpg";
 
 
 
@@ -103,8 +109,13 @@ const EngAPI = {
     },
     "3": {
         "rooms": {
-            "301": { "name": "Faculty Office", "description": "Professors' workspaces and consultation rooms." },
-            "302": { "name": "Thesis Room", "description": "Reserved for final-year engineering students’ projects." }
+           "EN-303": { "name": "BSIE-Flipped Room", "description": "The BSIE-Flipped Room is a specially designed learning environment for Industrial Engineering students, promoting a student-centered approach where lectures are minimized in favor of active, collaborative activities. It encourages teamwork, critical thinking, and hands-on problem-solving, allowing students to engage more deeply with course materials through discussions, projects, and real-world applications.", "image": BSIE_Flipped},
+           "EN-302": { "name": "BSIE-Computer Laboratory", "description": "The BSIE Computer Lab is a dedicated facility equipped with specialized software and high-performance computers to support Industrial Engineering students in data analysis, simulations, design projects, and research activities. It provides a practical environment where students can apply theoretical concepts, develop technical skills, and work on academic and industry-related projects.", "image": BSIE_Com_Lab},
+           "EN-301": { "name": "BSIE-Laboratory", "description": "The BSIE Laboratory is a hands-on learning space where Industrial Engineering students conduct experiments, practice industrial processes, and apply engineering principles to real-world scenarios. It supports skill development in areas like work measurement, ergonomics, production systems, and quality control, bridging the gap between theory and practical application.", "image":  BSIE_Lab},
+
+           /* comfort room*/
+           "FE-CR-3": { "name": "Men's Bathroom", "description": "Men's & Person with disabilities' bathroom 1", "image": feCR3},      
+
         }
     }
 }
