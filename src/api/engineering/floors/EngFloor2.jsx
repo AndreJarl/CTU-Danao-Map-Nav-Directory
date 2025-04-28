@@ -283,9 +283,9 @@ function EngFloor2() {
 <path d="M1299.24 225.35L1278.55 272.44L1161.74 253.94L1182.43 206.85L1299.24 225.35Z" 
       fill="#DCDCDC"
       style={{cursor:'pointer',transition:'0.3s'}}
-      onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-      onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDCDC')}}
-      onClick={()=>{setShowInfoPanel(true);roomClicked("STORAGE-2")}}
+      // onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+      // onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDCDC')}}
+      // onClick={()=>{setShowInfoPanel(true);roomClicked("")}}
       />
 <text x="1230" 
     y="240" 
