@@ -279,7 +279,7 @@ function EngFloor2() {
 <path d="M1182.43 206.85L1182.01 228.67L1161.32 275.76L1161.74 253.94L1182.43 206.85Z" fill="#291455"/>
 <path d="M1278.55 272.44L1278.13 294.26L1161.32 275.76L1161.74 253.94L1278.55 272.44Z" fill="#A6A6A6"/>
 <path d="M1299.24 225.35L1298.81 247.17L1278.13 294.26L1278.55 272.44L1299.24 225.35Z" fill="#A7A7A7"/>
-{/* Second Floor Storage */}
+{/* Stairs */}
 <path d="M1299.24 225.35L1278.55 272.44L1161.74 253.94L1182.43 206.85L1299.24 225.35Z" 
       fill="#DCDCDC"
       style={{cursor:'pointer',transition:'0.3s'}}
@@ -293,7 +293,7 @@ function EngFloor2() {
     fontSize="14" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Storage</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Stairs</text>
 
 <path d="M1279.36 273.24L1278.94 295.06L1159.97 276.21L1160.39 254.39L1279.36 273.24Z" fill="#281454"/>
 <path d="M1300.6 224.9L1300.18 246.71L1278.94 295.06L1279.36 273.24L1300.6 224.9Z" fill="#291455"/>
