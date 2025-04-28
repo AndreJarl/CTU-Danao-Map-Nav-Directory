@@ -666,7 +666,7 @@ function EngFloor1() {
               style={{cursor:'pointer',transition:'0.3s'}}
               onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
               onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#CD1A69')}}
-              onClick={()=>{setShowInfoPanel(true);roomClicked("FEb1")}}
+              onClick={()=>{setShowInfoPanel(true);roomClicked("FE-CR-1")}}
               />
         <text x="1020" 
     y="365" 
