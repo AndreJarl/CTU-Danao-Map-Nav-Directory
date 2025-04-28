@@ -3,6 +3,14 @@ import { useState } from "react";
 import floor3 from '../img/floor3.png'
 import RoomInfo from '../../../components/RoomInfo';
 
+/*Floor 3 */
+import BSIE_Flipped from "../img/EN303B.jpg";
+import BSIE_Com_Lab from "../img/EN302B.jpg";
+import BSIE_Lab from "../img/EN301B.jpg";
+
+/* comfort room*/
+import feCR3 from "../img/Fe'sRestroom3.jpg";
+
 // placeholder
 import meCR1 from "../img/Men'sRestroom.jpg";
 
@@ -13,12 +21,16 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
 
   const Floor3 = {
         "3": {
-             "rooms": {
-                 /*Comfort rooms */
-                 "ME-CR-1": { "name": "Women's CR", "description": "Women's & Person with disabilities' bathroom 1", "image": meCR1},            
-                 
-             }
-         },
+               "rooms": {
+                  "EN-303": { "name": "BSIE-Flipped Room", "description": "The BSIE-Flipped Room is a specially designed learning environment for Industrial Engineering students, promoting a student-centered approach where lectures are minimized in favor of active, collaborative activities. It encourages teamwork, critical thinking, and hands-on problem-solving, allowing students to engage more deeply with course materials through discussions, projects, and real-world applications.", "image": BSIE_Flipped},
+                  "EN-302": { "name": "BSIE-Computer Laboratory", "description": "The BSIE Computer Lab is a dedicated facility equipped with specialized software and high-performance computers to support Industrial Engineering students in data analysis, simulations, design projects, and research activities. It provides a practical environment where students can apply theoretical concepts, develop technical skills, and work on academic and industry-related projects.", "image": BSIE_Com_Lab},
+                  "EN-301": { "name": "BSIE-Laboratory", "description": "The BSIE Laboratory is a hands-on learning space where Industrial Engineering students conduct experiments, practice industrial processes, and apply engineering principles to real-world scenarios. It supports skill development in areas like work measurement, ergonomics, production systems, and quality control, bridging the gap between theory and practical application.", "image":  BSIE_Lab},
+       
+                  /* comfort room*/
+                  "FE-CR-3": { "name": "Men's Bathroom", "description": "Men's & Person with disabilities' bathroom 1", "image": feCR3},      
+       
+               }
+           },
   
     }
   
@@ -85,7 +97,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
         style={{cursor:'pointer',transition:'0.3s'}}
         onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
         onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DC7F1A')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
+        onClick={()=>{setShowInfoPanel(true);roomClicked("EN-303")}}
         />
 <text x="220" 
     y="145" 
@@ -93,7 +105,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
     fontSize="20" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Orange</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>BSIE-Flipped Room</text>
 
 <path d="M323.23 228.07L322.93 243.58L53.8 200.96L54.1 185.44L323.23 228.07Z" fill="#281454"/>
 <path d="M381.25 96L380.95 111.51L322.93 243.58L323.23 228.07L381.25 96Z" fill="#291455"/>
@@ -109,7 +121,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
         style={{cursor:'pointer',transition:'0.3s'}}
         onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
         onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DC64B6')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
+        onClick={()=>{setShowInfoPanel(true);roomClicked("EN-302")}}
         />
 <text x="500" 
     y="185" 
@@ -117,7 +129,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
     fontSize="20" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Violet</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>BSIE-Computer Laboratory</text>
 
 <path d="M606.66 273.15L606.36 288.67L334.88 245.67L335.18 230.15L606.66 273.15Z" fill="#281454"/>
 <path d="M664.58 141.28L664.28 156.8L606.36 288.67L606.66 273.15L664.58 141.28Z" fill="#291455"/>
@@ -132,7 +144,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
         style={{cursor:'pointer',transition:'0.3s'}}
         onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
         onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#40DC5A')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
+        onClick={()=>{setShowInfoPanel(true);roomClicked("EN-301")}}
         />
 <text x="780" 
     y="235" 
@@ -140,7 +152,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
     fontSize="20" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Green</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>BSIE-Laboratory</text>
 
 <path d="M884.75 317.69L884.45 333.21L618.79 291.13L619.09 275.62L884.75 317.69Z" fill="#281454"/>
 <path d="M942.68 185.82L942.38 201.34L884.45 333.21L884.75 317.69L942.68 185.82Z" fill="#291455"/>
@@ -162,7 +174,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
         style={{cursor:'pointer',transition:'0.3s'}}
         onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
         onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCAADC')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
+        onClick={()=>{setShowInfoPanel(true);roomClicked("FE-CR-3")}}
         />
 <text x="990" 
     y="255" 
@@ -170,7 +182,7 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
     fontSize="16" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Women's CR</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Men's CR</text>
 
 <mask id="mask1_0_1" style={{ maskType: "luminance" }} maskUnits="userSpaceOnUse" x="927" y="324" width="89" height="30">
 <path d="M927.39 340.49C927.39 340.49 927.39 340.49 927.38 340.49C927.48 335.32 927.58 330.15 927.68 324.97C927.68 324.97 927.68 324.97 927.69 324.97C927.71 324.97 927.72 324.97 927.74 324.97C952.51 328.89 987.78 334.16 1015.06 338.14L1014.76 353.66C987.46 349.68 952.17 344.4 927.4 340.48L927.39 340.49Z" fill="white"/>
@@ -239,9 +251,9 @@ const [showInfoPanel, setShowInfoPanel] = useState(false);
 <path d="M1234.52 228.82L1218.8 264.62L1151.6 253.97L1134.1 293.82L1056.3 281.5L1089.53 205.86L1234.52 228.82Z" 
         fill="#DCDCDC"
         style={{cursor:'pointer',transition:'0.3s'}}
-        onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-        onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDCDC')}}
-        onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
+        // onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
+        // onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#DCDCDC')}}
+        // onClick={()=>{setShowInfoPanel(true);roomClicked("ME-CR-1")}}
         />
 <text x="1110" 
     y="255" 
