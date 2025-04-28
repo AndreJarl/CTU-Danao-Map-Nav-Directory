@@ -178,6 +178,7 @@ function Home() {
     const closeSideBar = () =>{
         setShowPopup(!showPopup);
         setQuery([]);
+        setCurrentFloor(1);
     }
   
     return (
