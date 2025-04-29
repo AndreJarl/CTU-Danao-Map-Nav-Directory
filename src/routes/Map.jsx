@@ -612,11 +612,11 @@ function Home() {
 {/* side bar for buildings */}
            
     {showPopup && (
-       <div className="absolute w-[300px] md:w-[700px] lg:w-[900px] h-[400px] lg:h-screen left-0 top-0 z-50 bg-black"
+       <div className="absolute w-full md:w-[700px] lg:w-[900px] h-[400px] lg:h-screen left-0 top-0 z-50 bg-black"
      >
       <div className="flex flex-col  overflow-hidden h-screen bg-white pt-10 relative px-10 shadow-2xl">
-                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 text-white px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
-                <p className="text-4xl font-medium">{query}</p>
+                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
+                <p className="lg:text-4xl text-2xl font-medium">{query}</p>
               
               <div className="flex items-center flex-col  ">
                 
@@ -628,7 +628,7 @@ function Home() {
               <div className="flex  gap-4 items-center ">
                   <button 
                     onClick={handlePreviousFloor} 
-                    className={`bg-blue-500 text-white flex items-center gap-2 p-2 rounded 
+                    className={`bg-blue-500 text-white flex items-center gap-2  lg:p-2 rounded p-1 text-xs lg:text-base
                       ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
                   > 
                     Previous Floor <FaLeftLong />
@@ -636,7 +636,7 @@ function Home() {
                   
                   <button 
                     onClick={handleNextFloor} 
-                    className={`bg-blue-500 text-white flex gap-2 items-center p-2 rounded 
+                    className={`bg-blue-500 text-white flex gap-2 items-center lg:p-2 rounded p-1 text-xs lg:text-base
                       ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
                   > 
                     Next Floor <FaRightLong />
