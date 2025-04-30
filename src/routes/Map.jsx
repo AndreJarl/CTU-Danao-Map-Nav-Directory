@@ -612,7 +612,7 @@ function Home() {
 {/* side bar for buildings */}
            
     {showPopup && (
-       <div className="absolute w-full md:w-[700px] lg:w-[900px] h-[400px] lg:h-screen left-0 top-0 z-50 bg-black"
+       <div className="absolute w-full md:w-[90%] lg:w-[80%]  lg:h-screen left-0 top-0 z-50 bg-black"
      >
       <div className="flex flex-col  overflow-hidden h-screen bg-white pt-10 relative px-10 shadow-2xl">
                 <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>

@@ -56,10 +56,10 @@ function EngFloor1() {
   return (
    <>
    {/* pc */}
-    <div className='hidden md:hidden lg:flex w-screen justify-center items-center '>
+    <div className='hidden md:hidden lg:flex w-screen justify-center items-center'>
 
 
-      <svg width="850" height="450" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="95%" height="70%" viewBox="0 140 1300 567" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_0_1)">
         <path opacity="0.31" d="M1104.51 161.93H235.81C212.04 161.93 192.77 181.2 192.77 204.97V572.94C192.77 596.71 212.04 615.98 235.81 615.98H1104.51C1128.28 615.98 1147.55 596.71 1147.55 572.94V204.97C1147.55 181.2 1128.28 161.93 1104.51 161.93Z" fill="#0071BC"/>
         <path opacity="0.13" d="M1168.21 111.71H876.58C852.81 111.71 833.54 130.98 833.54 154.75V447.26C833.54 471.03 852.81 490.3 876.58 490.3H1168.21C1191.98 490.3 1211.25 471.03 1211.25 447.26V154.75C1211.25 130.98 1191.98 111.71 1168.21 111.71Z" fill="#FF0000"/>
@@ -814,7 +814,7 @@ function EngFloor1() {
     <div className='lg:hidden md:hidden flex w-screen justify-center items-center '>
 
 
-      <svg width="830" height="250" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_0_1)">
         <path opacity="0.31" d="M1104.51 161.93H235.81C212.04 161.93 192.77 181.2 192.77 204.97V572.94C192.77 596.71 212.04 615.98 235.81 615.98H1104.51C1128.28 615.98 1147.55 596.71 1147.55 572.94V204.97C1147.55 181.2 1128.28 161.93 1104.51 161.93Z" fill="#0071BC"/>
         <path opacity="0.13" d="M1168.21 111.71H876.58C852.81 111.71 833.54 130.98 833.54 154.75V447.26C833.54 471.03 852.81 490.3 876.58 490.3H1168.21C1191.98 490.3 1211.25 471.03 1211.25 447.26V154.75C1211.25 130.98 1191.98 111.71 1168.21 111.71Z" fill="#FF0000"/>
@@ -1569,7 +1569,7 @@ function EngFloor1() {
     <div className='lg:hidden hidden md:flex w-screen justify-center items-center '>
 
 
-<svg width="850" height="350" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="80%" viewBox="0 0 1300 704" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clip-path="url(#clip0_0_1)">
   <path opacity="0.31" d="M1104.51 161.93H235.81C212.04 161.93 192.77 181.2 192.77 204.97V572.94C192.77 596.71 212.04 615.98 235.81 615.98H1104.51C1128.28 615.98 1147.55 596.71 1147.55 572.94V204.97C1147.55 181.2 1128.28 161.93 1104.51 161.93Z" fill="#0071BC"/>
   <path opacity="0.13" d="M1168.21 111.71H876.58C852.81 111.71 833.54 130.98 833.54 154.75V447.26C833.54 471.03 852.81 490.3 876.58 490.3H1168.21C1191.98 490.3 1211.25 471.03 1211.25 447.26V154.75C1211.25 130.98 1191.98 111.71 1168.21 111.71Z" fill="#FF0000"/>
