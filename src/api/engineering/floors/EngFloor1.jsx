@@ -30,6 +30,28 @@ function EngFloor1() {
      console.log(roomInfo);
   } 
 
+  const roomOfs = -5;
+
+  const roomOnMouseEnter = (e, room, roomText) =>{
+      e.currentTarget.setAttribute('fill','#FFFFFF');
+      e.currentTarget.style.transform = `translate(${roomOfs}px, ${roomOfs}px)`; 
+      document.querySelector(roomText).style.transform = `translate(${roomOfs}px, ${roomOfs}px)`;
+      const roomStroke = document.querySelectorAll(room); 
+      console.log(roomStroke)
+      roomStroke.forEach(ro => {
+            ro.style.transform = `translate(${roomOfs}px, ${roomOfs}px)`;
+      });
+  }
+  const roomOnMouseLeave = (e, room, roomText, roomColor) =>{
+      e.currentTarget.setAttribute('fill', roomColor);
+      e.currentTarget.style.transform = 'translate(0px, 0px)'; 
+      document.querySelector(roomText).style.transform = 'translate(0px, 0px)'; 
+      const roomStroke = document.querySelectorAll(room); 
+      roomStroke.forEach(ro => {
+            ro.style.transform = 'translate(0px, 0px)'; 
+      });
+  }
+
 
   return (
    <>
@@ -588,27 +610,26 @@ function EngFloor1() {
         <path d="M54.97 284.24L54.5 308.74L50.69 317.42L51.16 292.93L54.97 284.24Z" fill="#291455"/>
         <path d="M528.51 230.22L528.2 246.5L111.84 180.55L112.16 164.27L528.51 230.22Z" fill="#281454"/>
         <path d="M112.16 164.27L111.84 180.55L51.89 317.03L52.21 300.75L112.16 164.27Z" fill="#291455"/>
-        <path d="M468.56 366.7L468.25 382.98L51.89 317.03L52.21 300.75L468.56 366.7Z" fill="#7CA685"/>
-        <path d="M528.51 230.22L528.2 246.5L468.25 382.98L468.56 366.7L528.51 230.22Z" fill="#7DA787"/>
+        {/* <path d="M468.56 366.7L468.25 382.98L51.89 317.03L52.21 300.75L468.56 366.7Z" fill="#7CA685"/> */}
+        {/* <path d="M528.51 230.22L528.2 246.5L468.25 382.98L468.56 366.7L528.51 230.22Z" fill="#7DA787"/> */}
         {/* CE LAB */}
+        <path d="M111.31 163.85L529.73 229.82L469.29 367.41L50.99 301.15L111.31 163.84V163.85ZM468.56 366.7L528.51 230.22L112.16 164.27L52.21 300.75L468.57 366.69" fill="#361B70"/>
+        <path className="ce-room" d="M469.29 367.41L468.97 383.68L50.68 317.43L50.99 301.15L469.29 367.41Z" fill="#281454" style={{transition: '0.3s'}}/>
+        <path className="ce-room" d="M529.73 229.82L529.41 246.1L468.97 383.68L469.29 367.41L529.73 229.82Z" fill="#291455" style={{transition: '0.3s'}}/>
         <path d="M528.51 230.22L468.56 366.7L52.21 300.75L112.16 164.28L528.51 230.22Z" 
               fill="#A5DCB1"
               style={{cursor: 'pointer',transition: '0.3s'}}
-              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#A5DCB1')}}
+              onMouseEnter={(e)=>{roomOnMouseEnter(e, ".ce-room", ".ce-text")}}
+              onMouseLeave={(e)=>{roomOnMouseLeave(e, ".ce-room", ".ce-text", "#A5DCB1")}}
               onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102A")}}
               />
-        <text x="300" 
-    y="275" 
-    fill="#000" 
-    fontSize="24" 
-    fontFamily="Arial" 
-    textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EN-102A</text>
-
-        <path d="M469.29 367.41L468.97 383.68L50.68 317.43L50.99 301.15L469.29 367.41Z" fill="#281454"/>
-        <path d="M529.73 229.82L529.41 246.1L468.97 383.68L469.29 367.41L529.73 229.82Z" fill="#291455"/>
-        <path d="M111.31 163.85L529.73 229.82L469.29 367.41L50.99 301.15L111.31 163.84V163.85ZM468.56 366.7L528.51 230.22L112.16 164.27L52.21 300.75L468.57 366.69" fill="#361B70"/>
+            <text className="ce-text" x="300" 
+                  y="275" 
+                  fill="#000" 
+                  fontSize="24" 
+                  fontFamily="Arial" 
+                  textAnchor="middle"
+                  dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>EN-102A</text>
         <path d="M544.51 218.15L544.04 242.65L530.85 240.56L531.32 216.06L544.51 218.15Z" fill="#281454"/>
         <path d="M531.32 216.06L530.85 240.56L527.52 248.13L527.99 223.63L531.32 216.06Z" fill="#291455"/>
         <path d="M541.19 225.72L540.71 250.22L527.52 248.13L527.99 223.64L541.19 225.72Z" fill="#421D5E"/>
@@ -619,28 +640,28 @@ function EngFloor1() {
         <path d="M530.6 215.35L545.73 217.75L541.92 226.43L526.79 224.03L530.6 215.35ZM541.19 225.72L544.52 218.15L531.33 216.06L528 223.63L541.19 225.72Z" fill="#361B70"/>
         <path d="M960.73 298.67L960.42 314.97L545.19 249.21L545.51 232.91L960.73 298.67Z" fill="#281454"/>
         <path d="M545.51 232.91L545.19 249.21L485.24 385.69L485.56 369.38L545.51 232.91Z" fill="#291455"/>
-        <path d="M900.78 435.15L900.46 451.45L485.24 385.69L485.56 369.38L900.78 435.15Z" fill="#00A6A6"/>
-        <path d="M960.73 298.67L960.42 314.97L900.46 451.45L900.78 435.15L960.73 298.67Z" fill="#00A7A7"/>
+        {/* <path d="M900.78 435.15L900.46 451.45L485.24 385.69L485.56 369.38L900.78 435.15Z" fill="#00A6A6"/>
+        <path d="M960.73 298.67L960.42 314.97L900.46 451.45L900.78 435.15L960.73 298.67Z" fill="#00A7A7"/> */}
         <path d="M544.66 232.48L961.94 298.27L901.5 435.86L484.34 369.79L544.66 232.48ZM900.78 435.15L960.73 298.67L545.51 232.91L485.56 369.39L900.78 435.15Z" fill="#361B70"/>
        
         {/* EE LAB */}
         <path d="M960.73 298.67L900.78 435.15L485.56 369.38L545.51 232.91L960.73 298.67Z" 
               fill="#00DCDC"
               style={{cursor: 'pointer',transition:'0.3s'}}
-              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
+              onMouseEnter={(e)=>{roomOnMouseEnter(e,".ee-room", ".ee-text")}}
+              onMouseLeave={(e)=>{roomOnMouseLeave(e, ".ee-room", ".ee-text", "#00DCDC")}}
               onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
               />
-        <text x="700" 
+        <text className="ee-text" x="700" 
     y="335" 
     fill="#000" 
     fontSize="24" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>EN-102B</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>EN-102B</text>
 
-        <path d="M901.5 435.86L901.19 452.16L484.03 386.09L484.35 369.79L901.5 435.86Z" fill="#281454"/>
-        <path d="M961.94 298.27L961.63 314.57L901.19 452.16L901.5 435.86L961.94 298.27Z" fill="#291455"/>
+        <path className="ee-room" d="M901.5 435.86L901.19 452.16L484.03 386.09L484.35 369.79L901.5 435.86Z" fill="#281454" style={{transition: '0.3s'}}/>
+        <path className="ee-room" d="M961.94 298.27L961.63 314.57L901.19 452.16L901.5 435.86L961.94 298.27Z" fill="#291455" style={{transition: '0.3s'}}/>
         <path d="M976.95 287.24L976.48 311.74L963.29 309.65L963.76 285.15L976.95 287.24Z" fill="#281454"/>
         <path d="M963.76 285.15L963.29 309.65L959.96 317.22L960.43 292.72L963.76 285.15Z" fill="#291455"/>
         <path d="M973.63 294.81L973.15 319.31L959.96 317.22L960.43 292.72L973.63 294.81Z" fill="#421D5E"/>
@@ -659,27 +680,27 @@ function EngFloor1() {
         <path d="M488.32 352.9L487.85 377.4L484.04 386.09L484.51 361.59L488.32 352.9Z" fill="#291455"/>
         <path d="M1114.07 301.77L1113.76 318.1L986.52 297.95L986.84 281.62L1114.07 301.77Z" fill="#281454"/>
         <path d="M986.84 281.62L986.52 297.95L917.55 454.97L917.86 438.63L986.84 281.62Z" fill="#291455"/>
-        <path d="M1045.1 458.79L1044.78 475.12L917.55 454.97L917.87 438.63L1045.1 458.79Z" fill="#9A134F"/>
-        <path d="M1114.07 301.77L1113.76 318.1L1044.78 475.12L1045.1 458.79L1114.07 301.77Z" fill="#9C144F"/>
+        {/* <path d="M1045.1 458.79L1044.78 475.12L917.55 454.97L917.87 438.63L1045.1 458.79Z" fill="#9A134F"/>
+        <path d="M1114.07 301.77L1113.76 318.1L1044.78 475.12L1045.1 458.79L1114.07 301.77Z" fill="#9C144F"/> */}
         {/* WOMEN'S CR */}
+        <path d="M986.34 281.36L1114.8 301.53L1045.53 459.21L917.15 438.88L986.34 281.37V281.36ZM1045.1 458.79L1114.08 301.77L986.85 281.62L917.87 438.64L1045.1 458.79Z" fill="#361B70"/>
         <path d="M1114.07 301.77L1045.1 458.79L917.87 438.63L986.84 281.62L1114.07 301.77Z" 
               fill="#CD1A69"
               style={{cursor:'pointer',transition:'0.3s'}}
-              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#CD1A69')}}
+              onMouseEnter={(e)=>{roomOnMouseEnter(e,".w-cr", ".w-cr-text")}}
+              onMouseLeave={(e)=>{roomOnMouseLeave(e,".w-cr", ".w-cr-text", "#CD1A69")}}
               onClick={()=>{setShowInfoPanel(true);roomClicked("FE-CR-1")}}
               />
-        <text x="1020" 
+        <text className="w-cr-text" x="1020" 
     y="365" 
     fill="#000" 
     fontSize="16" 
     fontFamily="Arial" 
     textAnchor="middle"
-    dominantBaseline="middle" style={{pointerEvents: 'none'}}>Women's CR</text>
+    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Women's CR</text>
 
-        <path d="M1045.53 459.21L1045.21 475.54L916.83 455.21L917.14 438.87L1045.53 459.21Z" fill="#281454"/>
-        <path d="M1114.79 301.53L1114.48 317.86L1045.21 475.54L1045.53 459.21L1114.79 301.53Z" fill="#291455"/>
-        <path d="M986.34 281.36L1114.8 301.53L1045.53 459.21L917.15 438.88L986.34 281.37V281.36ZM1045.1 458.79L1114.08 301.77L986.85 281.62L917.87 438.64L1045.1 458.79Z" fill="#361B70"/>
+        <path className="w-cr" d="M1045.53 459.21L1045.21 475.54L916.83 455.21L917.14 438.87L1045.53 459.21Z" fill="#281454" style={{transition: '0.3s'}}/>
+        <path className="w-cr" d="M1114.79 301.53L1114.48 317.86L1045.21 475.54L1045.53 459.21L1114.79 301.53Z" fill="#291455" style={{transition: '0.3s'}}/>
         <path d="M1116.13 309.48L1115.66 333.97L1102.47 331.89L1102.95 307.39L1116.13 309.48Z" fill="#281454"/>
         <path d="M1102.95 307.39L1102.47 331.89L1099.15 339.45L1099.62 314.95L1102.95 307.39Z" fill="#291455"/>
         <path d="M1112.81 317.04L1112.33 341.54L1099.15 339.45L1099.62 314.95L1112.81 317.04Z" fill="#421D5E"/>
@@ -723,31 +744,32 @@ function EngFloor1() {
         <path d="M1096.4 389.9L1164.25 400.65L1161.43 408.65L1093.58 397.9L1096.4 389.9ZM1161.06 408.22L1163.63 400.93L1096.77 390.34L1094.2 397.63L1161.06 408.22Z" fill="#373573"/>
         <path d="M1270.75 334.92L1270.43 351.59L1120.38 327.82L1120.7 311.15L1270.75 334.92Z" fill="#281454"/>
         <path d="M1120.7 311.15L1120.38 327.82L1101.67 370.41L1102 353.74L1120.7 311.15Z" fill="#291455"/>
-        <path d="M1177.55 366.22L1177.23 382.89L1101.67 370.41L1102 353.74L1177.55 366.22Z" fill="#00A5A5"/>
-        <path d="M1176.95 366.42L1176.63 383.09L1101.07 370.61L1101.4 353.94L1176.95 366.42Z" fill="#281454"/>
-        <path d="M1177.55 366.22L1177.23 382.89L1156.03 433.16L1156.35 416.48L1177.55 366.22Z" fill="#291454"/>
+        {/* <path d="M1177.55 366.22L1177.23 382.89L1101.67 370.41L1102 353.74L1177.55 366.22Z" fill="#00A5A5"/> */}
 
         {/* First Floor Storage Room */}
+        <path d="M1120.29 310.94L1271.36 334.72L1230.18 428.47L1155.76 416.68L1176.96 366.41L1101.4 353.93L1120.29 310.93V310.94ZM1229.81 428.12L1270.75 334.92L1120.7 311.15L1101.99 353.74L1177.55 366.22L1156.35 416.48L1229.81 428.12Z" fill="#361B70"/>
+        <path className="sto-room" d="M1176.95 366.42L1176.63 383.09L1101.07 370.61L1101.4 353.94L1176.95 366.42Z" fill="#281454" style={{transition: '0.3s'}}/>
+        <path className="sto-room" d="M1177.55 366.22L1177.23 382.89L1156.03 433.16L1156.35 416.48L1177.55 366.22Z" fill="#291454" style={{transition: '0.3s'}}/>
         <path d="M1270.75 334.92L1229.81 428.12L1156.35 416.48L1177.55 366.22L1102 353.74L1120.7 311.15L1270.75 334.92Z" 
               fill="#00DCDC"
               style={{cursor:'pointer',transition:'0.3s'}}
-              onMouseEnter={(e)=>{e.currentTarget.setAttribute('fill','#FFFFFF')}}
-              onMouseLeave={(e)=>{e.currentTarget.setAttribute('fill','#00DCDC')}}
+              onMouseEnter={(e)=>{roomOnMouseEnter(e,".sto-room",".sto-room-text")}}
+              onMouseLeave={(e)=>{roomOnMouseLeave(e,".sto-room",".sto-room-text", "#00DCDC")}}
               onClick={()=>{setShowInfoPanel(true);roomClicked("STORAGE-1")}}
               />
-        <text x="1190" 
+        <text className="sto-room-text" x="1190" 
               y="345" 
               fill="#000" 
               fontSize="16" 
               fontFamily="Arial" 
               textAnchor="middle"
-              dominantBaseline="middle" style={{pointerEvents: 'none'}}>Storage Room</text>
+              dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Storage Room</text>
+              
+        <path className="sto-room" d="M1271.36 334.72L1271.03 351.39L1229.85 445.14L1230.17 428.47L1271.36 334.72Z" fill="#291455" style={{transition: '0.3s'}}/>
+        <path className="sto-room" d="M1230.17 428.47L1229.85 445.14L1155.43 433.35L1155.75 416.68L1230.17 428.47Z" fill="#281454" style={{transition: '0.3s'}}/>
         
-        <path d="M1229.81 428.12L1229.49 444.79L1156.03 433.16L1156.35 416.48L1229.81 428.12Z" fill="#00A6A6"/>
-        <path d="M1270.75 334.92L1270.43 351.59L1229.49 444.79L1229.81 428.12L1270.75 334.92Z" fill="#00A7A7"/>
-        <path d="M1120.29 310.94L1271.36 334.72L1230.18 428.47L1155.76 416.68L1176.96 366.41L1101.4 353.93L1120.29 310.93V310.94ZM1229.81 428.12L1270.75 334.92L1120.7 311.15L1101.99 353.74L1177.55 366.22L1156.35 416.48L1229.81 428.12Z" fill="#361B70"/>
-        <path d="M1271.36 334.72L1271.03 351.39L1229.85 445.14L1230.17 428.47L1271.36 334.72Z" fill="#291455"/>
-        <path d="M1230.17 428.47L1229.85 445.14L1155.43 433.35L1155.75 416.68L1230.17 428.47Z" fill="#281454"/>
+        {/* <path d="M1229.81 428.12L1229.49 444.79L1156.03 433.16L1156.35 416.48L1229.81 428.12Z" fill="#00A6A6"/>
+        <path d="M1270.75 334.92L1270.43 351.59L1229.49 444.79L1229.81 428.12L1270.75 334.92Z" fill="#00A7A7"/> */}
         <path d="M1282.8 335.66L1282.33 360.16L1269.14 358.07L1269.61 333.58L1282.8 335.66Z" fill="#282654"/>
         <path d="M1269.61 333.58L1269.14 358.07L1265.82 365.64L1266.29 341.14L1269.61 333.58Z" fill="#292755"/>
         <path d="M1279.48 343.23L1279 367.73L1265.82 365.64L1266.29 341.14L1279.48 343.23Z" fill="#421D5E"/>
