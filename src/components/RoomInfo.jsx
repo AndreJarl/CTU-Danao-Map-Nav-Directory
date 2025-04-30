@@ -10,7 +10,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 function RoomInfo({ showInfoPanel, setShowInfoPanel, roomInfo }) {
   return (
-     <div className={`fixed right-0 top-0 px-5 h-screen w-[320px] lg:w-[500px] bg-white shadow-2xl transition-transform duration-700 z-[1000] ${showInfoPanel ? 'translate-x-0' : 'translate-x-full'}`}>
+     <div className={`fixed right-0 top-0 px-5 h-screen w-[320px] md:w-[400px] lg:w-[500px] bg-white shadow-2xl transition-transform duration-700 z-[1000] ${showInfoPanel ? 'translate-x-0' : 'translate-x-full'}`}>
                        
      <div className="p-4 pt-5 px-10 top-0 absolute right-0 flex justify-between items-center z-50 ">
         
