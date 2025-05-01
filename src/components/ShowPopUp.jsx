@@ -5,8 +5,8 @@ import { FaRightLong , FaLeftLong   } from "react-icons/fa6";
 
 function ShowPopUp({query,closeSideBar,currentFloor,handleNextFloor,handlePreviousFloor}) {
   return (
-    <div className="absolute w-full md:w-[90%] lg:w-[80%]  lg:h-[100%] 2xl:w-[75%] left-0 top-0 z-50 bg-black" >
-          <div className="flex flex-col  overflow-hidden h-[100%] bg-white pt-10 relative px-10 shadow-2xl">
+    <div className="absolute w-full md:w-[90%] lg:w-[80%] h-screen pt-0 md:pt-0 lg:pt-0 lg:h-[100%] 2xl:w-[75%] left-0 top-0 z-50 bg-white" >
+          <div className="flex flex-col  overflow-hidden h-screen pt-28 md:pt-10  lg:h-[100%] bg-white lg:pt-10 relative px-10 shadow-2xl">
                     <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 hover:bg-red-800 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
                     <p className="lg:text-4xl text-2xl font-medium">{query}</p>
                   
