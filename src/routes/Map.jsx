@@ -28,16 +28,30 @@ function Home() {
     
     const handleFullscreen = () => {
       const elem = document.documentElement;
-  
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) { // Safari
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { // IE11
-        elem.msRequestFullscreen();
+    
+      if (!document.fullscreenElement &&    // Standard
+          !document.webkitFullscreenElement && // Safari
+          !document.msFullscreenElement) {     // IE11
+        // Enter fullscreen
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
       }
     };
-  
+
     const handleInputChange = (e) =>{
         const value = e.target.value;
         console.log(query);
