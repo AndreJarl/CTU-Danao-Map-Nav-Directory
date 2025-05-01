@@ -1,14 +1,13 @@
 import React from 'react'
-
-
 import eeLab from "../api/engineering/img/EELAB03.jpg";
 import ceLab1 from "../api/engineering/img/CELAB01.jpg";
 import feCR1 from "../api/engineering/img/LCR103.jpg";
 import { AiOutlineClose } from "react-icons/ai";
-// this is for importing icons
 import { FaArrowRightLong } from "react-icons/fa6";
 
-function RoomInfo({ showInfoPanel, setShowInfoPanel, roomInfo,emoji }) {
+function RoomInfo({ showInfoPanel, setShowInfoPanel, roomInfo, emoji }) {
+  const hasRoomInfo = roomInfo && Object.keys(roomInfo).length > 0;
+
   return (
 <div className={`fixed m-3 lg:right-5 md:right-7 top-5 lg:top-16 border-2 py-2 border-opacity-50 border-gray-400 rounded-2xl overflow-y-auto pt-5 lg:pt-4 px-4 h-[65%] lg:h-[75%] 2xl:h-[50%] w-[310px] md:w-[310px] lg:w-[400px] 2xl:w-[27%] bg-white shadow-2xl p-2 transform transition-transform ease-in-out duration-700 z-[1000] ${
     showInfoPanel ? 'translate-x-[0%] md:translate-x-[70%]' : 'translate-x-full'} `}>
@@ -28,7 +27,7 @@ function RoomInfo({ showInfoPanel, setShowInfoPanel, roomInfo,emoji }) {
              <p className="mb-14">{roomInfo.description}</p>
      </div>
     </div>
-  )
+  );
 }
 
-export default RoomInfo
+export default RoomInfo;
