@@ -3,19 +3,11 @@ import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus, FaRightLong , FaLeftLong   } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import floor1 from '../api/engineering/img/floor1.png';
- import floor2 from '../api/engineering/img/floor2.png'
- import floor3 from '../api/engineering/img/floor3.png'
-import ground from '../api/engineering/img/ground.svg'
-import EngFloor1 from "../api/engineering/floors/EngFloor1";
-import EngFloor2 from "../api/engineering/floors/EngFloor2";
-import EngFloor3 from "../api/engineering/floors/EngFloor3";
-
+import buildingFloors from "../components/BuildingFloors";
 import { IoMdMenu } from "react-icons/io";
 import { MdMenuOpen } from "react-icons/md";
-import { FaLongArrowAltLeft} from "react-icons/fa";
-
+import ShowPopUp from "../components/ShowPopUp";
+import { BsFullscreen } from "react-icons/bs";
 
 
 function Home() {
@@ -34,44 +26,30 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     
-
-      const buildingFloors = {
-        'College of Engineering Building': {
-          totalFloors: 3, // Updated total floors
-          floorImages: {
-            1: <EngFloor1 />,
-            2: <EngFloor2 />,
-            3: <EngFloor3 />,
-          }
-        },
-        'CME/COE Building': 4,
-        'Education Building': 3,
-        'Graduate School Building': 4,
-        'Bistro': 1,
-        'University Canteen': 1,
-        'Stage': 1,
-        'College of Technology/ COT Building': 2,
-        'Old Admin Building': 2,
-        'New Admin Building': 3,
-        'Student Activity Center': 1,
-        'Fitness Gym': 1,
-        'Sewing Area': 1,
-        'Fablab': 1,
-        'Tennis Court': 1,
-        'Kadasig Gym': 1,
-        'Oval': 1,
-        'Grandstand': 1,
-        'Study Area': 1,
-        'Existing Academic Science Building': 1,
-        'Cultural Center': 1,
-        'Floating Classroom': 1,
-        'CTU Facility Centrum': 2,
-        'HM Laboratory': 1,
-        'Mens Dorm': 1,
-        'Women Dorm': 2,
-        'Furniture Workshop': 1,
-        'Security Office': 1,
-        'ERRC Building': 2,
+    const handleFullscreen = () => {
+      const elem = document.documentElement;
+    
+      if (!document.fullscreenElement &&    // Standard
+          !document.webkitFullscreenElement && // Safari
+          !document.msFullscreenElement) {     // IE11
+        // Enter fullscreen
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
     };
 
     const handleInputChange = (e) =>{
@@ -585,6 +563,12 @@ function Home() {
       {/* Zoom Controls */}
       <div className="fixed bottom-4 left-4 flex flex-col gap-2 text-base">
                 <button
+                onClick={handleFullscreen}
+                className="w-10 py-2 font-bold flex justify-center items-center opacity-80 hover:opacity-100 bg-gray-700 text-white rounded shadow-sm hover:bg-gray-600  shadow-slate-600"
+                >
+                <BsFullscreen />
+                </button>
+                <button
                 onClick={() => setZoomLevel(Math.min(zoomLevel + 0.1, 5))}
                 className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
                 >
@@ -611,71 +595,21 @@ function Home() {
 
 {/* side bar for buildings */}
            
-    {showPopup && (
-       <div className="absolute w-full md:w-[700px] lg:w-[900px] h-[400px] lg:h-screen left-0 top-0 z-50 bg-black"
-     >
-      <div className="flex flex-col  overflow-hidden h-screen bg-white pt-10 relative px-10 shadow-2xl">
-                <button onClick={closeSideBar} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
-                <p className="lg:text-4xl text-2xl font-medium">{query}</p>
-              
-              <div className="flex items-center flex-col  ">
-                
-                  {buildingFloors[query]?.floorImages?.[currentFloor]}
-
-                
-                
-              </div>
-              <div className="flex  gap-4 items-center ">
-                  <button 
-                    onClick={handlePreviousFloor} 
-                    className={`bg-blue-500 text-white flex items-center gap-2  lg:p-2 rounded p-1 text-xs lg:text-base
-                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor > 1 ? '' : 'invisible'}`}
-                  > 
-                    Previous Floor <FaLeftLong />
-                  </button>
-                  
-                  <button 
-                    onClick={handleNextFloor} 
-                    className={`bg-blue-500 text-white flex gap-2 items-center lg:p-2 rounded p-1 text-xs lg:text-base
-                      ${buildingFloors[query]?.totalFloors > 1 && currentFloor < buildingFloors[query]?.totalFloors ? '' : 'invisible'}`}
-                  > 
-                    Next Floor <FaRightLong />
-                  </button>
-              </div>
-          </div>
-    </div>
-    )  
-  }
+   {showPopup &&(
+         <ShowPopUp
+          query ={query}
+          closeSideBar={closeSideBar}
+          currentFloor={currentFloor}
+          handleNextFloor={handleNextFloor}
+          handlePreviousFloor={handlePreviousFloor}
+          
+          
+         />
+   )}
 
 
 
-
-
-
-
-
-      {/* {showPopup && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                    <div className="bg-white p-6 rounded shadow-xl max-w-[80%] w-[900px] relative scale-0 transition-transform duration-500 animate-scale-up"  
-                        onClick={(e) => e.stopPropagation()} // Prevent side-panel from opening accidentally
-                    >
-                        <h2 className="text-xl font-bold mb-4">{query}</h2>
-                       <div>
-                         {buildingFloors[currentFloor]}
-                       </div>
-                        <div className="flex justify-center gap-4 items-center mt-4">
-                            <button onClick={handlePreviousFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor > 1 ? '' : 'invisible'}`}> Previous Floor </button>
-                            <button onClick={handleClosePopup} className="bg-red-500 text-white p-2 rounded"> Close </button>
-                            <button onClick={handleNextFloor} className={`bg-blue-500 text-white p-2 rounded ${buildingFloors[query] > 1 && currentFloor < buildingFloors[query] ? '' : 'invisible'}`}> Next Floor </button>
-                        </div>
-                    </div>
-                </div>
-            )} */}
-
-
-   
-
-      
+     
 
         {/* this is the search bar */}
         <div className="fixed top-3  group right lg:right-6 2xl:right-96 px-2" >
