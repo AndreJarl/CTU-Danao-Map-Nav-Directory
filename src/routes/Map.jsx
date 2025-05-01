@@ -7,7 +7,7 @@ import buildingFloors from "../components/BuildingFloors";
 import { IoMdMenu } from "react-icons/io";
 import { MdMenuOpen } from "react-icons/md";
 import ShowPopUp from "../components/ShowPopUp";
-
+import { BsFullscreen } from "react-icons/bs";
 
 
 function Home() {
@@ -26,7 +26,17 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     
-
+    const handleFullscreen = () => {
+      const elem = document.documentElement;
+  
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { // Safari
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { // IE11
+        elem.msRequestFullscreen();
+      }
+    };
   
     const handleInputChange = (e) =>{
         const value = e.target.value;
@@ -538,6 +548,12 @@ function Home() {
 
       {/* Zoom Controls */}
       <div className="fixed bottom-4 left-4 flex flex-col gap-2 text-base">
+                <button
+                onClick={handleFullscreen}
+                className="w-10 py-2 font-bold flex justify-center items-center opacity-80 hover:opacity-100 bg-gray-700 text-white rounded shadow-sm hover:bg-gray-600  shadow-slate-600"
+                >
+                <BsFullscreen />
+                </button>
                 <button
                 onClick={() => setZoomLevel(Math.min(zoomLevel + 0.1, 5))}
                 className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"

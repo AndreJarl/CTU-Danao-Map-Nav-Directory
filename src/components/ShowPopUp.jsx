@@ -17,7 +17,7 @@ function ShowPopUp({query,closeSideBar,currentFloor,handleNextFloor,handlePrevio
                     
                     
                   </div>
-                  <div className="flex  gap-4 items-center ">
+                  <div className="flex  gap-4 items-center mt-5 md:-mt-10 lg:-mt-28 ">
                       <button 
                         onClick={handlePreviousFloor} 
                         className={`bg-blue-500 text-white flex items-center gap-2  lg:p-2 rounded p-1 text-xs lg:text-base
