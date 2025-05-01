@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import buildingFloors from './BuildingFloors';
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { FaRightLong, FaLeftLong } from "react-icons/fa6";
-import React, { useState, useEffect } from 'react';
-import buildingFloors from './BuildingFloors';
-import { FaLongArrowAltLeft } from "react-icons/fa";
-import { FaRightLong, FaLeftLong } from "react-icons/fa6";
 
 function ShowPopUp({ query, closeSideBar, currentFloor, handleNextFloor, handlePreviousFloor }) {
   const [isSliding, setIsSliding] = useState(true);
