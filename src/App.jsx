@@ -12,9 +12,9 @@ function App() {
       <>
 
          <Routes>
-           <Route path="/" element={<Home/>} />
+           <Route path="/" element={<Map/>} />
            <Route path="/eng" element={<EngBuilding/>} />
-           <Route path="/map" element={<Map />} />
+           {/* <Route path="/map" element={<Map />} /> */}
            <Route path="/sidebar" element={<Sidebar />} />
          </Routes>
          </>

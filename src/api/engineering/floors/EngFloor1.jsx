@@ -11,7 +11,7 @@ function EngFloor1() {
 
     const [showInfoPanel, setShowInfoPanel] = useState(false);
     const [roomInfo, setRoomInfo] = useState(null);
-   
+    const [emoji, setEmoji] = useState("👷‍♂️");
 
   const Floor1 = {
     "1": {
@@ -57,7 +57,7 @@ function EngFloor1() {
    <>
    {/* pc */}
     <div className='hidden md:hidden lg:flex w-screen justify-center items-center'>
-
+          <p className="text-black text--3xl">Floor 1</p>
 
       <svg width="95%" height="70%" viewBox="0 140 1300 567" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_0_1)">
@@ -806,6 +806,7 @@ function EngFloor1() {
                showInfoPanel={showInfoPanel}
                setShowInfoPanel={setShowInfoPanel}
                roomInfo={roomInfo}
+               emoji={emoji}
                />
             )}
 
@@ -1561,6 +1562,7 @@ function EngFloor1() {
                showInfoPanel={showInfoPanel}
                setShowInfoPanel={setShowInfoPanel}
                roomInfo={roomInfo}
+               emoji={emoji}
                />
             )}
 
@@ -2316,6 +2318,7 @@ dominantBaseline="middle" style={{pointerEvents: 'none'}}>Women's CR</text>
          showInfoPanel={showInfoPanel}
          setShowInfoPanel={setShowInfoPanel}
          roomInfo={roomInfo}
+         emoji={emoji}
          />
       )}
 
