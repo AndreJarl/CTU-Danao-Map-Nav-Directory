@@ -3,18 +3,9 @@ import { IoIosSearch } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaPlus, FaMinus, FaRightLong , FaLeftLong   } from "react-icons/fa6";
 import { RxReset } from "react-icons/rx";
-import { Link } from "react-router-dom";
-import floor1 from '../api/engineering/img/floor1.png';
- import floor2 from '../api/engineering/img/floor2.png'
- import floor3 from '../api/engineering/img/floor3.png'
-import ground from '../api/engineering/img/ground.svg'
-import EngFloor1 from "../api/engineering/floors/EngFloor1";
-import EngFloor2 from "../api/engineering/floors/EngFloor2";
-import EngFloor3 from "../api/engineering/floors/EngFloor3";
 import buildingFloors from "../components/BuildingFloors";
 import { IoMdMenu } from "react-icons/io";
 import { MdMenuOpen } from "react-icons/md";
-
 import ShowPopUp from "../components/ShowPopUp";
 
 
