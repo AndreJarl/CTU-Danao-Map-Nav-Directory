@@ -83,9 +83,9 @@ function Home() {
 
     const handleWheel = (e) => {
            e.preventDefault();
-           const zoomSpeed = 0.2;
+           const zoomSpeed = 0.3;
            const newZoom = e.deltaY > 0 ? zoomLevel - zoomSpeed : zoomLevel + zoomSpeed;
-           setZoomLevel(Math.min(Math.max(newZoom, 0.5), 4)); // Clamp zoom level
+           setZoomLevel(Math.min(Math.max(newZoom, 1), 5)); // Clamp zoom level
           
          };
 
@@ -158,10 +158,16 @@ function Home() {
         setQuery([]);
         setCurrentFloor(1);
     }
+
+    const closePopUp = () => {
+        setShowPopup(false);
+        setQuery([]);
+        setCurrentFloor(1);
+    }
   
     return (
         <>
-        <div className="flex justify-center items-center overflow-hidden">
+        <div className="flex justify-center items-center overflow-hidden select-none">
 
       {/* this the svg div */}
       <div className="relative bg-white overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
@@ -177,6 +183,7 @@ function Home() {
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
                     transformOrigin: "center center",
+                    transition: isPanning ? "none" : "transform 0.4s ease-in-out",
                   }}
          fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="100%" height="100%" fill=""/>
@@ -569,13 +576,13 @@ function Home() {
                 <BsFullscreen />
                 </button>
                 <button
-                onClick={() => setZoomLevel(Math.min(zoomLevel + 0.1, 5))}
+                onClick={() => setZoomLevel(Math.min(zoomLevel + 0.3, 5))}
                 className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
                 >
                 <FaPlus/>
                 </button>
                 <button
-                onClick={() => setZoomLevel(Math.max(zoomLevel - 0.1, 1))}
+                onClick={() => setZoomLevel(Math.max(zoomLevel - 0.3, 1))}
                 className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
                 >
                <FaMinus/>
@@ -615,7 +622,7 @@ function Home() {
         <div className="fixed top-3  group right lg:right-6 2xl:right-96 px-2" >
             <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 bg-white w-[200px] lg:w-[450px] border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
-            
+            onClick={() => closePopUp()}
             onChange={handleInputChange}
             />
             <div className="flex gap-2"> 
