@@ -20,7 +20,7 @@ function ShowPopUp({ query, closeSideBar, currentFloor, handleNextFloor, handleP
           <div className="flex flex-col  overflow-hidden h-screen pt-28 md:pt-10  lg:h-[100%]  lg:pt-10 relative px-10 shadow-2xl">
                     <button onClick={handleClose} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 hover:bg-red-800 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
                     <p className="lg:text-4xl text-2xl font-medium">{query}</p>
-                  
+                    <p className="lg:text-2xl ml-8 pt-1 text-xl font-medium">📍FLOOR {currentFloor}</p>
                   <div className="flex items-center flex-col  ">
                     
                       {buildingFloors[query]?.floorImages?.[currentFloor]}

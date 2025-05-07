@@ -56,8 +56,8 @@ function EngFloor1() {
   return (
    <>
    {/* pc */}
-    <div className='hidden md:hidden lg:flex w-screen justify-center items-center'>
-          <p className="text-black text--3xl">Floor 1</p>
+    <div className='hidden md:hidden -mt-6 lg:flex w-screen justify-center items-center'>
+    
 
       <svg width="95%" height="70%" viewBox="0 140 1300 567" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_0_1)">
