@@ -619,9 +619,9 @@ function Home() {
      
 
         {/* this is the search bar */}
-        <div className="fixed top-3  group right lg:right-6 2xl:right-96 px-2" >
-            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
-            <input className="px-2 py-3 bg-white w-[200px] lg:w-[450px] border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
+        <div className="fixed top-3  group right lg:right-10 2xl:right-36 2xl:top-6 px-2" >
+            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
+            <input className="px-2 py-3 bg-white w-[200px] lg:w-[400px] 2xl:w-[600px]  border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
             onClick={() => closePopUp()}
             onChange={handleInputChange}
             />

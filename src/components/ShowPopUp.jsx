@@ -15,12 +15,18 @@ function ShowPopUp({ query, closeSideBar, currentFloor, handleNextFloor, handleP
     setTimeout(closeSideBar, 150);
   };
 
+    
+         const floorText = currentFloor === 1 ? "GROUND" : currentFloor === 2 ? "SECOND" : currentFloor === 3 ? "THIRD" : "";
+        
+    
+
+
   return (
     <div className={`absolute w-full md:w-[90%] lg:w-[80%] h-screen pt-0 md:pt-0 lg:pt-0 lg:h-[100%] 2xl:w-[75%] left-0 top-0 z-50 bg-white/20 transition-transform duration-150 ease-in-out ${isSliding ? '-translate-x-full' : 'translate-x-0'} backdrop-blur-lg backdrop-filter`} >
           <div className="flex flex-col  overflow-hidden h-screen pt-28 md:pt-10  lg:h-[100%]  lg:pt-10 relative px-10 shadow-2xl">
                     <button onClick={handleClose} className="flex gap-2 items-center absolute right-8 top-5 bg-red-600 hover:bg-red-800 text-white px-2 text-base lg:px-4 py-1 rounded-lg"><FaLongArrowAltLeft/> Close</button>
                     <p className="lg:text-4xl text-2xl font-medium">{query}</p>
-                    <p className="lg:text-2xl ml-8 pt-1 text-xl font-medium">📍FLOOR {currentFloor}</p>
+                    <p className="lg:text-[24px] ml-5 text-gray-800 pt-1 text-xl font-normal">📍{floorText} FLOOR</p>
                   <div className="flex items-center flex-col  ">
                     
                       {buildingFloors[query]?.floorImages?.[currentFloor]}
