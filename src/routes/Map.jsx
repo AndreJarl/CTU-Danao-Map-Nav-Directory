@@ -8,8 +8,10 @@ import { IoMdMenu } from "react-icons/io";
 import { MdMenuOpen } from "react-icons/md";
 import ShowPopUp from "../components/ShowPopUp";
 import { BsFullscreen } from "react-icons/bs";
-
-
+import Room1 from '../assets/room1.jpg'
+import Room2 from '../assets/room2.jpg'
+import Card from '../components/Card'
+import centrum from '../assets/centrum.jpg'
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
     const [panX, setPanX] = useState(0); // Horizontal pan
@@ -26,6 +28,9 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     
+    const [cardData, setCardData] = useState(null);
+    const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
+
     const handleFullscreen = () => {
       const elem = document.documentElement;
     
@@ -165,6 +170,25 @@ function Home() {
         setCurrentFloor(1);
     }
   
+    const infoData = {
+      1: {
+        title: 'Education Building',
+        img: Room1,
+        desc: 'This is the education building.',
+      },
+      2: {
+        title: 'Engineering Building',
+        img: Room2,
+        desc: 'This is the Engineering building.',
+      },
+      3: {
+        title: 'CTU Facility Centrum ',
+        img: centrum,
+        desc: 'This is the centrum building.',
+      },
+
+    }
+
     return (
         <>
         <div className="flex justify-center items-center overflow-hidden select-none">
@@ -176,9 +200,13 @@ function Home() {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
-   
+      id="map-container"
       >
-            
+                      {cardData && !showPopup && (
+              <Card cardData={cardData} cardPosition={cardPosition}/>
+            )}  
+
+
      <svg  width="100%" height="100%"  viewBox="0 0  1280 832"
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
@@ -208,6 +236,20 @@ function Home() {
             d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
                fill={query.length === 0 ? '#7EC8E2' : query.includes('Education Building') ? '#7EC8E2'  : '#B0B0B0' }
                style={{ cursor: 'pointer' }}
+               onMouseEnter={(e) => {
+                setCardData(infoData[1]);
+              }}
+              onMouseMove={(e) => {
+                const map = document.getElementById('map-container');
+                const rect = map.getBoundingClientRect();
+                setCardPosition({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top
+                });
+              }}
+              onMouseLeave={() => {
+                setCardData(null);
+              }}
             />
 
             <path d="M1073.5 559H1074M1074 559H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z"  stroke-width="2"
@@ -225,6 +267,21 @@ function Home() {
                 fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
                 stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
                 style={{ cursor: 'pointer' }}
+
+                onMouseEnter={(e) => {
+                  setCardData(infoData[2]);
+                }}
+                onMouseMove={(e) => {
+                  const map = document.getElementById('map-container');
+                  const rect = map.getBoundingClientRect();
+                  setCardPosition({
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                  });
+                }}
+                onMouseLeave={() => {
+                  setCardData(null);
+                }}
         />
    
     {/* NEW ADMIN BUIDLING */}
@@ -455,6 +512,23 @@ function Home() {
              fill={query.length === 0 ? '#DFBC74' : query.includes('CTU Facility Centrum') ? '#DFBC74'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#362F26" : query.includes('CTU Facility Centrum') ? "#362F26" : '#B0B0B0'}
              style={{ cursor: 'pointer' }}
+
+             onMouseEnter={(e) => {
+              setCardData(infoData[3]);
+            }}
+            onMouseMove={(e) => {
+              const map = document.getElementById('map-container');
+              const rect = map.getBoundingClientRect();
+              setCardPosition({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+              });
+            }}
+            onMouseLeave={() => {
+              setCardData(null);
+            }}
+
+
             />
         
     {/* FURNITURE WORKSHOP */}
