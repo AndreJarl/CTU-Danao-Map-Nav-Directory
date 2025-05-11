@@ -147,13 +147,19 @@ function Home() {
         setShowInfoPanel(false); // Ensure info panel closes too
     };
 
-    const handleOpenPopup = (e,buildingName) => {
+    const handleOpenPopup = (e,buildingName,bld) => {
     //   console.log(data.indexOf(buildingName))
     //   console.log(buildingFloor[data.indexOf(buildingName)])
         if(isDragging == false){
           setQuery(buildingName);
-          setShowPopup(true);
           setShowInfoPanel(false); // Reset the side panel state
+          setCardData(infoData[bld]);
+          const map = document.getElementById('map-container');
+          const rect = map.getBoundingClientRect();
+          setCardPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+          });
         }
         
     };
@@ -162,29 +168,35 @@ function Home() {
         setShowPopup(!showPopup);
         setQuery([]);
         setCurrentFloor(1);
+        setCardData(null);
     }
 
+    const closeCard = () =>{
+      setQuery([]);
+      setCardData(null);
+    }
     const closePopUp = () => {
         setShowPopup(false);
         setQuery([]);
         setCurrentFloor(1);
+        setCardData(null);
     }
   
     const infoData = {
       1: {
         title: 'Education Building',
         img: Room1,
-        desc: 'This is the education building.',
+        floors: 3,
       },
       2: {
         title: 'Engineering Building',
         img: Room2,
-        desc: 'This is the Engineering building.',
+        floors: 3,
       },
       3: {
         title: 'CTU Facility Centrum ',
         img: centrum,
-        desc: 'This is the centrum building.',
+        floors: 2,
       },
 
     }
@@ -203,7 +215,7 @@ function Home() {
       id="map-container"
       >
                       {cardData && !showPopup && (
-              <Card cardData={cardData} cardPosition={cardPosition}/>
+              <Card cardData={cardData} cardPosition={cardPosition} setShowPopup={setShowPopup} ShowPopUp={showPopup} closeCard={closeCard}/>
             )}  
 
 
@@ -232,24 +244,13 @@ function Home() {
 
             
      {/* Education Building */}
-            <path onClick={(e)=> handleOpenPopup(e,'Education Building')}
+            <path onClick={(e)=> handleOpenPopup(e,'Education Building', 1)}
             d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
                fill={query.length === 0 ? '#7EC8E2' : query.includes('Education Building') ? '#7EC8E2'  : '#B0B0B0' }
                style={{ cursor: 'pointer' }}
-               onMouseEnter={(e) => {
-                setCardData(infoData[1]);
-              }}
-              onMouseMove={(e) => {
-                const map = document.getElementById('map-container');
-                const rect = map.getBoundingClientRect();
-                setCardPosition({
-                  x: e.clientX - rect.left,
-                  y: e.clientY - rect.top
-                });
-              }}
-              onMouseLeave={() => {
-                setCardData(null);
-              }}
+               
+             
+              
             />
 
             <path d="M1073.5 559H1074M1074 559H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z"  stroke-width="2"
@@ -261,27 +262,15 @@ function Home() {
             
      {/* COE BUILDING */}
 
-        <path onClick={(e)=> handleOpenPopup(e,'College of Engineering Building')}
+        <path onClick={(e)=> handleOpenPopup(e,'College of Engineering Building',2)}
                 d="M1076.5 450H1079.5L1082.5 415.5V407.5H1080.5V409H1062V405.5L994.5 403.5V436H1014.5V448.5L1037.5 449V437L1069 438V442.5H1076.5V450Z"
                 strokeWidth="2"
                 fill={query.length === 0 ? '#EC8A8A' : query.includes('College of Engineering Building') ? '#EC8A8A'  : '#B0B0B0' }
                 stroke={query.length === 0 ? "#EA191D" : query.includes('College of Engineering Building') ? "#EA191D" : '#B0B0B0'}
                 style={{ cursor: 'pointer' }}
 
-                onMouseEnter={(e) => {
-                  setCardData(infoData[2]);
-                }}
-                onMouseMove={(e) => {
-                  const map = document.getElementById('map-container');
-                  const rect = map.getBoundingClientRect();
-                  setCardPosition({
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top
-                  });
-                }}
-                onMouseLeave={() => {
-                  setCardData(null);
-                }}
+            
+               
         />
    
     {/* NEW ADMIN BUIDLING */}
@@ -507,26 +496,14 @@ function Home() {
             />
 
             
-            <path onClick={(e)=> handleOpenPopup(e,'CTU Facility Centrum')}
+            <path onClick={(e)=> handleOpenPopup(e,'CTU Facility Centrum', 3)}
             d="M943.5 208L964 210.5L964.5 206L979 207.5V212.5H983L984 204L988.5 209.5L994 205.5L1023.5 209L1026 202.5L1028 194.5L1028.5 185.5V167L1019 166L1018.5 163.5L1013.5 163L1013 166L1004.5 164.5L1004 161.5H999L998 163L994 158L989 163L988.5 160L984.5 159L983.5 161.5H974V158H969.5L968 164L951 162.5V157.5L942 157L940.5 154.5L938.5 154L936.5 157L931.5 156.5L926.5 149.5L921 154.5L891 151L886 166.5L886.5 192.5L915 196L921 200.5L925.5 197V205.5L928.5 206L930.5 202L943.5 203.5V208Z"  stroke-width="2"
              fill={query.length === 0 ? '#DFBC74' : query.includes('CTU Facility Centrum') ? '#DFBC74'  : '#B0B0B0' }
              stroke={query.length === 0 ? "#362F26" : query.includes('CTU Facility Centrum') ? "#362F26" : '#B0B0B0'}
              style={{ cursor: 'pointer' }}
 
-             onMouseEnter={(e) => {
-              setCardData(infoData[3]);
-            }}
-            onMouseMove={(e) => {
-              const map = document.getElementById('map-container');
-              const rect = map.getBoundingClientRect();
-              setCardPosition({
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top
-              });
-            }}
-            onMouseLeave={() => {
-              setCardData(null);
-            }}
+        
+            
 
 
             />
