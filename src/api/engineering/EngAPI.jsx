@@ -1,48 +1,48 @@
 /* Floor 1 */
 /*En room*/
-import eeLab from "./img/EELAB03.jpg";
-import ceLab1 from "./img/CELAB01.jpg";
-import ceLab2 from "./img/CELAB03.jpg";
-import comLab1 from "./img/ENCLA3.jpg";
-import comLab2 from "./img/ENLAB2B3.jpg";
-import elecLab from "./img/EL02.jpg";
-import ENlecLab2 from "./img/ENCME1023.jpg";
-import ENlecLab1 from "./img/ENCME1012.jpg";
+import eeLab from "../img/ENGimg/EELAB03.jpg";
+import ceLab1 from "../img/ENGimg/CELAB01.jpg";
+import ceLab2 from "../img/ENGimg/CELAB03.jpg";
+import comLab1 from "../img/ENGimg/ENCLA3.jpg";
+import comLab2 from "../img/ENGimg/ENLAB2B3.jpg";
+import elecLab from "../img/ENGimg/EL02.jpg";
+import ENlecLab2 from "../img/ENGimg/ENCME1023.jpg";
+import ENlecLab1 from "../img/ENGimg/ENCME1012.jpg";
 
 
 /* comfort room*/
-import feCR1 from "./img/LCR103.jpg";
-import feCR2 from "./img/LCR202.jpg";
+import feCR1 from "../img/ENGimg/LCR103.jpg";
+import feCR2 from "../img/ENGimg/LCR202.jpg";
 
 /* others room*/
-import RTBL from "./img/RTBL03.jpg";
-import strgRM1 from "./img/STRGRM203.jpg";
-import strgRM2 from "./img/STRGRM102.jpg";
-import EECroom from "./img/EECER01.jpg";
-import stair1 from "./img/GFSTRS101.jpg";
-import stair2 from "./img/GFSTRS201.jpg";
-import ramp1 from "./img/RAW01.jpg";
-import ramp2 from "./img/RAW02.jpg";
-import frExit from "./img/FEGF03.jpg";
+import RTBL from "../img/ENGimg/RTBL03.jpg";
+import strgRM1 from "../img/ENGimg/STRGRM203.jpg";
+import strgRM2 from "../img/ENGimg/STRGRM102.jpg";
+import EECroom from "../img/ENGimg/EECER01.jpg";
+import stair1 from "../img/ENGimg/GFSTRS101.jpg";
+import stair2 from "../img/ENGimg/GFSTRS201.jpg";
+import ramp1 from "../img/ENGimg/RAW01.jpg";
+import ramp2 from "../img/ENGimg/RAW02.jpg";
+import frExit from "../img/ENGimg/FEGF03.jpg";
 
 /*Floor 2 */
-import COED from "./img/CollegeOfEngineering.jpg";
-import CONF from "./img/CONFERENCEROOM.jpg";
-import CHAIROFFICE from "./img/CHAOROFFICE.jpg";
-import EN202A from "./img/EN202A.jpg";
-import FCLTY2 from "./img/EN201B.jpg";
-import EN201A from "./img/EN201A.jpg";
+import COED from "../img/ENGimg/CollegeOfEngineering.jpg";
+import CONF from "../img/ENGimg/CONFERENCEROOM.jpg";
+import CHAIROFFICE from "../img/ENGimg/CHAOROFFICE.jpg";
+import EN202A from "../img/ENGimg/EN202A.jpg";
+import FCLTY2 from "../img/ENGimg/EN201B.jpg";
+import EN201A from "../img/ENGimg/EN201A.jpg";
 
 /* comfort room*/
-import meCR1 from "./img/Men'sRestroom.jpg";
+import meCR1 from "../img/ENGimg/Men'sRestroom.jpg";
 
 /*Floor 3 */
-import BSIE_Flipped from "./img/EN303B.jpg";
-import BSIE_Com_Lab from "./img/EN302B.jpg";
-import BSIE_Lab from "./img/EN301B.jpg";
+import BSIE_Flipped from "../img/ENGimg/EN303B.jpg";
+import BSIE_Com_Lab from "../img/ENGimg/EN302B.jpg";
+import BSIE_Lab from "../img/ENGimg/EN301B.jpg";
 
 /* comfort room*/
-import feCR3 from "./img/Fe'sRestroom.jpg";
+import feCR3 from "../img/ENGimg/Fe'sRestroom.jpg";
 
 
 

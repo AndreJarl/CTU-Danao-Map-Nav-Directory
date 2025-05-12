@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import React from 'react'
-import eeLab from "../img/EELAB03.jpg";
-import ceLab1 from "../img/CELAB01.jpg";
-import feCR1 from "../img/LCR103.jpg";
-import strgRM2 from "../img/STRGRM102.jpg";
-import RoomInfo from '../../../components/RoomInfo'
+import eelab from "../../img/ENGimg/EELAB03.jpg";
+import celab1 from "../../img/ENGimg/CE_LAB01.jpg";
+import feCR1 from "../../img/ENGimg/LCR109.jpg";
+import strgRM2 from "../../img/ENGimg/STRGRM102.jpg";
+import RoomInfo from "../../../components/RoomInfo";
 
 
 function EngFloor1() {
