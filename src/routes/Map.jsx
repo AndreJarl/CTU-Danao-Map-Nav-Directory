@@ -198,7 +198,11 @@ function Home() {
         img: centrum,
         floors: 2,
       },
-
+      4: {
+        title: 'New Admin Building',
+        img: Room2,
+        floors: 3,
+      },
     }
 
     return (
@@ -275,7 +279,7 @@ function Home() {
    
     {/* NEW ADMIN BUIDLING */}
     
-            <path onClick={(e)=> handleOpenPopup(e,'New Admin Building')}
+            <path onClick={(e)=> handleOpenPopup(e,'New Admin Building',4 )}
             d="M1138 492.5L1109 491.5V477H1112L1113.5 417L1081.5 416L1078.5 469.5H1068.5L1067.5 497.5H1068.5L1067.5 532.5H1066V535H1067L1067.5 538.5H1076L1075.5 593.5L1107.5 594.5L1110 534H1117.5L1118.5 518H1137.5L1138 492.5Z"  stroke-width="2"
               fill={query.length === 0 ? '#E7E7A7' : query.includes('New Admin Building') ? '#E7E7A7'  : '#B0B0B0' }
               stroke={query.length === 0 ? "#EDE323" : query.includes('New Admin Building') ? "#EDE323" : '#B0B0B0'}
