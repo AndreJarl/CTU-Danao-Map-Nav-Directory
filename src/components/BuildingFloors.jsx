@@ -1,6 +1,9 @@
 import EngFloor1 from "../api/engineering/floors/EngFloor1";
 import EngFloor2 from "../api/engineering/floors/EngFloor2";
 import EngFloor3 from "../api/engineering/floors/EngFloor3";
+import NewAdminFloor1 from "../api/new admin/floors/NewAdminFloor1";
+import NewAdminFloor2 from "../api/new admin/floors/NewAdminFloor2";
+import NewAdminFloor3 from "../api/new admin/floors/NewAdminFloor3";
 
 const buildingFloors = {
     'College of Engineering Building': {
@@ -19,7 +22,14 @@ const buildingFloors = {
     'Stage': 1,
     'College of Technology/ COT Building': 2,
     'Old Admin Building': 2,
-    'New Admin Building': 3,
+    'New Admin Building': {
+      totalFloors: 3, // Updated total floors
+      floorImages: {
+        1: <NewAdminFloor1 />,
+        2: <NewAdminFloor2 />,
+        3: <NewAdminFloor3 />,
+      }
+    },
     'Student Activity Center': 1,
     'Fitness Gym': 1,
     'Sewing Area': 1,
