@@ -103,6 +103,16 @@ function Home() {
         setStartPoint({ x: e.clientX - panX, y: e.clientY - panY });
     };
 
+    // clears query when user clicks outside the card or clicks any building
+    const handleClick = (e) => {
+        if(query.length != 0){
+          if(!showPopup){
+            setQuery([]);
+            setCardData(null);
+          }
+        }
+        
+    }
 
     const handleMouseMove = (e) => {
         setIsDragging(true);
@@ -224,6 +234,7 @@ function Home() {
 
 
      <svg  width="100%" height="100%"  viewBox="0 0  1280 832"
+                onClick={handleClick}
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
                     transformOrigin: "center center",
@@ -664,7 +675,6 @@ function Home() {
           currentFloor={currentFloor}
           handleNextFloor={handleNextFloor}
           handlePreviousFloor={handlePreviousFloor}
-          
           
          />
    )}
