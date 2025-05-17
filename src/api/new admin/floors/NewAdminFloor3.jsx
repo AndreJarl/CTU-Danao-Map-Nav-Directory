@@ -382,73 +382,151 @@ export const NewAdminFloor3 = () => {
             </g>
             <g id="VIEWING_ROOM" data-name="VIEWING ROOM">
             <g isolation="isolate">
-                <polygon points="668.12 423.06 667.84 437.44 565.59 421.25 565.87 406.86 668.12 423.06" fill="#281454" strokeWidth="0px"/>
-                <polygon points="668.12 423.06 667.84 437.44 656.11 464.14 656.39 449.75 668.12 423.06" fill="#00a7a7" strokeWidth="0px"/>
-                <polygon points="669.33 422.65 669.05 437.04 657.32 463.73 657.6 449.35 669.33 422.65" fill="#291455" strokeWidth="0px"/>
-                <polygon points="679.26 453.37 678.98 467.76 656.11 464.14 656.39 449.75 679.26 453.37" fill="#281454" strokeWidth="0px"/>
-                <polygon points="565.87 406.86 565.59 421.25 513.92 538.87 514.19 524.49 565.87 406.86" fill="#291455" strokeWidth="0px"/>
-                <polygon points="639.31 544.31 639.04 558.69 513.92 538.87 514.19 524.49 639.31 544.31" fill="#00a6a6" strokeWidth="0px"/>
-                <polygon points="679.26 453.37 678.98 467.76 639.04 558.69 639.31 544.31 679.26 453.37" fill="#00a7a7" strokeWidth="0px"/>
-                <path d="M657.6,449.35l22.87,3.62-40.43,92.04-127.06-20.12,52.16-118.74,104.19,16.5-11.73,26.7ZM639.31,544.31l39.95-90.93-22.87-3.62,11.73-26.7-102.25-16.19-51.67,117.63,125.12,19.82" fill="#361b70" strokeWidth="0px"/>
-                <polygon points="668.12 423.06 656.39 449.75 679.26 453.37 639.31 544.31 514.19 524.49 565.87 406.86 668.12 423.06" fill="#00dcdc" strokeWidth="0px"/>
-                <polygon points="680.47 452.97 680.19 467.36 639.76 559.4 640.04 545.02 680.47 452.97" fill="#291455" strokeWidth="0px"/>
-                <polygon points="640.04 545.02 639.76 559.4 512.7 539.28 512.98 524.89 640.04 545.02" fill="#281454" strokeWidth="0px"/>
+                <polygon className='aquablue' points="668.12 423.06 667.84 437.44 565.59 421.25 565.87 406.86 668.12 423.06" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                {/* <polygon points="668.12 423.06 667.84 437.44 656.11 464.14 656.39 449.75 668.12 423.06" fill="#00a7a7" strokeWidth="0px"/> */}
+                <polygon className='aquablue' points="669.33 422.65 669.05 437.04 657.32 463.73 657.6 449.35 669.33 422.65" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='aquablue' points="679.26 453.37 678.98 467.76 656.11 464.14 656.39 449.75 679.26 453.37" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='aquablue' points="565.87 406.86 565.59 421.25 513.92 538.87 514.19 524.49 565.87 406.86" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                {/* <polygon points="639.31 544.31 639.04 558.69 513.92 538.87 514.19 524.49 639.31 544.31" fill="#00a6a6" strokeWidth="0px"/>
+                <polygon points="679.26 453.37 678.98 467.76 639.04 558.69 639.31 544.31 679.26 453.37" fill="#00a7a7" strokeWidth="0px"/> */}
+                <path className='aquablue' d="M657.6,449.35l22.87,3.62-40.43,92.04-127.06-20.12,52.16-118.74,104.19,16.5-11.73,26.7ZM639.31,544.31l39.95-90.93-22.87-3.62,11.73-26.7-102.25-16.19-51.67,117.63,125.12,19.82" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon points="668.12 423.06 656.39 449.75 679.26 453.37 639.31 544.31 514.19 524.49 565.87 406.86 668.12 423.06" 
+                                fill="#00dcdc" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".aquablue", ".aquablue-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".aquablue", ".aquablue-text", "#00dcdc")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="aquablue-text" x="595" 
+                    y="485" 
+                    fill="#000" 
+                    fontSize="20" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Aquablue</text>
+                <polygon className='aquablue' points="680.47 452.97 680.19 467.36 639.76 559.4 640.04 545.02 680.47 452.97" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='aquablue' points="640.04 545.02 639.76 559.4 512.7 539.28 512.98 524.89 640.04 545.02" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             </g>
             <g isolation="isolate">
-            <polygon points="753.71 465.28 753.44 479.45 680.3 467.86 680.57 453.69 753.71 465.28" fill="#281454" strokeWidth="0px"/>
-            <polygon points="680.57 453.69 680.3 467.86 657.08 522.1 657.35 507.93 680.57 453.69" fill="#291454" strokeWidth="0px"/>
-            <polygon points="729.92 519.43 729.65 533.59 657.08 522.1 657.35 507.93 729.92 519.43" fill="#16764b" strokeWidth="0px"/>
-            <polygon points="753.71 465.28 753.44 479.45 729.65 533.59 729.92 519.43 753.71 465.28" fill="#16774c" strokeWidth="0px"/>
-            <polygon points="753.71 465.28 729.92 519.43 657.35 507.93 680.57 453.69 753.71 465.28" fill="#1d9d63" strokeWidth="0px"/>
-            <polygon points="730.65 520.13 730.37 534.3 655.86 522.5 656.14 508.33 730.65 520.13" fill="#281454" strokeWidth="0px"/>
-            <polygon points="754.92 464.88 754.65 479.04 730.37 534.3 730.65 520.13 754.92 464.88" fill="#291455" strokeWidth="0px"/>
-            <path d="M679.85,452.98l75.08,11.89-24.27,55.26-74.51-11.8,23.71-55.35ZM729.92,519.43l23.79-54.15-73.14-11.58-23.22,54.24,72.57,11.49" fill="#361b70" strokeWidth="0px"/>
+            <polygon className='green' points="753.71 465.28 753.44 479.45 680.3 467.86 680.57 453.69 753.71 465.28" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='green' points="680.57 453.69 680.3 467.86 657.08 522.1 657.35 507.93 680.57 453.69" fill="#291454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            {/* <polygon points="729.92 519.43 729.65 533.59 657.08 522.1 657.35 507.93 729.92 519.43" fill="#16764b" strokeWidth="0px"/>
+            <polygon points="753.71 465.28 753.44 479.45 729.65 533.59 729.92 519.43 753.71 465.28" fill="#16774c" strokeWidth="0px"/> */}
+            <polygon points="753.71 465.28 729.92 519.43 657.35 507.93 680.57 453.69 753.71 465.28" 
+                                fill="#1d9d63" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".green", ".green-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".green", ".green-text", "#1d9d63")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="green-text" x="705" 
+                    y="485" 
+                    fill="#000" 
+                    fontSize="18" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Green</text>
+            <polygon className='green' points="730.65 520.13 730.37 534.3 655.86 522.5 656.14 508.33 730.65 520.13" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='green' points="754.92 464.88 754.65 479.04 730.37 534.3 730.65 520.13 754.92 464.88" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <path className='green' d="M679.85,452.98l75.08,11.89-24.27,55.26-74.51-11.8,23.71-55.35ZM729.92,519.43l23.79-54.15-73.14-11.58-23.22,54.24,72.57,11.49" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             <g isolation="isolate">
-            <polygon points="729.81 520.13 729.54 534.31 656.84 522.8 657.12 508.62 729.81 520.13" fill="#281454" strokeWidth="0px"/>
-            <polygon points="657.12 508.62 656.84 522.8 641.07 558.71 641.34 544.53 657.12 508.62" fill="#291455" strokeWidth="0px"/>
-            <polygon points="714.04 556.04 713.76 570.22 641.07 558.71 641.34 544.53 714.04 556.04" fill="#a64594" strokeWidth="0px"/>
-            <polygon points="729.81 520.13 729.54 534.31 713.76 570.22 714.04 556.04 729.81 520.13" fill="#a74695" strokeWidth="0px"/>
-            <polygon points="729.81 520.13 714.04 556.04 641.34 544.53 657.12 508.62 729.81 520.13" fill="#dc5cc4" strokeWidth="0px"/>
-            <polygon points="714.76 556.75 714.49 570.93 639.86 559.11 640.13 544.93 714.76 556.75" fill="#281454" strokeWidth="0px"/>
-            <polygon points="731.02 519.73 730.75 533.91 714.49 570.93 714.76 556.75 731.02 519.73" fill="#291455" strokeWidth="0px"/>
-            <path d="M656.39,507.91l74.63,11.82-16.26,37.02-74.63-11.82,16.26-37.02ZM714.04,556.04l15.77-35.91-72.7-11.51-15.77,35.91,72.7,11.51" fill="#361b70" strokeWidth="0px"/>
+            <polygon className='pink' points="729.81 520.13 729.54 534.31 656.84 522.8 657.12 508.62 729.81 520.13" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='pink' points="657.12 508.62 656.84 522.8 641.07 558.71 641.34 544.53 657.12 508.62" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            {/* <polygon points="714.04 556.04 713.76 570.22 641.07 558.71 641.34 544.53 714.04 556.04" fill="#a64594" strokeWidth="0px"/>
+            <polygon points="729.81 520.13 729.54 534.31 713.76 570.22 714.04 556.04 729.81 520.13" fill="#a74695" strokeWidth="0px"/> */}
+            <polygon points="729.81 520.13 714.04 556.04 641.34 544.53 657.12 508.62 729.81 520.13" 
+                                fill="#dc5cc4" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".pink", ".pink-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".pink", ".pink-text", "#dc5cc4")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="pink-text" x="685" 
+                    y="535" 
+                    fill="#000" 
+                    fontSize="18" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Pink</text>
+            <polygon className='pink' points="714.76 556.75 714.49 570.93 639.86 559.11 640.13 544.93 714.76 556.75" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='pink' points="731.02 519.73 730.75 533.91 714.49 570.93 714.76 556.75 731.02 519.73" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <path className='pink' d="M656.39,507.91l74.63,11.82-16.26,37.02-74.63-11.82,16.26-37.02ZM714.04,556.04l15.77-35.91-72.7-11.51-15.77,35.91,72.7,11.51" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             <g isolation="isolate">
-            <polygon points="1065.47 514.77 1065.19 528.95 755.18 479.85 755.45 465.67 1065.47 514.77" fill="#281454" strokeWidth="0px"/>
-            <polygon points="755.45 465.67 755.18 479.85 715.17 570.92 715.45 556.74 755.45 465.67" fill="#291455" strokeWidth="0px"/>
-            <polygon points="1025.46 605.84 1025.19 620.02 715.17 570.92 715.45 556.74 1025.46 605.84" fill="#a67b48" strokeWidth="0px"/>
-            <polygon points="1065.47 514.77 1065.19 528.95 1025.19 620.02 1025.46 605.84 1065.47 514.77" fill="#a77c49" strokeWidth="0px"/>
-            <path d="M754.73,464.96l311.95,49.41-40.5,92.19-311.95-49.41,40.5-92.19ZM1025.46,605.84l40.01-91.07-310.01-49.1-40.01,91.07,310.01,49.1" fill="#361b70" strokeWidth="0px"/>
-            <polygon points="1065.47 514.77 1025.46 605.84 715.45 556.74 755.45 465.67 1065.47 514.77" fill="#dca360" strokeWidth="0px"/>
-            <polygon points="1026.19 606.55 1025.91 620.73 713.96 571.33 714.24 557.14 1026.19 606.55" fill="#281454" strokeWidth="0px"/>
-            <polygon points="1066.68 514.37 1066.41 528.55 1025.91 620.73 1026.19 606.55 1066.68 514.37" fill="#291455" strokeWidth="0px"/>
+            <polygon className='orange' points="1065.47 514.77 1065.19 528.95 755.18 479.85 755.45 465.67 1065.47 514.77" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='orange' points="755.45 465.67 755.18 479.85 715.17 570.92 715.45 556.74 755.45 465.67" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            {/* <polygon points="1025.46 605.84 1025.19 620.02 715.17 570.92 715.45 556.74 1025.46 605.84" fill="#a67b48" strokeWidth="0px"/>
+            <polygon points="1065.47 514.77 1065.19 528.95 1025.19 620.02 1025.46 605.84 1065.47 514.77" fill="#a77c49" strokeWidth="0px"/> */}
+            <path className='orange' d="M754.73,464.96l311.95,49.41-40.5,92.19-311.95-49.41,40.5-92.19ZM1025.46,605.84l40.01-91.07-310.01-49.1-40.01,91.07,310.01,49.1" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon points="1065.47 514.77 1025.46 605.84 715.45 556.74 755.45 465.67 1065.47 514.77" 
+                                fill="#dca360" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".orange", ".orange-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".orange", ".orange-text", "#dca360")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="orange-text" x="885" 
+                    y="535" 
+                    fill="#000" 
+                    fontSize="24" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Orange</text>
+            <polygon className='orange' points="1026.19 606.55 1025.91 620.73 713.96 571.33 714.24 557.14 1026.19 606.55" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+            <polygon className='orange' points="1066.68 514.37 1066.41 528.55 1025.91 620.73 1026.19 606.55 1066.68 514.37" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             <g id="READING_AREa" data-name="READING AREa">
             <g isolation="isolate">
-                <polygon points="1163.63 529.98 1163.35 544.16 1153.64 566.19 1153.91 552.01 1163.63 529.98" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1153.91 552.01 1153.64 566.19 1057.4 550.94 1057.68 536.76 1153.91 552.01" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1418.65 570.37 1418.37 584.55 1163.35 544.16 1163.63 529.98 1418.65 570.37" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1057.68 536.76 1057.4 550.94 1026.95 620.16 1027.22 605.98 1057.68 536.76" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1418.65 570.37 1378.56 661.63 1027.22 605.98 1057.68 536.76 1153.91 552.01 1163.63 529.98 1418.65 570.37" fill="#8edc89" strokeWidth="0px"/>
-                <polygon points="1378.56 661.63 1378.29 675.81 1026.95 620.16 1027.22 605.98 1378.56 661.63" fill="#6ba667" strokeWidth="0px"/>
-                <polygon points="1418.65 570.37 1418.38 584.55 1378.29 675.81 1378.56 661.63 1418.65 570.37" fill="#6ca768" strokeWidth="0px"/>
-                <path d="M1162.9,529.27l256.96,40.7-40.58,92.37-353.28-55.95,30.94-70.33,96.24,15.24,9.71-22.03ZM1378.56,661.63l40.09-91.26-255.02-40.39-9.71,22.03-96.24-15.24-30.45,69.22,351.34,55.65" fill="#361b70" strokeWidth="0px"/>
-                <polygon points="1379.29 662.34 1379.01 676.52 1025.74 620.57 1026.01 606.39 1379.29 662.34" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1419.86 569.97 1419.59 584.15 1379.01 676.52 1379.29 662.34 1419.86 569.97" fill="#291455" strokeWidth="0px"/>
+                <polygon className='lime' points="1163.63 529.98 1163.35 544.16 1153.64 566.19 1153.91 552.01 1163.63 529.98" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='lime' points="1153.91 552.01 1153.64 566.19 1057.4 550.94 1057.68 536.76 1153.91 552.01" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='lime' points="1418.65 570.37 1418.37 584.55 1163.35 544.16 1163.63 529.98 1418.65 570.37" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='lime' points="1057.68 536.76 1057.4 550.94 1026.95 620.16 1027.22 605.98 1057.68 536.76" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon points="1418.65 570.37 1378.56 661.63 1027.22 605.98 1057.68 536.76 1153.91 552.01 1163.63 529.98 1418.65 570.37" 
+                                fill="#8edc89" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".lime", ".lime-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".lime", ".lime-text", "#8edc89")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="lime-text" x="1225" 
+                    y="585" 
+                    fill="#000" 
+                    fontSize="24" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Lime</text>
+                {/* <polygon points="1378.56 661.63 1378.29 675.81 1026.95 620.16 1027.22 605.98 1378.56 661.63" fill="#6ba667" strokeWidth="0px"/>
+                <polygon points="1418.65 570.37 1418.38 584.55 1378.29 675.81 1378.56 661.63 1418.65 570.37" fill="#6ca768" strokeWidth="0px"/> */}
+                <path className='lime' d="M1162.9,529.27l256.96,40.7-40.58,92.37-353.28-55.95,30.94-70.33,96.24,15.24,9.71-22.03ZM1378.56,661.63l40.09-91.26-255.02-40.39-9.71,22.03-96.24-15.24-30.45,69.22,351.34,55.65" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='lime' points="1379.29 662.34 1379.01 676.52 1025.74 620.57 1026.01 606.39 1379.29 662.34" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='lime' points="1419.86 569.97 1419.59 584.15 1379.01 676.52 1379.29 662.34 1419.86 569.97" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             </g>
             <g id="E-Lib">
             <g isolation="isolate">
-                <polygon points="1577.39 595.7 1577.12 609.76 1419.5 584.8 1419.77 570.73 1577.39 595.7" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1419.77 570.73 1419.5 584.8 1403.78 620.59 1404.05 606.52 1419.77 570.73" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1561.67 631.49 1561.4 645.55 1403.78 620.59 1404.05 606.52 1561.67 631.49" fill="#007ea6" strokeWidth="0px"/>
-                <polygon points="1577.39 595.7 1577.12 609.76 1561.4 645.55 1561.67 631.49 1577.39 595.7" fill="#007fa7" strokeWidth="0px"/>
-                <polygon points="1577.39 595.7 1561.67 631.49 1404.05 606.52 1419.77 570.73 1577.39 595.7" fill="#00a8dc" strokeWidth="0px"/>
-                <polygon points="1562.4 632.2 1562.13 646.27 1402.55 620.99 1402.83 606.93 1562.4 632.2" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1578.62 595.3 1578.34 609.36 1562.13 646.27 1562.4 632.2 1578.62 595.3" fill="#291455" strokeWidth="0px"/>
-                <path d="M1419.04,570.02l159.58,25.27-16.21,36.91-159.58-25.27,16.21-36.91ZM1561.67,631.49l15.72-35.79-157.62-24.97-15.72,35.79,157.62,24.97" fill="#361b70" strokeWidth="0px"/>
+                <polygon className='blue' points="1577.39 595.7 1577.12 609.76 1419.5 584.8 1419.77 570.73 1577.39 595.7" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='blue' points="1419.77 570.73 1419.5 584.8 1403.78 620.59 1404.05 606.52 1419.77 570.73" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                {/* <polygon points="1561.67 631.49 1561.4 645.55 1403.78 620.59 1404.05 606.52 1561.67 631.49" fill="#007ea6" strokeWidth="0px"/>
+                <polygon points="1577.39 595.7 1577.12 609.76 1561.4 645.55 1561.67 631.49 1577.39 595.7" fill="#007fa7" strokeWidth="0px"/> */}
+                <polygon points="1577.39 595.7 1561.67 631.49 1404.05 606.52 1419.77 570.73 1577.39 595.7" 
+                                fill="#00a8dc" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".blue", ".blue-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".blue", ".blue-text", "#00a8dc")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="blue-text" x="1485" 
+                    y="600" 
+                    fill="#000" 
+                    fontSize="18" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Blue</text>
+                <polygon className='blue' points="1562.4 632.2 1562.13 646.27 1402.55 620.99 1402.83 606.93 1562.4 632.2" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='blue' points="1578.62 595.3 1578.34 609.36 1562.13 646.27 1562.4 632.2 1578.62 595.3" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <path className='blue' d="M1419.04,570.02l159.58,25.27-16.21,36.91-159.58-25.27,16.21-36.91ZM1561.67,631.49l15.72-35.79-157.62-24.97-15.72,35.79,157.62,24.97" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             </g>
             <g id="HALLWAY">
@@ -465,28 +543,54 @@ export const NewAdminFloor3 = () => {
             </g>
             <g id="CONFERENCE">
             <g isolation="isolate">
-                <polygon points="1553.3 650.41 1553.03 664.59 1395.39 639.63 1395.67 625.45 1553.3 650.41" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1395.67 625.45 1395.39 639.63 1379.48 675.86 1379.75 661.68 1395.67 625.45" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1537.38 686.65 1537.11 700.83 1379.48 675.86 1379.75 661.68 1537.38 686.65" fill="#7467a6" strokeWidth="0px"/>
-                <polygon points="1553.3 650.41 1553.03 664.59 1537.11 700.83 1537.38 686.65 1553.3 650.41" fill="#7568a7" strokeWidth="0px"/>
-                <polygon points="1553.3 650.41 1537.38 686.65 1379.75 661.68 1395.67 625.45 1553.3 650.41" fill="#9a89dc" strokeWidth="0px"/>
-                <polygon points="1538.11 687.36 1537.83 701.54 1378.26 676.26 1378.54 662.08 1538.11 687.36" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1554.51 650.01 1554.24 664.19 1537.83 701.54 1538.11 687.36 1554.51 650.01" fill="#291455" strokeWidth="0px"/>
-                <path d="M1394.94,624.74l159.57,25.27-16.41,37.35-159.57-25.27,16.41-37.35ZM1537.38,686.65l15.92-36.24-157.63-24.97-15.92,36.24,157.63,24.97" fill="#361b70" strokeWidth="0px"/>
+                <polygon className='violet' points="1553.3 650.41 1553.03 664.59 1395.39 639.63 1395.67 625.45 1553.3 650.41" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='violet' points="1395.67 625.45 1395.39 639.63 1379.48 675.86 1379.75 661.68 1395.67 625.45" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                {/* <polygon points="1537.38 686.65 1537.11 700.83 1379.48 675.86 1379.75 661.68 1537.38 686.65" fill="#7467a6" strokeWidth="0px"/>
+                <polygon points="1553.3 650.41 1553.03 664.59 1537.11 700.83 1537.38 686.65 1553.3 650.41" fill="#7568a7" strokeWidth="0px"/> */}
+                <polygon points="1553.3 650.41 1537.38 686.65 1379.75 661.68 1395.67 625.45 1553.3 650.41" 
+                                fill="#9a89dc" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".violet", ".violet-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".violet", ".violet-text", "#9a89dc")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="violet-text" x="1465" 
+                    y="655" 
+                    fill="#000" 
+                    fontSize="18" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Violet</text>
+                <polygon className='violet' points="1538.11 687.36 1537.83 701.54 1378.26 676.26 1378.54 662.08 1538.11 687.36" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='violet' points="1554.51 650.01 1554.24 664.19 1537.83 701.54 1538.11 687.36 1554.51 650.01" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <path className='violet' d="M1394.94,624.74l159.57,25.27-16.41,37.35-159.57-25.27,16.41-37.35ZM1537.38,686.65l15.92-36.24-157.63-24.97-15.92,36.24,157.63,24.97" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             </g>
             <g id="THETSIS_AND_DISSERTATION_ROOM" data-name="THETSIS AND DISSERTATION ROOM">
             <g isolation="isolate">
-                <polygon points="1708.78 587.73 1708.51 601.91 1611.05 586.48 1611.32 572.29 1708.78 587.73" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1611.32 572.29 1611.05 586.48 1599.24 613.35 1599.52 599.17 1611.32 572.29" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1599.52 599.17 1599.24 613.35 1575.99 609.67 1576.26 595.49 1599.52 599.17" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1576.26 595.49 1575.99 609.67 1536.41 699.77 1536.68 685.59 1576.26 595.49" fill="#291455" strokeWidth="0px"/>
-                <polygon points="1708.78 587.73 1657.4 704.71 1536.68 685.59 1576.26 595.49 1599.52 599.17 1611.32 572.29 1708.78 587.73" fill="#dc5e69" strokeWidth="0px"/>
-                <polygon points="1657.4 704.71 1657.12 718.89 1536.41 699.77 1536.68 685.59 1657.4 704.71" fill="#a6474f" strokeWidth="0px"/>
-                <polygon points="1708.78 587.73 1708.51 601.91 1657.12 718.89 1657.4 704.71 1708.78 587.73" fill="#a74850" strokeWidth="0px"/>
-                <path d="M1610.6,571.59l99.41,15.74-51.87,118.09-122.67-19.43,40.07-91.21,23.26,3.68,11.81-26.88ZM1657.4,704.71l51.39-116.98-97.46-15.44-11.81,26.88-23.25-3.68-39.58,90.1,120.71,19.12" fill="#361b70" strokeWidth="0px"/>
-                <polygon points="1658.13 705.42 1657.86 719.6 1535.19 700.17 1535.46 685.99 1658.13 705.42" fill="#281454" strokeWidth="0px"/>
-                <polygon points="1710.01 587.33 1709.73 601.51 1657.86 719.6 1658.13 705.42 1710.01 587.33" fill="#291455" strokeWidth="0px"/>
+                <polygon className='red' points="1708.78 587.73 1708.51 601.91 1611.05 586.48 1611.32 572.29 1708.78 587.73" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='red' points="1611.32 572.29 1611.05 586.48 1599.24 613.35 1599.52 599.17 1611.32 572.29" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='red' points="1599.52 599.17 1599.24 613.35 1575.99 609.67 1576.26 595.49 1599.52 599.17" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='red' points="1576.26 595.49 1575.99 609.67 1536.41 699.77 1536.68 685.59 1576.26 595.49" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon points="1708.78 587.73 1657.4 704.71 1536.68 685.59 1576.26 595.49 1599.52 599.17 1611.32 572.29 1708.78 587.73" 
+                                fill="#dc5e69" strokeWidth="0px"
+                                style={{cursor: 'pointer',transition:'0.3s'}}
+                                onMouseEnter={(e)=>{roomOnMouseEnter(e,".red", ".red-text")}}
+                                onMouseLeave={(e)=>{roomOnMouseLeave(e, ".red", ".red-text", "#dc5e69")}}
+                                onClick={()=>{setShowInfoPanel(true);roomClicked("EN-102B")}}
+                                />
+                <text className="red-text" x="1620" 
+                    y="640" 
+                    fill="#000" 
+                    fontSize="18" 
+                    fontFamily="Arial" 
+                    textAnchor="middle"
+                    dominantBaseline="middle" style={{pointerEvents: 'none', transition: '0.3s'}}>Red</text>
+                {/* <polygon points="1657.4 704.71 1657.12 718.89 1536.41 699.77 1536.68 685.59 1657.4 704.71" fill="#a6474f" strokeWidth="0px"/>
+                <polygon points="1708.78 587.73 1708.51 601.91 1657.12 718.89 1657.4 704.71 1708.78 587.73" fill="#a74850" strokeWidth="0px"/> */}
+                <path className='red' d="M1610.6,571.59l99.41,15.74-51.87,118.09-122.67-19.43,40.07-91.21,23.26,3.68,11.81-26.88ZM1657.4,704.71l51.39-116.98-97.46-15.44-11.81,26.88-23.25-3.68-39.58,90.1,120.71,19.12" fill="#361b70" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='red' points="1658.13 705.42 1657.86 719.6 1535.19 700.17 1535.46 685.99 1658.13 705.42" fill="#281454" strokeWidth="0px" style={{transition: '0.3s'}}/>
+                <polygon className='red' points="1710.01 587.33 1709.73 601.51 1657.86 719.6 1658.13 705.42 1710.01 587.33" fill="#291455" strokeWidth="0px" style={{transition: '0.3s'}}/>
             </g>
             </g>
         </g>
