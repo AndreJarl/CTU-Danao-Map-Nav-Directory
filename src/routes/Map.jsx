@@ -16,7 +16,7 @@ import coefront from '../api/engineering/img/COEFront.jpg'
 import BldOverview from "../components/BldOverview";
 
 
-function Home() {
+function Map() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
     const [panX, setPanX] = useState(0); // Horizontal pan
     const [panY, setPanY] = useState(0); // Vertical pan
@@ -751,4 +751,4 @@ function Home() {
      )
 }
 
-export default Home
+export default Map
