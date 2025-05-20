@@ -10,8 +10,12 @@ import ShowPopUp from "../components/ShowPopUp";
 import { BsFullscreen } from "react-icons/bs";
 import Room1 from '../assets/room1.jpg'
 import Room2 from '../assets/room2.jpg'
-import Card from '../components/Card'
+import Card from '../components/CardData'
 import centrum from '../assets/centrum.jpg'
+import coefront from '../api/engineering/img/COEFront.jpg'
+import BldOverview from "../components/BldOverview";
+
+
 function Home() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
     const [panX, setPanX] = useState(0); // Horizontal pan
@@ -28,6 +32,8 @@ function Home() {
     const [suggestion, setSuggestion] = useState([]);
     const [showMenu, setShowMenu] = useState(false);
     
+    const [roomClicked, setRoomClicked] = useState(false);
+
     const [cardData, setCardData] = useState(null);
     const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
 
@@ -104,15 +110,15 @@ function Home() {
     };
 
     // clears query when user clicks outside the card or clicks any building
-    const handleClick = (e) => {
-        if(query.length != 0){
-          if(!showPopup){
-            setQuery([]);
-            setCardData(null);
-          }
-        }
+    // const handleClick = (e) => {
+    //     if(query.length != 0){
+    //       if(!showPopup){
+    //         setQuery([]);
+    //         setCardData(null);
+    //       }
+    //     }
         
-    }
+    // }
 
     const handleMouseMove = (e) => {
         setIsDragging(true);
@@ -157,19 +163,21 @@ function Home() {
         setShowInfoPanel(false); // Ensure info panel closes too
     };
 
-    const handleOpenPopup = (e,buildingName,bld) => {
+    const handleOpenPopup = (e,buildingName) => {
     //   console.log(data.indexOf(buildingName))
     //   console.log(buildingFloor[data.indexOf(buildingName)])
         if(isDragging == false){
           setQuery(buildingName);
           setShowInfoPanel(false); // Reset the side panel state
-          setCardData(infoData[bld]);
-          const map = document.getElementById('map-container');
-          const rect = map.getBoundingClientRect();
-          setCardPosition({
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-          });
+          setShowPopup(true);
+   
+          // setCardData(infoData[bld]);
+          // const map = document.getElementById('map-container');
+          // const rect = map.getBoundingClientRect();
+          // setCardPosition({
+          //   x: e.clientX - rect.left,
+          //   y: e.clientY - rect.top
+          // });
         }
         
     };
@@ -192,29 +200,6 @@ function Home() {
         setCardData(null);
     }
   
-    const infoData = {
-      1: {
-        title: 'Education Building',
-        img: Room1,
-        floors: 3,
-      },
-      2: {
-        title: 'Engineering Building',
-        img: Room2,
-        floors: 3,
-      },
-      3: {
-        title: 'CTU Facility Centrum ',
-        img: centrum,
-        floors: 2,
-      },
-      4: {
-        title: 'New Admin Building',
-        img: Room2,
-        floors: 3,
-      },
-    }
-
     return (
         <>
         <div className="flex justify-center items-center overflow-hidden select-none">
@@ -234,7 +219,7 @@ function Home() {
 
 
      <svg  width="100%" height="100%"  viewBox="0 0  1280 832"
-                onClick={handleClick}
+              
                 style={{
                     transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
                     transformOrigin: "center center",
@@ -259,7 +244,7 @@ function Home() {
 
             
      {/* Education Building */}
-            <path onClick={(e)=> handleOpenPopup(e,'Education Building', 1)}
+            <path onClick={(e)=> handleOpenPopup(e,'Education Building')}
             d="M1074 559H1073.5H1071.5V566.5H1064V569L1034 568V556L1009 555.5V567H988.5L987.5 598.5L1053 600.5V598.5H1073.5L1074 559Z" 
                fill={query.length === 0 ? '#7EC8E2' : query.includes('Education Building') ? '#7EC8E2'  : '#B0B0B0' }
                style={{ cursor: 'pointer' }}
@@ -669,14 +654,26 @@ function Home() {
 {/* side bar for buildings */}
            
    {showPopup &&(
+       <>
+      
          <ShowPopUp
           query ={query}
           closeSideBar={closeSideBar}
           currentFloor={currentFloor}
           handleNextFloor={handleNextFloor}
           handlePreviousFloor={handlePreviousFloor}
-          
+          setRoomClicked = {setRoomClicked}
+          roomClicked={roomClicked}
          />
+         {!roomClicked && (
+                  <BldOverview
+            roomClicked={roomClicked}
+             query ={query}
+             closeSideBar={closeSideBar}
+          setRoomClicked = {setRoomClicked}
+         />
+         )}
+       </>
    )}
 
 

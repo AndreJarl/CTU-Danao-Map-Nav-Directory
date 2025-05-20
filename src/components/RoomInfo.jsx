@@ -1,12 +1,5 @@
-import React from 'react'
-
-
-import eeLab from "../api/engineering/img/EELAB03.jpg";
-import ceLab1 from "../api/engineering/img/CELAB01.jpg";
-import feCR1 from "../api/engineering/img/LCR103.jpg";
+;
 import { AiOutlineClose } from "react-icons/ai";
-// this is for importing icons
-import { FaArrowRightLong } from "react-icons/fa6";
 
 function RoomInfo({ showInfoPanel, setShowInfoPanel, roomInfo,emoji }) {
   return (

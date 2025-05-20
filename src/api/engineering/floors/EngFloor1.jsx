@@ -5,6 +5,7 @@ import ceLab1 from "../img/CELAB01.jpg";
 import feCR1 from "../img/LCR103.jpg";
 import strgRM2 from "../img/STRGRM102.jpg";
 import RoomInfo from '../../../components/RoomInfo'
+import ShowPopUp from "../../../components/ShowPopUp";
 
 
 function EngFloor1() {
@@ -28,6 +29,7 @@ function EngFloor1() {
   const roomClicked = (key) =>{
     setRoomInfo({ key, ...Floor1["1"].rooms[key] });
      console.log(roomInfo);
+    
   } 
 
   const roomOfs = -5;
