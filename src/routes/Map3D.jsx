@@ -200,10 +200,10 @@ function Map3D() {
       }
   return (
     <>
-     <div className="flex justify-center items-center overflow-hidden select-none">
+     <div className="flex justify-center items-center  overflow-hidden select-none">
 
       {/* this the svg div */}
-      <div className="relative bg-white overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
+      <div className="relative bg-white    overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -217,13 +217,8 @@ function Map3D() {
             )}  
 
 
-<svg  width="100%" height="100%"  viewBox="0 0  1280 832" fill="none" xmlns="http://www.w3.org/2000/svg" 
-style={{
-                    transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`,
-                    transformOrigin: "center center",
-                    transition: isPanning ? "none" : "transform 0.4s ease-in-out",
-                  }}
-                  >
+ <svg  width="100%" height="110%"  viewBox="0 0  1380 832" fill="none" xmlns="http://www.w3.org/2000/svg" 
+   style={{  transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`, transformOrigin: "center center",transition: isPanning ? "none" : "transform 0.4s ease-in-out", }} >
 
 <path d="M971.79 112.01V115.76L949.01 142.75V138.99L971.79 112.01Z" fill="#939393"/>
 <path d="M234.17 125.48V129.24L190.26 162.18V158.42L234.17 125.48Z" fill="#909191"/>
@@ -430,6 +425,7 @@ style={{
 <path d="M1007.5 544.5L1031.5 544.93V555.52L1062.5 556.43V554.21H1070V547.58H1071.49L1071.01 581.58H1050.5V583.33L986.01 581.6L986.98 554.65H1007.5V544.5Z" fill="#74B8D0"/>
 <path d="M1051.5 584.24V588L984.99 586.2V582.45L1051.5 584.24Z" fill="#005B85"/>
 <path d="M1069 546.7H1072.5L1071.99 582.46H1051.5V584.24L984.99 582.44L986.02 553.76H1006.5V543.6L1032.5 544.06V554.66L1061.5 555.51V553.32H1069.01V546.7H1069ZM1071.01 581.58L1071.5 547.58H1070.01V554.21H1062.51V556.43L1031.5 555.52V544.94L1007.5 544.51V554.66H986.99L986.02 581.61L1050.51 583.34V581.59H1071.02" fill="#009EE7"/>
+{/* Engineering Building */}
 <path d="M1057.5 412.04V415.8L991 414.06V410.3L1057.5 412.04Z" fill="#6E0C0E"/>
 <path d="M1078 413.82H1077V417.58H1078V413.82Z" fill="#6F0C0E"/>
 <path d="M1077 415.15H1057.5V418.91H1077V415.15Z" fill="#6F0C0E"/>
@@ -447,6 +443,8 @@ style={{
 <path d="M991 410.3L1057.5 412.04V415.15H1077V413.82H1078V420.4L1075.04 450.46H1073V443.84H1065.5V439.88L1033 438.97V449.57L1011 449.15V438.1H991V410.3Z" fill="#DA7F7F"/>
 <path d="M1034 450.47V454.23L1010 453.77V450.01L1034 450.47Z" fill="#6E0C0E"/>
 <path d="M1075.96 451.34H1072V455.1H1075.96V451.34Z" fill="#6F0C0E"/>
+{/* ------------------------------------------ end of engineering -------------------- */}
+
 <path opacity="0.25" d="M1198.1 317.16V320.92L1190.99 327.61V323.86L1198.1 317.16Z" fill="#09090A"/>
 <path opacity="0.25" d="M1190.99 323.86V327.61L1189 394.17V390.42L1190.99 323.86Z" fill="#090909"/>
 <path opacity="0.25" d="M1189 390.42H1186V394.18H1189V390.42Z" fill="#080809"/>
@@ -1230,9 +1228,7 @@ style={{
 
 
 
-    </div>
-
-          {/* Zoom Controls */}
+     {/* Zoom Controls */}
       <div className="fixed bottom-4 left-4 flex flex-col gap-2 text-base">
                 <button
                 onClick={handleFullscreen}
@@ -1295,9 +1291,9 @@ style={{
      
 
         {/* this is the search bar */}
-        <div className="fixed top-4 md:right-16   lg:right-10 2xl:right-36 2xl:top-6 px-2" >
-            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] md:w-[600px] lg:w-[450px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
-            <input className="px-2 py-3 bg-white  w-[200px] md:w-[600px] lg:w-[450px] 2xl:w-[600px]  border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
+        <div className="fixed top-3  group right lg:right-10 2xl:right-36 2xl:top-6 px-2" >
+            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
+            <input className="px-2 py-3 bg-white w-[200px] lg:w-[400px] 2xl:w-[600px]  border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
             onClick={() => closePopUp()}
             onChange={handleInputChange}
             />
@@ -1357,9 +1353,13 @@ style={{
             </div>
        
         </div>
-  
-    </>
-  )
+       
+   </div>
+          <p className="text-center text-[7px] -mt-2 text-gray-200 ">made by Aniana with 🤍</p>
+          
+         </>
+     )
 }
+
 
 export default Map3D

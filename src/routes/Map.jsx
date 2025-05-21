@@ -744,7 +744,7 @@ function Map() {
        
         </div>
        
-          </div>
+   </div>
           <p className="text-center text-[7px] -mt-2 text-gray-200 ">made by Aniana with 🤍</p>
           
          </>
