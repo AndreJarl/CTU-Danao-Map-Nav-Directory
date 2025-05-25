@@ -1,27 +1,39 @@
 
 import coefront from "../assets/COEFront1.jpg";
+import coefront1 from "../api/frontsBuilding/img/COEFront.jpg"
+import ceasfront1 from "../api/frontsBuilding/img/CEASFront.jpg"
 import ceasfront from "../assets/CEASFront.jpg";
+import cemfront1 from "../api/frontsBuilding/img/CMEFront.jpg"
 import cemfront from "../assets/CME_COEFront.jpg"
+import adminfront from "../api/frontsBuilding/img/AdminFront.jpg"
+import cotfront from "../api/frontsBuilding/img/COTFront.jpg"
+
 const cardData = {
     'College of Engineering Building': {
         totalFloors: 3,
-        img: coefront
+        img: coefront1
     },
      'CME/COE Building': {
        totalFloors: 4,
-       img:cemfront,
+       img:cemfront1,
     },
     'Education Building': {
        totalFloors: 3,
-       img: ceasfront,
+       img: ceasfront1,
     },
     'Graduate School Building': 4,
     'Bistro': 1,
     'University Canteen': 1,
     'Stage': 1,
-    'College of Technology/ COT Building': 2,
+    'College of Technology/ COT Building': {
+        totalFloors:3,
+        img:cotfront
+    },
     'Old Admin Building': 2,
-    'New Admin Building': 3,
+    'New Admin Building': {
+        totalFloors: 3,
+        img: adminfront
+    },
     'Student Activity Center': 1,
     'Fitness Gym': 1,
     'Sewing Area': 1,

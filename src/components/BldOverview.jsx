@@ -12,7 +12,7 @@ function BldOverview({query, setRoomClicked, closeSideBar}) {
     const [closeCard, setCloseCard] = useState(false)
 
   return (
-<div className={`fixed z-40  flex flex-col rounded-2xl  shadow-2xl border border-gray-400 border-opacity-50 bg-slate-100  right-[2%]  w-[300px] lg:w-[450px] ${closeCard ? 'hidden' : 'flex'}`}>
+<div className={`fixed z-40  flex flex-col rounded-2xl  shadow-2xl border border-gray-400 border-opacity-50 bg-slate-100  right-[2%]  w-[300px] lg:w-[400px] 2xl:w-[600px]  ${closeCard ? 'hidden' : 'flex'}`}>
   
      <img className='rounded-t-xl '  src={buildingData.img} alt="" srcset="" />
  <button onClick={()=>setCloseCard(!closeCard)} className="flex gap-2 items-center absolute right-5 top-3 bg-red-600 hover:bg-red-800 text-white text-3xl px-2 py-2 rounded-full"><AiOutlineClose/></button>

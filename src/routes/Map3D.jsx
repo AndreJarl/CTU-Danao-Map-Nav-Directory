@@ -14,6 +14,8 @@ import Card from '../components/CardData'
 import centrum from '../assets/centrum.jpg'
 import coefront from '../api/engineering/img/COEFront.jpg'
 import BldOverview from "../components/BldOverview";
+import ctubg from "../assets/ctubg.png"
+import ctubg2 from "../assets/ctubgg.png"
 
 function Map3D() {
      const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -93,7 +95,7 @@ function Map3D() {
   
       const handleWheel = (e) => {
              e.preventDefault();
-             const zoomSpeed = 0.3;
+             const zoomSpeed = 0.1;
              const newZoom = e.deltaY > 0 ? zoomLevel - zoomSpeed : zoomLevel + zoomSpeed;
              setZoomLevel(Math.min(Math.max(newZoom, 1), 5)); // Clamp zoom level
             
@@ -203,7 +205,14 @@ function Map3D() {
      <div className="flex justify-center items-center  overflow-hidden select-none">
 
       {/* this the svg div */}
-      <div className="relative bg-white    overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
+      <div
+       style={{
+    backgroundImage: `url(${ctubg2})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+      className="relative    overflow-hidden h-screen w-screen flex justify-center items-center cursor-grab active:cursor-grabbing lg:h-screen lg:w-screen"
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -211,14 +220,15 @@ function Map3D() {
         onMouseLeave={handleMouseUp}
       id="map-container"
       >
-  
+  <div className="absolute inset-0 bg-black bg-opacity-50 z-0"></div>
+
          {cardData && !showPopup && (
               <Card cardData={cardData} cardPosition={cardPosition} setShowPopup={setShowPopup} ShowPopUp={showPopup} closeCard={closeCard}/>
             )}  
 
 
  <svg  width="100%" height="110%"  viewBox="0 0  1380 832" fill="none" xmlns="http://www.w3.org/2000/svg" 
-   style={{  transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`, transformOrigin: "center center",transition: isPanning ? "none" : "transform 0.4s ease-in-out", }} >
+   style={{  transform: `translate(${panX}px, ${panY}px) scale(${zoomLevel})`, transformOrigin: "center center",transition: isPanning ? "none" : "transform 0.2s ease-in-out", }} >
 
 <path d="M971.79 112.01V115.76L949.01 142.75V138.99L971.79 112.01Z" fill="#939393"/>
 <path d="M234.17 125.48V129.24L190.26 162.18V158.42L234.17 125.48Z" fill="#909191"/>
@@ -1292,7 +1302,7 @@ function Map3D() {
 
         {/* this is the search bar */}
         <div className="fixed top-3  group right lg:right-10 2xl:right-36 2xl:top-6 px-2" >
-            <div className=" rounded-lg shadow-xl shadow-slate-400 w-[300px] lg:w-[400px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
+            <div className=" rounded-lg shadow-xl  w-[300px] lg:w-[400px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 bg-white w-[200px] lg:w-[400px] 2xl:w-[600px]  border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
             onClick={() => closePopUp()}
             onChange={handleInputChange}
