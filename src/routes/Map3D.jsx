@@ -16,6 +16,8 @@ import coefront from '../api/engineering/img/COEFront.jpg'
 import BldOverview from "../components/BldOverview";
 import ctubg from "../assets/ctubg.png"
 import ctubg2 from "../assets/ctubgg.png"
+import { Link } from "react-router-dom";
+import arrow from '/public/arrow.png'
 
 function Map3D() {
      const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -1242,28 +1244,35 @@ function Map3D() {
       <div className="fixed bottom-4 left-4 flex flex-col gap-2 text-base">
                 <button
                 onClick={handleFullscreen}
-                className="w-10 py-2 font-bold flex justify-center items-center opacity-80 hover:opacity-100 bg-gray-700 text-white rounded shadow-sm hover:bg-gray-600  shadow-slate-600"
+                className="px-2 py-2 font-bold flex justify-center items-center opacity-80 hover:opacity-100 bg-gray-700 text-white rounded shadow-sm hover:bg-gray-600  shadow-slate-600"
                 >
-                <BsFullscreen />
+                <BsFullscreen size={20}/>
                 </button>
                 <button
                 onClick={() => setZoomLevel(Math.min(zoomLevel + 0.3, 5))}
-                className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
+                className="px-2 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-green-500 text-white rounded shadow-sm hover:bg-green-600  shadow-slate-600"
                 >
-                <FaPlus/>
+                <FaPlus size={20}/>
                 </button>
                 <button
                 onClick={() => setZoomLevel(Math.max(zoomLevel - 0.3, 1))}
-                className="w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
+                className="px-2 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-red-500 text-white rounded shadow-sm shadow-slate-600 hover:bg-red-600"
                 >
-               <FaMinus/>
+               <FaMinus size={20}/>
                 </button>
                 <button
                 onClick={resetView}
-                className=" w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
+                className="  py-2 px-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
             >
-              < RxReset/>
+              < RxReset size={20}/>
             </button>     
+
+                 <Link to="/"> <button
+              
+                className=" px-2 py-1 flex justify-center items-center opacity-85 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
+            >
+             <img className="w-9" src={arrow} alt="" srcset="" />
+            </button>  </Link>    
       </div>
      
  

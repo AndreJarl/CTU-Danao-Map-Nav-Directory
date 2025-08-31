@@ -13,8 +13,8 @@ import Room2 from '../assets/room2.jpg'
 import Card from '../components/CardData'
 import centrum from '../assets/centrum.jpg'
 import coefront from '../api/engineering/img/COEFront.jpg'
-import BldOverview from "../components/BldOverview";
-
+import BldOverview from "../components/BldOverview"
+import { Link } from "react-router-dom";
 
 function Map() {
     const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -644,6 +644,12 @@ function Map() {
             >
               < RxReset/>
             </button>     
+               <Link to="/3d"> <button
+              
+                className=" w-10 py-2 flex justify-center items-center opacity-85 hover:opacity-100 bg-blue-500 text-white rounded shadow-sm shadow-zinc-600 hover:bg-blue-600"
+            >
+             3D
+            </button>  </Link>     
       </div>
      
  
