@@ -18,6 +18,13 @@ import ctubg from "../assets/ctubg.png"
 import ctubg2 from "../assets/ctubgg.png"
 import { Link } from "react-router-dom";
 import arrow from '/public/arrow.png'
+import { HardHat } from 'lucide-react';
+import eng from "../assets/eng.jpg"
+import educ from "../assets/educ.jpg"
+import tech from "../assets/tech.jpg"
+import cme from "../assets/cme.jpg"
+import SearchBar from "../components/SearchBar";
+
 
 function Map3D() {
      const [zoomLevel, setZoomLevel] = useState(1); // Zoom level
@@ -422,6 +429,7 @@ function Map3D() {
 <g style={{cursor:"pointer", transition:"0.3s"}}
     onMouseEnter={(e)=>buildingOnMouseEnter(e,".engFill",".engText")}
     onMouseLeave={(e)=>buildingOnMouseLeave(e,".engFill",".engText","#DA7F7F")}
+    onClick={(e)=> handleOpenPopup(e,'College of Engineering Building',2)}
 >
 <path d="M1057.5 412.04V415.8L991 414.06V410.3L1057.5 412.04Z" fill="#6E0C0E"/>
 <path d="M1078 413.82H1077V417.58H1078V413.82Z" fill="#6F0C0E"/>
@@ -437,7 +445,7 @@ function Map3D() {
 <path d="M1064.5 440.74V444.49L1034 443.64V439.89L1064.5 440.74Z" fill="#6E0C0E"/>
 <path d="M1072 444.73H1064.5V448.49H1072V444.73Z" fill="#6F0C0E"/>
 <path d="M1076 412.94H1079V420.44L1075.96 451.34H1072V444.72H1064.5V440.73L1034 439.88V450.46L1010 450V438.98H990V409.39L1058.5 411.18V414.26H1076V412.94ZM1078 420.4V413.82H1077V415.15H1057.5V412.04L991 410.3V438.1H1011V449.15L1033 449.57V438.97L1065.5 439.88V443.85H1073V450.47H1075.04L1078 420.41" fill="#BF1418"/>
-<path className="engFill" d="M991 410.3L1057.5 412.04V415.15H1077V413.82H1078V420.4L1075.04 450.46H1073V443.84H1065.5V439.88L1033 438.97V449.57L1011 449.15V438.1H991V410.3Z" fill="#DA7F7F" style={{transition:"0.3s"}}/>
+<path  className="engFill" d="M991 410.3L1057.5 412.04V415.15H1077V413.82H1078V420.4L1075.04 450.46H1073V443.84H1065.5V439.88L1033 438.97V449.57L1011 449.15V438.1H991V410.3Z" fill="#DA7F7F" style={{transition:"0.3s"}}/>
 <path d="M1034 450.47V454.23L1010 453.77V450.01L1034 450.47Z" fill="#6E0C0E"/>
 <path d="M1075.96 451.34H1072V455.1H1075.96V451.34Z" fill="#6F0C0E"/>
 </g>
@@ -446,8 +454,10 @@ function Map3D() {
 {/* New Admin Building */}
 <g style={{cursor:"pointer", transition:"0.3s"}}
     onMouseEnter={(e)=>buildingOnMouseEnter(e,".newAdminFill",".newAdminText")}
-    onMouseLeave={(e)=>buildingOnMouseLeave(e,".newAdminFill",".newAdminText","#D5D59A")}>
-
+    onMouseLeave={(e)=>buildingOnMouseLeave(e,".newAdminFill",".newAdminText","#D5D59A")}
+    onClick={(e)=> handleOpenPopup(e,'New Admin Building',4 )}
+    >
+    
 <path d="M1112.98 422.2V425.95L1081.97 425.09V421.34L1112.98 422.2Z" fill="#746F11"/>
 <path d="M1081.97 421.34V425.09L1078.97 472.32V468.56L1081.97 421.34Z" fill="#7F7913"/>
 <path d="M1078.97 468.56H1068.98V472.32H1078.97V468.56Z" fill="#746F11"/>
@@ -488,7 +498,9 @@ function Map3D() {
 {/* Education Building */}
 <g style={{cursor:"pointer", transition:"0.3s"}}
     onMouseEnter={(e)=>buildingOnMouseEnter(e,".educFill",".educText")}
-    onMouseLeave={(e)=>buildingOnMouseLeave(e,".educFill",".educText","#74B8D0")}>
+    onMouseLeave={(e)=>buildingOnMouseLeave(e,".educFill",".educText","#74B8D0")}
+    onClick={(e)=> handleOpenPopup(e,'Education Building')}
+    >
 <path d="M1031.5 544.93V548.69L1007.5 548.26V544.5L1031.5 544.93Z" fill="#005B85"/>
 <path d="M1071.49 547.58H1070V551.34H1071.49V547.58Z" fill="#005C86"/>
 <path d="M1070 554.21H1062.5V557.97H1070V554.21Z" fill="#005C86"/>
@@ -577,7 +589,9 @@ function Map3D() {
 {/* Grad Building */}
 <g style={{cursor:"pointer", transition:"0.3s"}}
     onMouseEnter={(e)=>buildingOnMouseEnter(e,".gradFill",".gradText")}
-    onMouseLeave={(e)=>buildingOnMouseLeave(e,".gradFill",".gradText","#C0D2DA")}>
+    onMouseLeave={(e)=>buildingOnMouseLeave(e,".gradFill",".gradText","#C0D2DA")}
+    onClick={(e)=> handleOpenPopup(e,'Graduate School Building')}
+    >
 <path d="M870 541.84V545.6L849.5 545.17V541.42L870 541.84Z" fill="#396072"/>
 <path d="M927.5 543.6V547.36L907.5 546.94V543.18L927.5 543.6Z" fill="#396072"/>
 <path d="M830 543.61H820V547.37H830V543.61Z" fill="#396073"/>
@@ -1516,7 +1530,7 @@ function Map3D() {
      
 
         {/* this is the search bar */}
-        <div className="fixed top-3  group right lg:right-10 2xl:right-36 2xl:top-6 px-2" >
+        {/* <div className="fixed top-3  group right lg:right-10 2xl:right-36 2xl:top-6 px-2" >
             <div className=" rounded-lg shadow-xl  w-[300px] lg:w-[400px] 2xl:w-[600px]  border border-gray-300 px-5 flex flex-row justify-center items-center bg-white hover:rounded-t-xl">
             <input className="px-2 py-3 bg-white w-[200px] lg:w-[400px] 2xl:w-[600px]  border-none outline-none text-sm overflow-hidden" type="search" name="" id="" placeholder="Search building/facilities"
             onClick={() => closePopUp()}
@@ -1555,7 +1569,20 @@ function Map3D() {
 
 
 
-        </div>
+        </div> */}
+      
+       <SearchBar
+       closePopUp={closePopUp}
+       handleInputChange={handleInputChange}
+       setShowMenu={setShowMenu}
+        showMenu={showMenu}
+         suggestion={suggestion}
+          query={query}
+           handleSuggestionClicked={handleSuggestionClicked}
+       />
+     
+        
+          
 
         {/* directions*/}
 
